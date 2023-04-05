@@ -15,7 +15,7 @@ export default function Home() {
   const { locale } = router;
   const language = locale;
   const { t, ready } = useTranslation()
-  //const [region, setRegion] = useState();
+  const [region, setRegion] = useState();
 
   /*const regionSelectedOption = () => {
     try {
