@@ -1,4 +1,5 @@
 const express = require("express");
+const next = require('next');
 const cors = require('cors');
 const rateLimit = require('express-rate-limit');
 const cache = require("./cache.js");
@@ -7,34 +8,47 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 const PORT = process.env.PORT;
-const app = express();
+const dev = process.env.NODE_ENV !== 'production'
+const app = next({ dir: "./client", dev });
+const handle = app.getRequestHandler();
 
-const limiter = rateLimit({
-windowMs: 5601000, // 10 Mins
-max: 500
-});
+app
+    .prepare()
+    .then(() => {
+        const server = express();
+        const limiter = rateLimit({
+            windowMs: 5601000, // 10 Mins
+            max: 500
+        });
+        server.use(cache('2 minutes'));
+        server.use(limiter);
+        server.use(express.json());
+        server.use(cors());
 
-app.use(cache('2 minutes'));
-app.use(limiter);
-app.use(express.json());
-app.use(cors());
+        server.set('port', PORT);
 
-app.set('port', PORT);
+        // Routes
+        server.use('/tmdb/', tmdbRouter);
+        server.get("*", (req, res) => {
+            return handle(req, res);
+        })
 
-// Routes
-app.use('/tmdb/', tmdbRouter);
+        // Project prod path
+        /*app.use(express.static('./dist'));
+        
+        app.get('/*', function(req, res) {
+        res.sendFile('index.html', { root: './dist' }, function(err) {
+        if (err) {
+        res.status(500).send(err);
+        }
+        });
+        });*/
 
-// Project prod path
-app.use(express.static('./dist'));
-
-app.get('/*', function(req, res) {
-res.sendFile('index.html', { root: './dist' }, function(err) {
-if (err) {
-res.status(500).send(err);
-}
-});
-});
-
-app.listen(PORT, () => {
-console.log(`Server running on port ${PORT}`);
-});
+        server.listen(PORT, err => {
+            if(err) throw err;
+            console.log(`Server running on port ${PORT}`);
+        });
+    })
+    .catch(ex => {
+        console.log(ex)
+    })
