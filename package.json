@@ -3,13 +3,15 @@
   "version": "1.0.0",
   "description": "This is a starter template for [Learn Next.js](https://nextjs.org/learn).",
   "main": "index.js",
-  "cacheDirectories": ["client/.next/cache"],
+  "cacheDirectories": [
+    "client/.next/cache"
+  ],
   "scripts": {
     "dev": "next dev ./client -p 3000 & nodemon ./server/server.js",
     "server": "nodemon ./server/server.js",
     "client": "next dev ./client -p 3001",
-    "build" : "next build ./client",
-    "start" : "next start ./client -p $PORT. & nodemon ./server/server.js"
+    "build": "next build ./client",
+    "start": "next start ./client -p $PORT. & nodemon ./server/server.js"
   },
   "author": "",
   "license": "ISC",
@@ -58,6 +60,7 @@
     "react-lazy-load-image-component": "^1.5.6",
     "react-number-format": "^5.1.4",
     "react-select": "^5.6.1",
+    "sharp": "^0.32.0",
     "styled-components": "^5.3.8",
     "swiper": "^9.1.0",
     "zlib": "^1.0.5"
