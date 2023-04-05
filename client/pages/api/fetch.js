@@ -2,7 +2,7 @@ import axios from 'axios';
 import queryString from 'query-string';
 
 const axiosFetch = axios.create({
-    baseURL: "http://localhost:5000/tmdb",
+    baseURL: process.env.TMDB_BASE_URL,
     headers: { 'Content-Type': 'application/json' },
     paramsSerializer: {
         serialize: params => queryString.stringify({ ...params })
