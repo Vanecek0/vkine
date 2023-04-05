@@ -64,7 +64,7 @@ export default function Home() {
         <meta name="twitter:description" content="Databáze filmů a seriálů pro každého. Procházejte tisíce titulů, hledejte své oblíbené filmy nebo seriály a objevujte nové. Informace o filmech a seriálech, jejich obsazení, plakáty a trailers k dispozici jedním kliknutím."></meta>
       </Head>
       <HeroSlide mvtvType={mvtvType.movie} language={language} with_origin_country={region} />
-      <div className="container">
+      {/*<div className="container">
         <div className="section mb-5">
           <div className="mvtv-title mb-5">
             <h1 className="text-white">{t('common.movies')}</h1>
@@ -119,8 +119,8 @@ export default function Home() {
           </div>
           <MovieList mvtvType={mvtvType.tv} type={tvType.top_rated} with_original_language={process.env.LIST_ORIGINAL_LANGUAGES} language={language} with_origin_country={region}></MovieList>
         </div>
-        {/*<RandomGenerator language={language} />*/}
-      </div>
+        <RandomGenerator language={language} />
+      </div>*/}
     </>
   );
 }

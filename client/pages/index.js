@@ -6,7 +6,7 @@ import { SSRProvider } from "react-bootstrap";
 const HomePage = ({children ,pageProps }) => {
   return (
     <SSRProvider>
-      {/*<Home {...pageProps}>{children}</Home>*/}
+      <Home {...pageProps}>{children}</Home>
     </SSRProvider>
   )
 }
