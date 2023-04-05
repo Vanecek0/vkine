@@ -11,11 +11,11 @@ import ReactGA from 'react-ga4';*/
 
 
 export default function Home() {
-  const router = useRouter();
-  const { locale } = router;
-  const language = locale;
-  const { t, ready } = useTranslation()
-  const [region, setRegion] = useState();
+  //const router = useRouter();
+  //const { locale } = router;
+  //const language = locale;
+  //const { t, ready } = useTranslation()
+  //const [region, setRegion] = useState();
 
   /*const regionSelectedOption = () => {
     try {
@@ -63,8 +63,8 @@ export default function Home() {
         <meta name="twitter:title" content="Vkine.cz – Databáze filmů a seriálů pro opravdové nadšence"></meta>
         <meta name="twitter:description" content="Databáze filmů a seriálů pro každého. Procházejte tisíce titulů, hledejte své oblíbené filmy nebo seriály a objevujte nové. Informace o filmech a seriálech, jejich obsazení, plakáty a trailers k dispozici jedním kliknutím."></meta>
       </Head>
-      <HeroSlide mvtvType={mvtvType.movie} language={language} with_origin_country={region} />
-      {/*<div className="container">
+      {/*<HeroSlide mvtvType={mvtvType.movie} language={language} with_origin_country={region} />
+      <div className="container">
         <div className="section mb-5">
           <div className="mvtv-title mb-5">
             <h1 className="text-white">{t('common.movies')}</h1>
