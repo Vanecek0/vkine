@@ -25,7 +25,7 @@ app.set('port', PORT);
 app.use('/tmdb/', tmdbRouter);
 
 // Project prod path
-/*app.use(express.static('./dist'));
+app.use(express.static('./dist'));
 
 app.get('/*', function(req, res) {
 res.sendFile('index.html', { root: './dist' }, function(err) {
@@ -34,7 +34,7 @@ res.status(500).send(err);
 }
 });
 });
-*/
+
 app.listen(PORT, () => {
 console.log(`Server running on port ${PORT}`);
 });
