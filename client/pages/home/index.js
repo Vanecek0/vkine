@@ -37,6 +37,8 @@ export default function Home() {
     regionSelectedOption();
   }, [])*/
 
+  console.log(process.env.NEXT_PUBLIC_GA_ID);
+
   return (
     <>
       <Head>
