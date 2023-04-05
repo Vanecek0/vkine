@@ -7,7 +7,7 @@ const tmdbRouter = require('./routes/tmdb.js');
 const dotenv = require('dotenv');
 dotenv.config();
 
-const PORT = process.env.NEXT_PUBLIC_PORT;
+const PORT = process.env.PORT;
 const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dir: "./client", dev });
 const handle = app.getRequestHandler();
