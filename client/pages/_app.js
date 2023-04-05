@@ -9,7 +9,7 @@ const App = ({ Component, pageProps }) => {
   return (
     <SSRProvider>
       <Header />
-      <Component {...pageProps} />
+      {/*<Component {...pageProps} />*/}
       <Footer />
     </SSRProvider>
   )
