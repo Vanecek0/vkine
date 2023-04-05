@@ -1,0 +1,91 @@
+.movieCard {
+    overflow: hidden;
+    position: relative;
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background: #212529;
+    padding-top: 160%;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    user-select: none;
+    z-index: 2;
+}
+
+.movieCard::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    transition: opacity .3s ease;
+    border-radius: 10px;
+    z-index: 1;
+}
+
+.movieCard:hover::before {
+    opacity: .8;
+}
+
+.movieCard .btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-radius: 15px;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform .3s ease;
+    z-index: 2;
+}
+
+.movieCard:hover .btn {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.movieLink .title {
+    font-size: 1.1rem;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+
+}
+
+.movieCard .movieCardImage {
+    display: flex !important;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.movieCard .movieCardImage img {
+    height: 100%;
+    width: fit-content;
+}
+
+.movieCard .rating {
+    position: absolute;
+    bottom: 1px;
+    right: 1px;
+    width: 50px;
+    font-weight: bold;
+}
+
+.movieLink {
+    color: white;
+    text-decoration: none;
+}
+
+@media only screen and (max-width: 960px) {
+    
+}
+@media (min-width:961px) and (max-width: 1024px) {
+    
+}
+@media (min-width:1025px) and (max-width: 1280px) { /* big landscape tablets, laptops, and desktops */ }
+@media (min-width:1281px) { /* hi-res laptops and desktops */ }

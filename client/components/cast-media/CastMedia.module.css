@@ -1,0 +1,55 @@
+.movieList {
+    overflow: hidden;
+}
+
+.movieList .castMediaSlide {
+    width: 15%;
+    position: relative;
+  }
+
+.movieCard::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    transition: opacity .3s ease;
+    border-radius: 10px;
+    z-index: 1;
+}
+
+.movieCard .movieCardImage {
+    display: flex !important;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.movieCard .movieCardImage img {
+    height: 100%;
+    width: fit-content;
+}
+
+.movieCard .btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-radius: 15px;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform .3s ease;
+    z-index: 2;
+}
+
+.movieCard .rating {
+    position: absolute;
+    bottom: 1px;
+    right: 1px;
+    width: 50px;
+    font-weight: bold;
+}

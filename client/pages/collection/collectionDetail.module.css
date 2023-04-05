@@ -1,0 +1,259 @@
+.random_change {
+    height: 50px;
+}
+
+.banner {
+    height: 50vh;
+    min-height: 350px;
+    position: relative;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.banner::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    transition: .5s ease;
+}
+
+.banner:hover::before {
+    background-color: rgba(0,0,0,0.6);
+}
+
+.banner::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background-image: linear-gradient(to top, #090909, transparent)
+}
+
+.movieContent {
+    display: flex;
+    justify-content: flex-start;
+    max-width: 1260px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -200px;
+    position: relative;
+    padding: 0 2rem;
+}
+
+.movieContent .rating {
+    transition: all 0.25s ease-out;
+    user-select: none;
+    width: 65px;
+    scale: 1;
+}
+
+.movieContent .rating:hover {
+    transition: all 0.25s ease-in;
+    scale: 1.1;
+}
+
+.movieContent__poster {
+    flex: 1;
+}
+
+.movieContent__poster__img {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding-top: 165%;
+    border-radius: 10px;
+    
+}
+
+.movieContent__info {
+    width: 75%;
+    color: white;
+    padding-left: 2rem;
+    position: relative;
+}
+
+.movieContent__info .title h1{
+    font-size: 3.2rem;
+    line-height: 1;
+}
+
+.movieContent__info .title h3{
+    color: rgb(220, 220, 220);
+}
+
+.movieContent__info .title h1 small{
+    color: rgb(200, 200, 200);
+    font-size: 2rem;
+}
+
+.movieContent .backArrow {
+    position: absolute;
+    top: -50px;
+    left: 0;
+    margin: 0 2rem;
+    color: white;
+}
+
+.genres__item{
+    margin-right: .5rem;
+    margin-top: .5rem;
+    margin-bottom: .5rem;
+    padding: .5rem 1.5rem;
+    color: #fff;
+    background-color: #212529;
+}
+
+.cast__item {
+    padding: 5px;
+}
+
+.cast__item a {
+    color: white;
+    text-decoration: none;
+}
+
+.cast__item__img {
+    width: 100px;
+    height: 100px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 90px;
+    background-size: cover;
+    margin-bottom: .5rem;
+}
+
+.cast__item__name {
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+.cast__item__character {
+    font-size: 0.8rem;
+    font-style: italic;
+    margin: 0;
+}
+
+.casts .swiperSlide{
+    width: 135px;
+    position: relative;
+}
+
+.casts .swiperSlide img{
+    width: 100%;
+}
+
+.casts .swiperWrapper {
+    display: flex;
+    margin-top: 10pt;
+}
+
+.casts:hover > .swiperContainer .customSwiperNavigation {
+    transition: ease .3s;
+    opacity: 1;
+}
+
+.casts .customSwiperNavigation {
+    display: flex;
+    opacity: 0;
+    position: absolute;
+    color: white;
+    font-size: 2rem;
+    z-index: 1;
+    justify-content: center;
+    align-items: center;
+    transition: ease .3s;
+    width: 5%;
+    max-width: 80px;
+    min-width: 35px;
+}
+
+.casts .customSwiperNavigation.swiperButtonDisabled {
+    display: none;
+}
+
+.swiperButtonDisabled {
+    display: none;
+}
+
+.customSwiperNavigation:hover {
+    background-color: rgba(0, 0, 0, 0.45);
+}
+
+.swiperNaviPrev {
+    top: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.swiperNaviNext {
+    top: 0;
+    bottom: 0;
+    right: 0;
+}
+
+
+.movieDetails {
+    max-width: 1260px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    padding: 0 2rem;
+}
+
+.movieDetails .overview {
+    color: #fff;
+}
+
+.movieDetails .overview p {
+    border-bottom: 1px solid #212529;
+    padding-bottom: 10pt;
+}
+
+.movieContent__info .genres {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+}
+
+
+@media only screen and (max-width: 960px) {
+    .movieContent {
+        flex-direction: column;
+        align-items: center;
+        padding: 0;
+        padding: 0 2rem !important;
+        min-height: 500px;
+    }
+    .movieContent__info .title h1 {
+        font-size: 2rem;
+    }
+    .movieContent__info .genres {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .movieContent__info {
+        width: 100%;
+        padding-left: 0;
+    }
+    .movieContent__poster {
+        max-width: 300px;
+    }
+
+    .movieContent .backArrow {
+        display: none;
+    }
+}
+
+@media (min-width:961px) and (max-width: 1024px) { 
+/* tablet, landscape iPad, lo-res laptops ands desktops */ 
+}
+@media (min-width:1025px) and (max-width: 1280px) { /* big landscape tablets, laptops, and desktops */ }
+@media (min-width:1281px) { /* hi-res laptops and desktops */ }

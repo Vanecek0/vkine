@@ -1,0 +1,82 @@
+.movieList {
+    overflow: hidden;   
+}
+.movieList .swiperSlide{
+    width: 15%;
+    position: relative;
+}
+
+.movieList .item_container .item_overview .title{
+    color: white;
+    text-align: center;
+    background-color: darkslategray;
+}
+
+.movieList:hover > .swiperContainer .customSwiperNavigation {
+    transition: ease .3s;
+    opacity: 1;
+}
+
+.movieList .customSwiperNavigation {
+    display: flex;
+    opacity: 0;
+    position: absolute;
+    color: white;
+    font-size: 2rem;
+    z-index: 1;
+    justify-content: center;
+    align-items: center;
+    transition: ease .3s;
+    width: 5%;
+    max-width: 80px;
+    min-width: 35px;
+}
+
+.movieList .customSwiperNavigation.swiperButtonDisabled {
+    display: none;
+}
+
+.movieList .noResults {
+    background:#101010
+}
+
+.swiper:hover > .customSwiperNavigation {
+    background-color: rgba(0, 0, 0, 0.45);
+    opacity: 1;
+}
+
+.swiperButtonDisabled {
+    display: none;
+}
+
+.customSwiperNavigation:hover {
+    background-color: rgba(0, 0, 0, 0.45);
+    opacity: 1;
+}
+
+.swiperNaviPrev {
+    top: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.swiperNaviNext {
+    top: 0;
+    bottom: 0;
+    right: 0;
+}
+
+@media only screen and (max-width: 960px) {
+    .movieList .swiperSlide{
+        width: 30%;
+        max-width: 200px;
+    }
+}
+@media (min-width:961px) and (max-width: 1024px) {
+    .movieList .swiperSlide{
+        width: 30%;
+        max-width: 200px;
+    }
+}
+@media (min-width:1025px) and (max-width: 1280px) { /* big landscape tablets, laptops, and desktops */ }
+@media (min-width:1281px) { /* hi-res laptops and desktops */ }

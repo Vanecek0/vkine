@@ -1,0 +1,35 @@
+.footer {
+    position: relative;
+    padding-bottom: 0;
+    background-position: top;
+    background-size: cover;
+    background-repeat: no-repeat;
+    clear: both;
+    margin-top: 25pt;
+}
+
+.footer__content {
+    max-width: 1000px;
+    padding-bottom: 2rem;
+}
+
+.copyright {
+    display: flex;
+    color: white;
+    background-color: #1a1e21;
+    position: relative;
+    padding: 0;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+.copyright > * {
+    padding: 5pt;
+}
+
+@media only screen and (max-width: 960px) {
+    .footer__content__menus {
+        grid-template-columns: repeat(2, 1fr);
+    } 
+}

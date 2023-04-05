@@ -1,0 +1,134 @@
+.collection_banner {
+    position: relative;
+    min-height: 250px;
+    display: flex;
+    align-items: center;
+}
+
+.collection_banner h3{
+    color: white;
+}
+
+.collection_banner .overview {
+    color: #fff;
+    max-width: 800px;
+}
+
+.collection_banner .overview p{
+    border-bottom: none;
+    margin: 0;
+    padding: 0;
+}
+
+.collection_banner_img {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    background-position: center;
+    background-size: cover;
+    border-radius: 25px;
+}
+
+.collection_banner_img::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #021c41d7;
+    transition: .5s ease;
+    border-radius: 25px;
+}
+
+.collection_banner .collection_parts {
+    color: white;
+}
+
+.collection_banner .collection_parts .collection_content{
+    display: flex;
+    align-items: start;
+    position: relative;
+}
+
+.collection_banner .collection_parts .collection_content a div:first-child{
+    margin-bottom: 0;
+}
+
+.collection_banner .collection_parts .collection_content a {
+    min-width: 50px;
+    width: 110px;
+    margin: 0 -30px 0 -30px;
+    transition: all 0.5s;
+    transition-delay: 100ms;
+}
+
+.collection_banner .collection_parts .collection_content a:first-child {
+    margin: 0 -30px 0 0px;
+}
+
+.collection_banner .collection_parts .collection_content a:last-child {
+    margin: 0 0px 0 -30px;
+    
+}
+
+.collection_banner .collection_parts .collection_content a:first-child > div:first-child{
+    box-shadow: none
+}
+
+
+.collection_banner .collection_parts .collection_content a div:first-child div:last-child {
+    opacity: 0;
+    transition: all 0.5s;
+    width: 45px;
+    z-index: 1;
+}
+
+.collection_banner .collection_parts .collection_content a h3 {
+    opacity: 0;
+    padding-top: 5pt;
+    font-size: 0.9em;
+    transition: all 0.5s;
+}
+
+.collection_banner .collection_parts .collection_content a div:first-child {
+    transition: all 0.5s;
+    box-shadow: -20px 0px 20px -15px #000;
+}
+
+.collection_banner .collection_parts .collection_content a {
+    pointer-events: none;
+ }
+
+@media only screen and (min-width: 480px) {
+
+    .collection_banner .collection_parts .collection_content a:hover {
+        transition: all 0.5s;
+        margin: 0 35px 0 35px;
+        transition-delay: 100ms;
+    }
+
+    .collection_banner .collection_parts .collection_content a {
+        pointer-events: all;
+     }
+    
+    .collection_banner .collection_parts .collection_content a:hover > div:first-child {
+        transition: all 0.5s;
+        box-shadow: none;
+    }
+    
+    .collection_banner .collection_parts .collection_content a:hover > div:first-child div:last-child {
+        opacity: 1;
+    }
+    
+    .collection_banner .collection_parts .collection_content a:hover > h3 {
+        opacity: 1;
+    }
+    
+    .collection_banner .collection_parts .collection_content a:first-child:hover {
+        margin: 0 35px 0 0px;
+    }
+}

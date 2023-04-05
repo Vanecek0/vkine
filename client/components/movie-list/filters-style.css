@@ -1,0 +1,65 @@
+.select-filter {
+  z-index: 2;
+  min-width: 250px;
+}
+
+.select-filter .select-filter__control {
+  background-color: #151616;
+  border-color: rgb(40, 40, 40);
+  border-radius: 8px;
+  transition: none;
+}
+
+.select-filter:focus-within {
+  outline: none;
+}
+
+.select-filter .select-filter__control:hover {
+  border-color: rgb(40, 40, 40);
+}
+
+.select-filter .select-filter__control:focus-within {
+  background-color: #212529;
+}
+
+.select-filter .select-filter__menu {
+  background-color: #151616;
+  border: 1px solid rgb(40, 40, 40);
+  border-radius: 8px;
+  margin-top: 0;
+}
+
+.select-filter .select-filter__option {
+  color: rgb(220,220,220);
+  background-color: #151616;
+}
+
+.select-filter .select-filter__option:hover {
+  background-color: #0d6efd;
+  color: white;
+}
+
+
+.select-filter .select-filter__indicator-separator {
+  background-color: #151616;
+}
+
+.select-filter .select-filter__input-container,
+.select-filter .select-filter__placeholder,
+.select-filter .select-filter__single-value {
+  color: rgb(200,200,200);
+}
+
+.select-filter ::-webkit-scrollbar {
+  height: 5px;
+  width: 10px;
+}
+
+.select-filter ::-webkit-scrollbar-thumb {
+  background: #0d6efd;
+  border-radius: 15px;
+}
+
+.select-filter ::-webkit-scrollbar-track {
+  background: #151616;
+}

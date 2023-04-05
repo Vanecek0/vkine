@@ -1,0 +1,46 @@
+.crew .swiperWrapper {
+    display: flex;
+    align-items: baseline;
+}
+
+.crew .swiperSlide {
+    width: 135px;
+    position: relative;
+}
+
+.crew__item {
+    padding: 5px;
+    color: white;
+}
+
+.crew__item a {
+    color: white;
+}
+
+.crew__item__img {
+    width: 80px;
+    height: 80px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 90px;
+    background-size: cover;
+    margin-bottom: 0.5rem;
+}
+
+.crew__item__name {
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+.crew__item__character {
+    font-size: 0.8rem;
+    font-style: italic;
+    margin: 0;
+}
+
+.crew .swiperSlide {
+    width: 135px;
+    position: relative;
+}

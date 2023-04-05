@@ -1,0 +1,43 @@
+.episodesList {
+    color: white;
+    background-color: #151616;
+}
+
+.episodeTitle {
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.episodeTitle p {
+    margin: 0;
+}
+
+.episodesList a {
+    text-decoration: none;
+    border-bottom: 1px solid white;
+}
+
+.episodeOverview {
+    padding: 0;
+}
+
+.episodeDateRuntime {
+    font-size: 1rem;
+}
+
+.ratingPill {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ratingPill svg {
+    margin-right: 5px;
+}
+
+.episodeDetails {
+    display: none;
+}

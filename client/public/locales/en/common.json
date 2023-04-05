@@ -1,0 +1,22 @@
+{
+
+        "showMore": "Show more",
+        "showLess": "Show less",
+        "findMore": "Find more",
+        "hide": "Hide",
+        "home": "Home",
+        "ratingText": "User Rating",
+        "movies": "Movies",
+        "tvs": "TV Shows",
+        "showNextCategories": "Show more categories",
+        "similar": "Similar",
+        "episodes": "episodes",
+        "showEpisodes": "Show episodes",
+        "showNextSeasons": "Show more seasons",
+        "guestStars": "Guest stars",
+        "crew": "Crew",
+        "seasons": "Seasons",
+        "descriptionNotAvailable": "Description not available",
+        "dataNotAvailable": "Data not found",
+        "selectLabel": "Select..."
+}

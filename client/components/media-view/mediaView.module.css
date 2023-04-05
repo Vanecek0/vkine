@@ -1,0 +1,124 @@
+.mediaViewModal {
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+}
+
+.mediaViewModal .content {
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    width: 100%;
+}
+
+.mediaViewModal.active {
+    display: flex;
+    align-items: center;
+    height: auto;
+    opacity: 1;
+    background: rgba(0, 0, 0, .95);
+    z-index: 999;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    transition: all 0.5s ease;
+}
+
+.mediaViewModal.active:hover .customSwiperNavigation {
+    transition: ease .3s;
+    opacity: 1;
+}
+
+.tabs .customSwiperNavigation {
+    display: flex;
+    opacity: 0;
+    position: absolute;
+    color: white;
+    font-size: 2rem;
+    z-index: 1;
+    justify-content: center;
+    align-items: center;
+    transition: ease .3s;
+    cursor: pointer;
+}
+
+.tabs .customSwiperNavigation.swiperButtonDisabled {
+    display: none;
+}
+
+.tabs .customSwiperNavigation.swiperNaviNext,
+.tabs .customSwiperNavigation.swiperNaviPrev {
+    top: 50%;
+    bottom: 50%;
+}
+
+.mediaViewModal .mediaSwiper {
+    position: relative;
+}
+
+.mediaViewModal .swiperSlide {
+    display: flex;
+    justify-content: center;
+}
+
+.mediaViewModal .swiperWrapper {
+    align-items: center;
+}
+
+.mediaViewClose {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 99;
+    background: none;
+    border: none;
+    color: rgb(240, 240, 240);
+}
+
+.mediaViewClose:hover,
+.mediaViewDownload:hover {
+    color: rgb(200, 200, 200);
+}
+
+.mediaViewDownload {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 99;
+    background: none;
+    border: none;
+    color: rgb(240, 240, 240);
+}
+
+.mediaContent.mediaImage {
+    margin-right: 0 !important;
+}
+
+.mediaContent {
+    display: flex;
+    justify-content: center;
+}
+
+.mediaImage img {
+    width: 100%;
+}
+
+.mediaImage {
+    clear: both;
+    width: 100%;
+}
+
+.mediaSwiper .customMediaSwiperNavigation {
+    top: 50%;
+    bottom: 50%;
+    background: none !important;
+    width: auto !important;
+}
+
+@media only screen and (max-width: 960px) {
+    .mediaViewDownload {
+        display: none;
+    }
+}

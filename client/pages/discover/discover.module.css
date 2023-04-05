@@ -1,0 +1,14 @@
+.discoverWrapper {
+    align-items: flex-start;
+}
+@media only screen and (max-device-width: 960px) {
+    .discoverWrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .discoverGrid {
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        margin-top: 30pt;
+    }
+}

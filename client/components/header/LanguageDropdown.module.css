@@ -1,0 +1,30 @@
+.languageSelector .selected {
+    background-color: #151616;
+}
+
+.languageSelector .regionSelect {
+    padding: 12pt 0 12pt 0;
+    color: white;
+}
+
+.languageSelector .languageSelect {
+    padding: 8pt 0 8pt 0;
+    height: 120px;
+}
+
+.languageSelector .languageSelect a:hover {
+    background-color: #151616 !important;
+}
+
+.languageSelector .dropdown-menu {
+    padding: 10pt;
+}
+
+.languageSelector .dropdownItem:focus, .dropdownItem:hover {
+    background-color: #151616 !important;
+}
+
+.languageSelector .dropdownTitle {
+    padding: 0 10pt 0 10pt;
+    margin: 5pt 0 5pt 0;
+}

@@ -1,0 +1,130 @@
+.person_content {
+    display: flex;
+    justify-content: flex-start;
+    max-width: 1260px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -200px;
+    position: relative;
+    padding: 0 2rem;
+    color: white;
+}
+
+.person_content__info {
+    width: 75%;
+    color: white;
+    padding-left: 2rem;
+    position: relative;
+}
+
+.person_poster {
+    flex: 1 1;
+}
+
+.person_content__img {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding-top: 165%;
+    border-radius: 10px;
+}
+
+.biographyContent .biography {
+    white-space: pre-wrap;
+}
+
+.person_info p b {
+    font-size: 1.1rem;
+}
+
+.person_info .mobTitle {
+    display: none;
+    padding-bottom: 10pt;
+    text-align: center;
+    font-size: 5rem;
+}
+
+.person_info .social {
+    display: flex;
+    justify-content: center;
+    font-size: 1.3rem;
+}
+
+.person_info .social a {
+    color: white;
+    padding: 0 10pt 0 10pt;
+}
+
+.banner::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background-image: linear-gradient(to top, #090909, transparent);
+}
+
+.banner::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    transition: .5s ease;
+}
+
+.banner {
+    height: 50vh;
+    min-height: 350px;
+    position: relative;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+@media only screen and (max-width: 480px) {
+    .person_content {
+        flex-direction: column;
+        align-items: center;
+        padding: 0;
+    }
+
+    .person_content__info {
+        width: 100%;
+        padding: 0 3rem;
+    }
+
+    .person_content__info .webTitle {
+        display: none;
+    }
+
+    .person_info .mobTitle {
+        display: block;
+    }
+
+    .person_content__img {
+        padding-top: 145%;
+    }
+
+    .person_poster {
+        width: 100%;
+        padding: 0 3rem;
+    }
+}
+
+@media only screen and (max-width: 960px) {}
+
+@media (min-width:961px) and (max-width: 1024px) {
+    /* tablet, landscape iPad, lo-res laptops ands desktops */
+}
+
+@media (min-width:1025px) and (max-width: 1280px) {
+    /* big landscape tablets, laptops, and desktops */
+}
+
+@media (min-width:1281px) {
+    /* hi-res laptops and desktops */
+}

@@ -1,0 +1,38 @@
+.cast__item {
+    padding: 5px;
+}
+
+.cast__item__img {
+    width: 100px;
+    height: 100px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 90px;
+    background-size: cover;
+    margin-bottom: .5rem;
+  }
+
+.cast__item a {
+    color: white;
+    text-decoration: none;
+}
+
+.cast__item__name {
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+.cast__item__character {
+    font-size: 0.8rem;
+    font-style: italic;
+    margin: 0;
+}
+
+@media only screen and (max-device-width: 960px) {
+    .cast__item__img {
+        width: 120px;
+        height: 120px;
+    }
+}

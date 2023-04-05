@@ -1,0 +1,90 @@
+.tvseasonsContent {
+    display: flex;
+    flex-direction: column;
+}
+
+.tvseasonsList button {
+    color: white;
+}
+
+.tvseasonsList button:focus {
+    background: #151616;
+    box-shadow: none;
+    border: var(--bs-btn-border-width) solid var(--bs-btn-border-color);
+}
+
+.tvseasonsList button:focus-visible {
+   outline: none;
+}
+
+.episodesList {
+    color: white;
+    background-color: #151616;
+}
+
+.episodeTitle {
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.episodeTitle p {
+    margin: 0;
+}
+
+.episodesList a {
+    text-decoration: none;
+    border-bottom: 1px solid white;
+}
+
+.episodeOverview {
+    padding: 0;
+}
+
+.episodeDateRuntime {
+    font-size: 1rem;
+}
+
+.ratingPill {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ratingPill svg {
+    margin-right: 5px;
+}
+
+.episodeDetails {
+    display: none;
+}
+
+.expanded {
+    display: block;
+}
+
+.episodesBtn {
+    width: 100%;
+    border-radius: 0;
+}
+
+@media only screen and (max-width: 480px) {
+}
+
+@media only screen and (max-width: 768px) {
+    .episodeTitle {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .episodesList .btn {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 960px) {
+}
+@media (min-width:961px) and (max-width: 1024px) { /* tablet, landscape iPad, lo-res laptops ands desktops */ }
+@media (min-width:1025px) and (max-width: 1280px) { /* big landscape tablets, laptops, and desktops */ }
+@media (min-width:1281px) { /* hi-res laptops and desktops */ }

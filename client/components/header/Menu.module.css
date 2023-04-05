@@ -1,0 +1,155 @@
+.logo {
+    font-weight: 600;
+}
+
+.logo img {
+    width: 120px;
+    margin-right: 10px;
+}
+
+.menu ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    margin-bottom: 0;
+}
+
+.menu li {
+    padding: 5px 0;
+    margin-left: 2rem;
+    font-weight: 700;
+    font-size: 1.1rem;
+    position: relative;
+}
+
+.menu li::after {
+    content: "";
+    position: absolute;
+    bottom: 0%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    transition: width 0.4s ease;
+    height: 2px;
+    background-color: rgb(0, 100, 255);
+}
+
+.menu li.active::after,
+.header__nav li:hover::after {
+    width: 100%;
+}
+
+.menu li a {
+    text-decoration: none;
+    color: white;
+}
+
+.menu li a:hover {
+    text-decoration: none;
+    color: rgb(0, 100, 255);
+}
+
+.menu {
+    display: flex;
+}
+
+.mobileMenu {
+    display: none;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.mobileMenu .hamburgerIcon {
+    cursor: pointer;
+}
+
+.mobileMenu ul {
+    list-style: none;
+    margin-bottom: 0;
+}
+
+.mobileMenu .mobileMenuContent ul li {
+    margin-bottom: 8pt;
+}
+
+.mobileMenu .mobileMenuContent ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: 700;
+    font-size: 1.6rem;
+}
+
+.mobileMenu .mobileMenuContent li a:hover {
+    text-decoration: none;
+    color: rgb(0, 100, 255);
+}
+
+.mobileMenu .mobileMenuContent li.active a {
+    color: rgb(0, 100, 255);
+}
+
+.mobileMenuLogo {
+    display: none;
+}
+
+@media only screen and (max-width: 960px) {
+
+    .header__nav li {
+        font-size: 0.95rem;
+    }
+
+    .menu {
+        display: none;
+    }
+
+    .mobileMenu {
+        display: flex;
+    }
+
+    .mobileMenuLogo {
+        display: flex;
+        font-weight: 600;
+    }
+
+    .mobileMenuLogo img {
+        width: calc(var(--logo-width) / 1.15);
+        margin-right: 10px;
+    }
+
+    .logo img {
+        width: calc(var(--logo-width) / 1.5);
+        margin-right: 0;
+    }
+
+    .mobileMenuWrapper {
+        position: fixed;
+        top: 64px !important;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        min-width: 200px;
+    }
+
+    .mobileMenuWrapper .mobileMenuContent {
+        position: fixed;
+        top: 64px !important;
+        bottom: 0;
+        opacity: 1;
+        width: 75%;
+        min-width: 200px;
+        backdrop-filter: blur(10px);
+        transition: 0.4s ease;
+    }
+
+    .mobileMenuWrapper.hidden .mobileMenuContent {
+        transform: translateX(-100%);
+        opacity: 0;
+        backdrop-filter: blur(10px);
+    }
+
+    .mobileMenuWrapper.hidden {
+        opacity: 1;
+        pointer-events: none;
+    }
+}
