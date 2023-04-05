@@ -3,12 +3,13 @@
   "version": "1.0.0",
   "description": "This is a starter template for [Learn Next.js](https://nextjs.org/learn).",
   "main": "index.js",
+  "cacheDirectories": ["client/.next/cache"],
   "scripts": {
-    "dev": "next dev ./client -p 3001 & nodemon ./server/server.js",
+    "dev": "next dev ./client -p 3000 & nodemon ./server/server.js",
     "server": "nodemon ./server/server.js",
     "client": "next dev ./client -p 3001",
     "build" : "next build ./client",
-    "start" : "next start ./client & nodemon ./server/server.js"
+    "start" : "next start ./client -p $PORT. & nodemon ./server/server.js"
   },
   "author": "",
   "license": "ISC",
