@@ -8,7 +8,7 @@
     "server": "nodemon ./server/server.js",
     "client": "next dev ./client -p 3001",
     "build" : "next build ./client",
-    "start" : "next start ./client -p 3001 & nodemon ./server/server.js"
+    "start" : "next start ./client & nodemon ./server/server.js"
   },
   "author": "",
   "license": "ISC",
