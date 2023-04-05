@@ -29,6 +29,7 @@ app
 
         // Routes
         server.use('/tmdb/', tmdbRouter);
+        
         server.get("*", (req, res) => {
             return handle(req, res);
         })
