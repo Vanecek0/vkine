@@ -3,11 +3,11 @@ const next = require('next');
 const cors = require('cors');
 const rateLimit = require('express-rate-limit');
 const cache = require("./cache.js");
-const tmdbRouter = require('./routes/routes.js');
+const tmdbRouter = require('./routes/tmdb.js');
 const dotenv = require('dotenv');
 dotenv.config();
 
-const PORT = process.env.PORT;
+const PORT = process.env.NEXT_PUBLIC_PORT;
 const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dir: "./client", dev });
 const handle = app.getRequestHandler();
@@ -28,8 +28,8 @@ app
         server.set('port', PORT);
 
         // Routes
-        server.use('/tmdb/', tmdbRouter);
-        
+        server.use('/tmdb', tmdbRouter);
+
         server.get("*", (req, res) => {
             return handle(req, res);
         })
