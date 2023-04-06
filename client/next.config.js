@@ -1,6 +1,18 @@
-const {i18n} = require("./next-i18next.config");
+const { i18n } = require("./next-i18next.config");
+const { parsed: localEnv } = require('dotenv').config()
+const webpack = require('webpack');
 
 module.exports = {
+  webpack(config) {
+    config.plugins.push(new webpack.EnvironmentPlugin(localEnv))
+    config.plugins = config.plugins || []
+
+    config.plugins = [
+      ...config.plugins,
+    ]
+
+    return config
+  },
   env: {
     //Google Analytics
     GA_ID: "G-BTGDVNLPHG",
@@ -18,5 +30,5 @@ module.exports = {
     LOADING_THRESHOLD: 0,
   },
   i18n,
-  
+
 };
