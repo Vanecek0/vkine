@@ -1,0 +1,22 @@
+{
+  "short_name": "Vkine.cz",
+  "name": "Vkine.cz – Databáze filmů a seriálů pro opravdové nadšence",
+  "description": "Databáze filmů a seriálů pro každého. Procházejte tisíce titulů, hledejte své oblíbené filmy nebo seriály a objevujte nové. Informace o filmech a seriálech, jejich obsazení, plakáty a trailers k dispozici jedním kliknutím.",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#0d6efd",
+  "background_color": "#000000",
+  "related_applications": [
+    {
+      "platform": "The Movie Database (TMDB)",
+      "url": "https://www.themoviedb.org/"
+    }
+  ]
+}

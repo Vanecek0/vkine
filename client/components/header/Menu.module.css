@@ -113,12 +113,12 @@
     }
 
     .mobileMenuLogo img {
-        width: calc(var(--logo-width) / 1.15);
+        width: calc(120px / 1.15);
         margin-right: 10px;
     }
 
     .logo img {
-        width: calc(var(--logo-width) / 1.5);
+        width: calc(120px / 1.5);
         margin-right: 0;
     }
 

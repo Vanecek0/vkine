@@ -3,7 +3,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Dropdown } from 'react-bootstrap';
 import ComboBox from '../combo-box/ComboBox';
 import { useTranslation } from 'next-i18next';
-import i18next from 'i18next';
 import tmdbApi from '../../pages/api/tmdbApi';
 import { ArrowClockwise } from 'react-bootstrap-icons';
 import languageDropdownStyle from './LanguageDropdown.module.css'
@@ -55,6 +54,7 @@ const LanguageDropdown = () => {
 
   return (
     <Dropdown className={languageDropdownStyle.languageSelector}>
+      { console.log(t(['header.selectRegionText']))}
       <Dropdown.Toggle className='text-white' variant="link" id="dropdown-basic">
         {languages.filter(lang => lang.code === language).map(({ country_code }, i) => (
           <div key={i} className='d-inline'>

@@ -7,6 +7,7 @@ import {Search} from 'react-bootstrap-icons';
 //import '../../assets/flags/flags.css';
 import Menu from './Menu';
 import LanguageDropdown from './LanguageDropdown';
+import Head from 'next/head';
 
 const Header = () => {
   const headerRef = useRef(null);
@@ -34,6 +35,10 @@ const Header = () => {
 
   return (
     <>
+    <Head>
+      <link rel="manifest" href="/manifest.json" />
+      <meta name="theme-color" content="#90cdf4" />
+    </Head>
     <div ref={headerRef} className={`${HeaderStyle.header} header`}>
       <div className={`${HeaderStyle.header__wrap} header__wrap container`}>
         <div className={`${HeaderStyle.header__nav} header__nav`}>

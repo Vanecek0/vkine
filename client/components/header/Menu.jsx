@@ -64,7 +64,7 @@ const Menu = () => {
                 </div>
             </div>
             <div className={menuStyle.mobileMenuLogo}>
-                <Link href="/"><img src={logo} alt="logo" /></Link>
+                <Link href="/"><img src={logo.src} alt="logo" /></Link>
             </div>
         </>
 
