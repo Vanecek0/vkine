@@ -37,8 +37,6 @@ export default function Home() {
     regionSelectedOption();
   }, [])*/
 
-  console.log(process.env.NEXT_PUBLIC_GA_ID);
-
   return (
     <>
       <Head>
@@ -66,7 +64,7 @@ export default function Home() {
         <meta name="twitter:description" content="Databáze filmů a seriálů pro každého. Procházejte tisíce titulů, hledejte své oblíbené filmy nebo seriály a objevujte nové. Informace o filmech a seriálech, jejich obsazení, plakáty a trailers k dispozici jedním kliknutím."></meta>
       </Head>
       <div>test: {locale}</div>
-      {/*<HeroSlide mvtvType={mvtvType.movie} language={language} /*with_origin_country={region} />*/}
+      <HeroSlide mvtvType={mvtvType.movie} language={language} with_origin_country={region} />
       <div className="container">
         <div className="section mb-5">
           <div className="mvtv-title mb-5">
