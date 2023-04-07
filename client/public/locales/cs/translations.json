@@ -25,6 +25,11 @@
         "languageTitle": "Jazyk",
         "selectRegionText": "Vybrat region..."
     },
+    "languages": {
+        "cs": "Čeština",
+        "sk": "Slovenština",
+        "en": "Angličtina (Spojené státy)"
+    },
     "genres": {
         "28": "Akční",
         "12": "Dobrodružný",

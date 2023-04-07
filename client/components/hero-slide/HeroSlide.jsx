@@ -10,17 +10,21 @@ import Rating from '../rating/Rating';
 import heroStyle from '../hero-slide/HeroSlide.module.css'
 import noImage from '../../assets/image.png'
 import noBackground from '../../assets/default_background1.png';
+import { XLg } from 'react-bootstrap-icons';
 import { useTranslation } from 'react-i18next';
 import { Genres, GenresList } from '../constants/genres/Genres';
 import ProgressiveLoader from '../progressive-loader/ProgressiveLoader';
 import LanguageFallback from '../universal_components/language-fallback/LanguageFallback';
 import ShowMoreLess from '../universal_components/show-more-less/ShowMoreLess';
 import languagesByRegion from '../constants/LanguagesByRegions.json'
+import MediaView from '../media-view/MediaView';
 
 export default function HeroSlide(props) {
     SwiperCore.use([Autoplay]);
     const [mvtvItems, setmvtvItems] = useState([]);
     const genres = GenresList(props.mvtvType, props.language);
+    const [trailerModalActive, setTrailerModalActive] = useState(false);
+    const [trailerItems, setTrailerItems] = useState({});
 
     const getMvtv = async () => {
         const params = {
@@ -58,38 +62,40 @@ export default function HeroSlide(props) {
         <>
             <div className={heroStyle.heroSlide}>
                 <div className={heroStyle.heroSlideContent}>
-                        <Swiper
-                            modules={[Autoplay]}
-                            grabCursor={true}
-                            spaceBetween={0}
-                            slidesPerView={1}
-                            className={heroStyle.heroSlideSwiper}
-                            wrapperClass={heroStyle.heroSlideSwiperWrapper}
-                            initialSlide={Math.floor(Math.random() * mvtvItems.length)}
-                            loop={false}
-                            speed={1000}
-                            autoplay={{
-                                delay: 10000,
-                                pauseOnMouseEnter: true,
-                            }}
-                            fadeEffect={{ crossFade: true }}
-                            effect={'fade'}
-                            watchSlidesProgress
-                        >
-                            {
-                                mvtvItems.map((item, i) => (
-                                    <SwiperSlide key={i} className={heroStyle.heroSwiperSlide}>
-                                        {({isActive}) => (
-                                            <HeroSlideItem mvtvType={props.mvtvType} genres={genres} language={props.language} item={item} className={`${isActive ? heroStyle.active : ''}`} />
-                                        )}
-                                    </SwiperSlide>
-                                ))
-                            }
-                        </Swiper>
-                        {/*
-                            mvtvItems.map((item, i) => <TrailerModal key={i} item={item}></TrailerModal>)*/
+                    <Swiper
+                        modules={[Autoplay]}
+                        grabCursor={true}
+                        spaceBetween={0}
+                        slidesPerView={1}
+                        className={heroStyle.heroSlideSwiper}
+                        wrapperClass={heroStyle.heroSlideSwiperWrapper}
+                        initialSlide={Math.floor(Math.random() * mvtvItems.length)}
+                        loop={false}
+                        speed={1000}
+                        autoplay={{
+                            delay: 10000,
+                            pauseOnMouseEnter: true,
+                        }}
+                        fadeEffect={{ crossFade: true }}
+                        effect={'fade'}
+                        watchSlidesProgress
+                    >
+                        {
+                            mvtvItems.map((item, i) => (
+                                <SwiperSlide key={i} className={heroStyle.heroSwiperSlide}>
+                                    {({ isActive }) => (
+                                        <HeroSlideItem setTrailerItems={setTrailerItems} setIsTrailerModalActive={setTrailerModalActive} mvtvType={props.mvtvType} genres={genres} language={props.language} item={item} className={`${isActive ? heroStyle.active : ''}`} />
+                                    )}
+                                </SwiperSlide>
+                            ))
                         }
+                    </Swiper>
                 </div>
+                {trailerItems.length > 0 ? (
+                    <>
+                    <MediaView items={trailerItems} type='videos' isActive={trailerModalActive} setIsActive={setTrailerModalActive} startIndex={0}/>
+                    </>
+                ): ''}
             </div>
         </>
     );
@@ -101,6 +107,20 @@ const HeroSlideItem = (props) => {
     var bg = config.noImage(noImage);
     const ref = useRef(null)
     const { t } = useTranslation();
+    const [trailerItems, setTrailerItems] = useState();
+
+    const onTrailerItemsHandle = async() => {
+        props.setTrailerItems(trailerItems);
+        props.setIsTrailerModalActive(true);
+    }
+
+    useEffect(() => {
+        const trailerItems = async () => {
+            const videos = (props.mvtvType === mvtvType.movie ? await tmdbApi.getVideos(mvtvType.movie, item.id, { params: {} }) : await tmdbApi.getVideos(mvtvType.tv, item.id, { params: {} }));
+            setTrailerItems(videos.results);
+        }
+        trailerItems();
+    },[item])
 
     /*const setModalActive = async () => {
         const modal = document.querySelector(`#modal_${item.id}`);
@@ -108,16 +128,16 @@ const HeroSlideItem = (props) => {
         if (videos.results.length > 0) {
             const videSrc = 'https://www.youtube.com/embed/' + videos.results[0].key;
             modal.querySelector(`#modal_${item.id} div > iframe`).setAttribute('src', videSrc);
-            console.log(true)
         } else {
             modal.querySelector('.modal___content .modal___children').innerHTML = '<div class="no-content">No trailer</div>';
         }
         modal.classList.toggle('modal-active');
     }*/
     return (
-        <div ref={ref} className={`${heroStyle.heroSlide__item} ${props.className}`}>
+        <>
+            <div ref={ref} className={`${heroStyle.heroSlide__item} ${props.className}`}>
                 <>
-                <ProgressiveLoader
+                    <ProgressiveLoader
                         isBackground={true}
                         otherClass={heroStyle.heroSlide__bac}
                         lowRes={item.backdrop_path ? config.w300(item.backdrop_path) : null}
@@ -133,7 +153,7 @@ const HeroSlideItem = (props) => {
                                     {item.runtime > 0 ? <p className='mt-3'>{item.runtime}</p> : ''}
                                     <div className={heroStyle.overview}>
                                         {
-                                            
+
                                             item.overview.length <= 0 || item.overview == null ?
                                                 <LanguageFallback
                                                     language={props.language}
@@ -153,7 +173,7 @@ const HeroSlideItem = (props) => {
                                     <button className='btn btn-lg btn-primary' onClick={() => (props.mvtvType === mvtvType.movie ? history.push('/movie/' + item.id) : history('/tv/' + item.id))}>
                                         {t(['common.findMore'])}
                                     </button>
-                                    <button className='btn btn-outline-light btn-lg' /*onClick={setModalActive}*/>
+                                    <button className='btn btn-outline-light btn-lg' onClick={onTrailerItemsHandle}>
                                         {t(['hero.playTrailer'])}
                                     </button>
                                 </div>
@@ -175,20 +195,41 @@ const HeroSlideItem = (props) => {
                     </div>
                     {item.title}
                 </>
-        </div>
+            </div>
+        </>
     )
 }
 
-/*const TrailerModal = (props) => {
-    const item = props.item;
+const TrailerModal = (props) => {
+    const active = props.active;
+    const trailerSrc = props.src;
     const iframeRef = useRef(null);
     const onClose = () => iframeRef.current.setAttribute('src', '');
+    const modalRef = useRef(null);
+    const contentRef = useRef(null);
+
+    const closeModal = () => {
+        modalRef.current.classList.remove('modal-active');
+        onClose();
+    }
 
     return (
-        <Modal active={false} id={`modal_${item.id}`} onClose={onClose}>
+        <>
+            <div ref={modalRef} className={` ${active ? 'modal-active' : ''}`} onClick={closeModal}>
+                <div ref={contentRef}>
+                    <div >
+                        <iframe allow="fullscreen;" src={trailerSrc} ref={iframeRef} width="560" height="315" title="trailer"></iframe>
+                    </div>
+                    <div onClick={closeModal}>
+                        <button><XLg size={25}></XLg></button>
+                    </div>
+                </div>
+            </div>
+        </>
+        /*<Modal active={active} id={`modal_${item.id}`} onClose={onClose}>
             <ModalContent onClose={onClose}>
                 <iframe allow="fullscreen;" ref={iframeRef} width="560" height="315" title="trailer"></iframe>
             </ModalContent>
-        </Modal>
+        </Modal>*/
     )
-}*/
+}

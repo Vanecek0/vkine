@@ -16,7 +16,7 @@ const Discover = (props) => {
       
       <HeroSlide mvtvType={'movie'}  language={language}></HeroSlide>
       <div className={`${discoverStyle.discoverWrapper} container-xxl d-flex`}>
-        <FilterPanel setParams={setFilterParams} mvtvType={props.mvtvType} language={language}></FilterPanel>
+        <FilterPanel setParams={setFilterParams} mvtvType={'movie'} language={language}></FilterPanel>
         <DiscoverGrid filterParams={filterParams} mvtvType={'movie'} language={language} />
       </div>
     </>

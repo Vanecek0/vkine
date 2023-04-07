@@ -25,6 +25,11 @@
         "languageTitle": "Language",
         "selectRegionText": "Select region..."
     },
+    "languages": {
+        "cs": "Czech",
+        "sk": "Slovak",
+        "en": "English (United States)"
+    },
     "genres": {
         "28": "Action",
         "12": "Adventure",

@@ -38,7 +38,7 @@ const LanguageDropdown = () => {
   useEffect(() => {
     const getRegions = async () => {
       const params = { language: language }
-      const formatedArr = [{ label: t(['header.selectRegionText']), value: '' }];
+      const formatedArr = [{ label: '\u001F', value: '' }];
       try {
         const response = await tmdbApi.getRegions({ params });
         response.results.map((region, i) => {
@@ -54,7 +54,6 @@ const LanguageDropdown = () => {
 
   return (
     <Dropdown className={languageDropdownStyle.languageSelector}>
-      { console.log(t(['header.selectRegionText']))}
       <Dropdown.Toggle className='text-white' variant="link" id="dropdown-basic">
         {languages.filter(lang => lang.code === language).map(({ country_code }, i) => (
           <div key={i} className='d-inline'>
@@ -66,7 +65,7 @@ const LanguageDropdown = () => {
         <span className={languageDropdownStyle.dropdownTitle}>{t(['header.languageTitle'])}</span>
         <div className={languageDropdownStyle.languageSelect}>
           {languages.map(({ code, name, country_code }) => (
-            <Dropdown.Item key={country_code} className={`text-white ${language == code && languageDropdownStyle.selected}`} onClick={() => router.push(router.asPath, undefined, {locale: code})}><span className={`fi fi-${country_code} me-2`} />{name}</Dropdown.Item>
+            <Dropdown.Item key={country_code} className={`text-white ${language == code && languageDropdownStyle.selected}`} onClick={() => router.push(router.asPath, undefined, {locale: code})}><span className={`fi fi-${country_code} me-2`} />{t([`languages.${code}`])}</Dropdown.Item>
           ))}
         </div>
         <span className={languageDropdownStyle.dropdownTitle}>{t(['header.regionText'])}</span>

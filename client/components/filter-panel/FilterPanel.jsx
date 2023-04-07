@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState, useId } from 'react'
 import filterPanelStyle from "./FilterPanel.module.css"
 import { GenresList } from '../../components/constants/genres/Genres'
 import Select from 'react-select'
@@ -211,15 +211,15 @@ const FilterGenres = (props) => {
   const handleClick = (e) => {
     var id = e.target.getAttribute("data-value");
     if (e.target.tagName == 'LI') { 
-      if(!e.target.classList.contains('item_selected')) {
-        e.target.classList.add('item_selected');
+      if(!e.target.classList.contains(`${filterPanelStyle.item_selected}`)) {
+        e.target.classList.add(`${filterPanelStyle.item_selected}`);
         temp.with_genres.push(id);
         setSelectedGenres(current => [...current, id]);
   
       } else {
         var index = selectedGenres.indexOf(id);
         setSelectedGenres(current => current.filter((_, i) => i !== index));
-        e.target.classList.remove('item_selected')
+        e.target.classList.remove(`${filterPanelStyle.item_selected}`)
       }
     }
   }
@@ -263,6 +263,7 @@ const FilterSorting = (props) => {
     <div className={filterPanelStyle.wrapper}>
       <p>{props.title}</p>
       <Select 
+      instanceId={useId()}
       options={sorting}
       className={`select-filter ${props.className}`}
       classNamePrefix={'select-filter'}
@@ -569,17 +570,19 @@ const FilterDate = (props) => {
 }
 
 const FilterTagsInput = (props) => {
-  const [tags, setTags] = useState();
+  const [tags, setTags] = useState([]);
   const [onChangeInput, setOnChangeInput] = useState('');
   const [keywordItems, setKeywordItems] = useState([]);
   const tagsArray = [];
 
   useEffect(() => {
-    tags != null &&
       tags.map((item) => {
         tagsArray.push(item.id)
         props.setSelectedTags(tagsArray);
       })
+      if(tags.length <= 0) {
+        props.setSelectedTags([]);
+      }
   }, [tags])
 
   useEffect(() => {

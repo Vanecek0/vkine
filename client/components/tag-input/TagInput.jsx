@@ -163,6 +163,7 @@ const Root = styled('div')(
     } = useAutocomplete({
       id: 'tagInput',
       onInputChange: (e, value) => props.setOnChangeInput(value),
+
       multiple: true,
       options: props.items,
       getOptionLabel: (option) => option.name,

@@ -18,7 +18,7 @@ module.exports = {
     fallbackLng: 'cs',
     nonExplicitSupportedLngs: true,
     defaultNS: "translations",
-    localePath: 'client/locales/',
+    localePath: 'client/public/locales/',
     interpolation: {
         escapeValue: false,
     },

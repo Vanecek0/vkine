@@ -25,6 +25,11 @@
         "languageTitle": "Jazyk",
         "selectRegionText": "Vybrat región..."
     },
+    "languages": {
+        "cs": "Čeština",
+        "sk": "Slovenčina",
+        "en": "Angličtina (Spojené štáty)"
+    },
     "genres": {
         "28": "Akcia",
         "12": "Dobrodružstvo",

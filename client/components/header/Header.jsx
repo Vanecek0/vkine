@@ -4,7 +4,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import HeaderStyle from "./Header.module.css"
 import MultiSearch from '../multi-search/MultiSearch';
 import {Search} from 'react-bootstrap-icons';
-//import '../../assets/flags/flags.css';
 import Menu from './Menu';
 import LanguageDropdown from './LanguageDropdown';
 import Head from 'next/head';

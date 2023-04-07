@@ -50,7 +50,7 @@
 
 .collection_banner .collection_parts .collection_content{
     display: flex;
-    align-items: start;
+    align-items: flex-start;
     position: relative;
 }
 
