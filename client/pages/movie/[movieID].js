@@ -5,7 +5,7 @@ import tmdbApi, { mvtvType } from '../../pages/api/tmdbApi';
 import config from '../../pages/api/config';
 import movieDetailStyle from './MovieDetail.module.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { ArrowLeft } from 'react-bootstrap-icons';
+import { ArrowLeft, Film } from 'react-bootstrap-icons';
 import CastList from '../../components/cast-list/CastList';
 import { NumericFormat } from 'react-number-format';
 import TimeFormat from '../../components/time-format/TimeFormat';
@@ -24,6 +24,7 @@ import { CollectionBanner } from '../../components/collections/Collection';
 import PageNotFound from '../page-not-found/PageNotFound';
 import Head from 'next/head';
 import d_translations from '../../public/locales/cs/translations.json'
+import MediaView from '../../components/media-view/MediaView';
 
 export default function Detail() {
   const router = useRouter()
@@ -37,8 +38,11 @@ export default function Detail() {
   const { t } = useTranslation('translations')
   const [loading, setLoading] = useState(true);
   var titleDashed = '';
+  const [trailerModalActive, setTrailerModalActive] = useState(false);
+  const [trailerItems, setTrailerItems] = useState({});
 
   const mvtypePath = path.find(e => 'movie');
+
 
   useEffect(() => {
     const getDetail = async () => {
@@ -51,16 +55,27 @@ export default function Detail() {
         setLoading(false)
       } catch (e) { setItem({ status_code: 34 }); setLoading(false); console.log(e) }
     }
+
+    const getVideos = async () => {
+      const videos = await tmdbApi.getVideos(mvtvType.movie, movieID, { params: {} });
+      console.log(videos.results)
+      setTrailerItems(videos.results);
+    }
     if (isReady) {
       getDetail();
+      getVideos();
       window.scrollTo(0, 0);
     }
   }, [isReady, movieID, mvtypePath, language])
 
+
+  const onTrailerHandler = () => {
+    setTrailerModalActive(true);
+  }
+
   if (!isReady) {
     return null;
   }
-
 
   return (
     <div className={`${loading ? 'pending' : 'detailContent'}`}>
@@ -102,14 +117,18 @@ export default function Detail() {
                 />
                 <div className={`mb-3 ${movieDetailStyle.movieContent} container`}>
                   <button className={`${movieDetailStyle.backArrow} ${movieDetailStyle.btn} btn`} onClick={() => router.back()}><ArrowLeft size={30}></ArrowLeft></button>
-                  <div className={movieDetailStyle.movieContent__poster}>
+                  <div className={movieDetailStyle.movieContent__poster} onClick={onTrailerHandler}>
                     <ProgressiveLoader
                       isBackground={true}
                       otherClass={movieDetailStyle.movieContent__poster__img}
                       lowRes={(item.poster_path || item.backdrop_path) != null ? config.w300(item.poster_path ? item.poster_path : item.backdrop_path) : null}
                       highRes={(item.poster_path || item.backdrop_path) != null ? config.w780(item.poster_path ? item.poster_path : item.backdrop_path) : bg}
                       blur={2}
-                    />
+                    >
+                      <button className={`${movieDetailStyle.btn} btn btn-primary`}>
+                        <Film size={40}></Film>
+                      </button>
+                    </ProgressiveLoader>
                   </div>
                   <div className={movieDetailStyle.movieContent__info}>
                     <div className={movieDetailStyle.title}>
@@ -184,6 +203,7 @@ export default function Detail() {
                   </div>
                   <MovieList id={item.id} type='recommended' language={language} mvtvType={mvtypePath == 'movie' ? mvtvType.movie : mvtvType.tv}></MovieList>
                 </div>
+                {trailerItems.length > 0 ? (<MediaView items={trailerItems} type='videos' isActive={trailerModalActive} setIsActive={setTrailerModalActive} startIndex={0} />) : ''}
               </>
             ) : <PageNotFound />}
           </>

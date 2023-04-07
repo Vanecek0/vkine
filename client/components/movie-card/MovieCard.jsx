@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { mvtvType } from '../../pages/api/tmdbApi';
 import config from '../../pages/api/config';
 import Link from 'next/link';
-import { PlayFill } from 'react-bootstrap-icons';
+import { Info, InfoCircle, InfoCircleFill, InfoSquare, PlayFill } from 'react-bootstrap-icons';
 import noImage from '../../assets/image.png';
 import Rating from '../rating/Rating';
 import ProgressiveLoader from '../progressive-loader/ProgressiveLoader';
@@ -28,7 +28,7 @@ const MovieCard = (props) => {
                 </div>
 
                 <button className={`${movieCardStyle.btn} btn btn-primary`}>
-                    <PlayFill size={40}></PlayFill>
+                    <Info size={40}></Info>
                 </button>
                 {with_rating ? (
                     <div className={`${movieCardStyle.rating} rating`}>
@@ -36,8 +36,7 @@ const MovieCard = (props) => {
                     </div>
                 ) : null}
             </div>
-            {with_title ? (<h3 className={`${movieCardStyle.title} title text-light`}>{item.title || item.name}</h3>) :
-                null}
+            {with_title ? (<h3 className={`${movieCardStyle.title} title text-light`}>{item.title || item.name}</h3>) : null}
         </Link>
     )
 }

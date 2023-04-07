@@ -16,7 +16,7 @@
     align-items: center;
     height: auto;
     opacity: 1;
-    background: rgba(0, 0, 0, .95);
+    background: rgba(0, 0, 0, .85);
     z-index: 999;
     position: fixed;
     top: 0;

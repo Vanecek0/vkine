@@ -63,13 +63,46 @@
     flex: 1;
 }
 
+.tvContent__poster__img .btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-radius: 15px;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform .3s ease;
+    z-index: 2;
+}
+
+.tvContent__poster__img:hover .btn {
+    transform: translate(-50%, -50%) scale(1);
+}
+
 .tvContent__poster__img {
+    position: relative;
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
     padding-top: 165%;
     border-radius: 10px;
     
+}
+
+.tvContent__poster__img::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    transition: opacity .3s ease;
+    border-radius: 10px;
+    z-index: 1;
+}
+
+.tvContent__poster__img:hover::before {
+    opacity: .8;
 }
 
 .tvContent__info {

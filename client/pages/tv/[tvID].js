@@ -4,7 +4,7 @@ import tmdbApi, { mvtvType } from '../../pages/api/tmdbApi';
 import config from '../../pages/api/config';
 import tvDetailStyle from './TvDetail.module.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { ArrowLeft } from 'react-bootstrap-icons';
+import { ArrowLeft, Film } from 'react-bootstrap-icons';
 import CastList from '../../components/cast-list/CastList';
 import { NumericFormat } from 'react-number-format';
 import TimeFormat from '../../components/time-format/TimeFormat';
@@ -24,6 +24,7 @@ import { CollectionBanner } from '../../components/collections/Collection';
 import PageNotFound from '../page-not-found/PageNotFound';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
+import MediaView from '../../components/media-view/MediaView';
 
 const Detail = (props) => {
   const router = useRouter();
@@ -35,9 +36,11 @@ const Detail = (props) => {
   var bg = config.noImage(noImage);
   const language = router.locale;
   const { t } = useTranslation('translations');
-  
+
   const [loading, setLoading] = useState(true);
   var titleDashed = '';
+  const [trailerModalActive, setTrailerModalActive] = useState(false);
+  const [trailerItems, setTrailerItems] = useState({});
 
   const mvtypePath = path.find(e => 'tv');
 
@@ -52,11 +55,22 @@ const Detail = (props) => {
         setLoading(false)
       } catch (e) { setItem({ status_code: 34 }); setLoading(false) }
     }
+    const getVideos = async () => {
+      const videos = await tmdbApi.getVideos(mvtvType.tv, tvID, { params: {} });
+      console.log(videos.results)
+      setTrailerItems(videos.results);
+    }
+
     if (isReady) {
       getDetail();
+      getVideos();
       window.scrollTo(0, 0);
     }
   }, [isReady, tvID, mvtypePath, language])
+
+  const onTrailerHandler = () => {
+    setTrailerModalActive(true);
+  }
 
   if (!isReady) {
     return null;
@@ -75,12 +89,12 @@ const Detail = (props) => {
                   <meta name='description' content='Databáze filmů a seriálů pro každého. Procházejte tisíce titulů, hledejte své oblíbené filmy nebo seriály a objevujte nové. Informace o filmech a seriálech, jejich obsazení, plakáty a trailers k dispozici jedním kliknutím.'></meta>
                   <meta property="og:description" content='Databáze filmů a seriálů pro každého. Procházejte tisíce titulů, hledejte své oblíbené filmy nebo seriály a objevujte nové. Informace o filmech a seriálech, jejich obsazení, plakáty a trailers k dispozici jedním kliknutím.'></meta>
                   <meta name='keywords' content='filmy, seriály, databáze filmů, databáze seriálů, vyhledávání filmů, vyhledávání seriálů, filmový katalog, seriálový katalog, informace o filmech, informace o seriálech, Vkine.cz, online filmy, online seriály, filmové novinky, seriálové novinky, filmy online, seriály online'></meta>
-                  <link rel="canonical" href={`https://www.vkine.cz/${mvtypePath + '/' + id + '-' + titleDashed}`}></link>
+                  <link rel="canonical" href={`https://www.vkine.cz/${mvtypePath + '/' + tvID + '-' + titleDashed}`}></link>
                   <meta property="og:locale" content="cs_CZ"></meta>
                   <meta property="og:locale:alternate" content="sk_SK"></meta>
                   <meta property="og:locale:alternate" content="en_US"></meta>
                   <meta property="og:type" content="website"></meta>
-                  <meta property="og:url" content={`https://www.vkine.cz/${mvtypePath + '/' + id + '-' + titleDashed}`}></meta>
+                  <meta property="og:url" content={`https://www.vkine.cz/${mvtypePath + '/' + tvID + '-' + titleDashed}`}></meta>
                   <meta property="og:site_name" content={`${item.title || item.name} – Vkine.cz`}></meta>
                   <meta property="og:image" content="https://www.vkine.cz/static/meta_image.png"></meta>
                   <meta property="og:image:secure_url" content="https://www.vkine.cz/static/meta_image.png"></meta>
@@ -102,14 +116,18 @@ const Detail = (props) => {
                 />
                 <div className={`mb-3 ${tvDetailStyle.tvContent} container`}>
                   <button className={`${tvDetailStyle.backArrow} ${tvDetailStyle.btn} btn`} onClick={() => router.back()}><ArrowLeft size={30}></ArrowLeft></button>
-                  <div className={tvDetailStyle.tvContent__poster}>
+                  <div className={tvDetailStyle.tvContent__poster} onClick={onTrailerHandler}>
                     <ProgressiveLoader
                       isBackground={true}
                       otherClass={tvDetailStyle.tvContent__poster__img}
                       lowRes={(item.poster_path || item.backdrop_path) != null ? config.w300(item.poster_path ? item.poster_path : item.backdrop_path) : null}
                       highRes={(item.poster_path || item.backdrop_path) != null ? config.w780(item.poster_path ? item.poster_path : item.backdrop_path) : bg}
                       blur={2}
-                    />
+                    >
+                      <button className={`${tvDetailStyle.btn} btn btn-primary`}>
+                        <Film size={40}></Film>
+                      </button>
+                    </ProgressiveLoader>
                   </div>
                   <div className={tvDetailStyle.tvContent__info}>
                     <div className={tvDetailStyle.title}>
@@ -188,6 +206,7 @@ const Detail = (props) => {
                   </div>
                   <MovieList id={item.id} type='recommended' language={language} mvtvType={mvtypePath == 'movie' ? mvtvType.movie : mvtvType.tv}></MovieList>
                 </div>
+                {trailerItems.length > 0 ? (<MediaView items={trailerItems} type='videos' isActive={trailerModalActive} setIsActive={setTrailerModalActive} startIndex={0} />) : ''}
               </>
             ) : <PageNotFound />}
           </>
