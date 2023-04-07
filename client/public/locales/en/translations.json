@@ -30,6 +30,10 @@
         "sk": "Slovak",
         "en": "English (United States)"
     },
+    "search": {
+        "people": "People",
+        "searchLabel": "Search for a movie, series, person, ..."
+    },
     "genres": {
         "28": "Action",
         "12": "Adventure",

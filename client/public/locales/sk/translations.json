@@ -30,6 +30,10 @@
         "sk": "Slovenčina",
         "en": "Angličtina (Spojené štáty)"
     },
+    "search": {
+        "people": "Ľudia",
+        "searchLabel": "Vyhľadajte film, seriál, osobu, ..."
+    },
     "genres": {
         "28": "Akcia",
         "12": "Dobrodružstvo",
