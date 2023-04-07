@@ -6,6 +6,7 @@ import mediaListStyle from "./mediaList.module.css"
 import MediaView from '../media-view/MediaView';
 import ProgressiveLoader from '../progressive-loader/ProgressiveLoader';
 import { useTranslation } from 'next-i18next';
+import d_translations from '../../public/locales/cs/translations.json'
 
 const VideoList = (props) => {
     const [items, setItems] = useState([]);
@@ -74,7 +75,7 @@ const VideoList = (props) => {
             </>
         ) : (
         <div className={mediaListStyle.noResults}>
-            <p>{t(['common.dataNotAvailable'])}</p>
+            <p>{t('common.dataNotAvailable', d_translations.common.dataNotAvailable)}</p>
         </div>
         )
     }

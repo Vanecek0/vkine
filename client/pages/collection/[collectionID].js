@@ -15,6 +15,7 @@ import TimeFormat from '../../components/time-format/TimeFormat';
 import MovieList from '../../components/movie-list/MovieList';
 import ImageList from '../../components/media-list/ImageList';
 //import { Helmet } from 'react-helmet-async';
+import d_translations from '../../public/locales/cs/translations.json'
 import PageNotFound from '../page-not-found/PageNotFound';
 
 const Collection = () => {
@@ -116,9 +117,9 @@ const Collection = () => {
                                     <span className={`${collectionDetailStyle.rating} d-block me-2`}>
                                         <Rating rating={item.vote_average} vote_count={item.vote_count} />
                                     </span>
-                                    <span className='pe-3'> {t(['common.ratingText'])} </span>
+                                    <span className='pe-3'> {t('common.ratingText', d_translations.common.ratingText)} </span>
                                 </p>
-                                {item.runtime > 0 ? <p>{t(['detail.runtime'])} : <TimeFormat value={item.runtime} /></p> : ''}
+                                {item.runtime > 0 ? <p>{t('detail.runtime', d_translations.detail.runtime)} : <TimeFormat value={item.runtime} /></p> : ''}
                                 <div className={`${collectionDetailStyle.overview} mt-3 mb-3`}>
                                     <LanguageFallback
                                         language={language}
@@ -130,7 +131,7 @@ const Collection = () => {
                                         otherParams={{ language: 'en' }}
                                     />
                                 </div>
-                                <p><b>{t(['collection.partsTitle'])}:</b> {item.parts.length}</p>
+                                <p><b>{t('collection.partsTitle', d_translations.collection.partsTitle)}:</b> {item.parts.length}</p>
                                 <MovieList items={item.parts} mvtvType={'movie'}></MovieList>
                             </div>
                         </div>

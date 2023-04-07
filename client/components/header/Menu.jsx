@@ -6,6 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { List } from 'react-bootstrap-icons';
 import logo from '../../assets/logo.svg';
 import menuStyle from './Menu.module.css'
+import d_translations from '../../public/locales/cs/translations.json'
 
 const Menu = () => {
     const { t } = useTranslation('translations');
@@ -14,15 +15,15 @@ const Menu = () => {
 
     const headerNav = [
         {
-            display: t(['common.home']),
+            display: t('common.home', d_translations.common.home),
             path: '/'
         },
         {
-            display: t(['common.movies']),
+            display: t('common.movies', d_translations.common.movies),
             path: '/movie'
         },
         {
-            display: t(['common.tvs']),
+            display: t('common.tvs', d_translations.common.tvs),
             path: '/tv'
         },
     ];

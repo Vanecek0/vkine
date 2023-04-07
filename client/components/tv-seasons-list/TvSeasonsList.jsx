@@ -3,6 +3,7 @@ import { useTranslation } from 'next-i18next';
 import TvEpisodesList from '../tv-episodes-list/TvEpisodesList';
 import TvSeasonCard from '../tv-seasons-card/TvSeasonCard'
 import tvSeasonListStyle from "./TvSeasonsList.module.css";
+import d_translations from '../../public/locales/cs/translations.json'
 
 const TvSeasonsList = (props) => {
   const ref = useRef();
@@ -31,15 +32,15 @@ const TvSeasonsList = (props) => {
               {episodesVisible === i ?
               <div ref={ref}>
                 <TvEpisodesList key={i} tv_id={props.tv_id} season_number={item.season_number}></TvEpisodesList>
-                <button className={`${tvSeasonListStyle.episodesBtn} btn btn-dark d-flex align-items-center justify-content-center rounded-bottom`} onClick={() => showEpisodes(-1)}>{t(['common.showLess'])}</button>
+                <button className={`${tvSeasonListStyle.episodesBtn} btn btn-dark d-flex align-items-center justify-content-center rounded-bottom`} onClick={() => showEpisodes(-1)}>{t('common.showLess', d_translations.common.showLess)}</button>
               </div>
-              :<button className={`${tvSeasonListStyle.episodesBtn} btn btn-dark d-flex align-items-center justify-content-center rounded-bottom`} onClick={() => showEpisodes(i)}>{t(['common.showEpisodes'])}</button>
+              :<button className={`${tvSeasonListStyle.episodesBtn} btn btn-dark d-flex align-items-center justify-content-center rounded-bottom`} onClick={() => showEpisodes(i)}>{t('common.showEpisodes', d_translations.common.showEpisodes)}</button>
             }
             </div>
           ))
         }
       </div>
-      {props.seasons.length >= visible ? <button className={`${tvSeasonListStyle.btn} btn btn-dark d-flex align-items-center justify-content-center mt-4`} onClick={showMoreLess}>{t(['common.showNextSeasons'])}</button> : ''}
+      {props.seasons.length >= visible ? <button className={`${tvSeasonListStyle.btn} btn btn-dark d-flex align-items-center justify-content-center mt-4`} onClick={showMoreLess}>{t('common.showNextSeasons', d_translations.common.showNextSeasons)}</button> : ''}
     </div>
     </>
   )

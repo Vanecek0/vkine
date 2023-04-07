@@ -11,8 +11,8 @@ import 'swiper/swiper-bundle.min.css'
 import 'swiper/swiper.min.css'
 import Link from 'next/link';
 import { useTranslation } from 'next-i18next';
-import i18next from 'i18next';
 import languagesByRegion from '../constants/LanguagesByRegions.json'
+import d_translations from '../../public/locales/cs/translations.json'
 
 SwiperCore.use([Navigation, Mousewheel]);
 
@@ -92,7 +92,7 @@ const MovieList = (props) => {
                                 <div className={`${movieListStyle.customSwiperNavigation} ${movieListStyle.swiperNaviPrev}`} ref={navigationPrevRef}><ChevronLeft fontWeight={'bold'} /></div>
                                 <div className={`${movieListStyle.customSwiperNavigation} ${movieListStyle.swiperNaviNext}`} ref={navigationNextRef}><ChevronRight /></div>
                             </Swiper>
-                        ) : (<div className={`${movieListStyle.noResults} text-white`}>{t(['common.dataNotAvailable'])}</div>)}
+                        ) : (<div className={`${movieListStyle.noResults} text-white`}>{t('common.dataNotAvailable', d_translations.common.dataNotAvailable)}</div>)}
                     </div>
                 )
             }
@@ -147,9 +147,9 @@ export const MovieListByGenres = (props) => {
                             {items.length > 0 ? (
                                 <>
                                     <div className="section_header mb-2">
-                                        <h2>{t([`genres.${props.genre}`])}</h2>
+                                        <h2>{t(`genres.${props.genre}`, d_translations.genres[props.genre])}</h2>
                                         <Link href={"/discover/" + props.mvtvType}>
-                                            <button className='btn btn-outline-light'>{t(['common.showMore'])}</button>
+                                            <button className='btn btn-outline-light'>{t('common.showMore', d_translations.common.showMore)}</button>
                                         </Link>
                                     </div>
                                     <div className={movieListStyle.movieList}>

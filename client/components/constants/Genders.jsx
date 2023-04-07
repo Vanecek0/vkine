@@ -1,4 +1,5 @@
-import { useTranslation } from "react-i18next";
+import { useTranslation } from "next-i18next";
+import d_translations from '../../public/locales/cs/translations.json'
 
 const GENDER = {
     UNKNOWN: 'Unknown',
@@ -8,7 +9,7 @@ const GENDER = {
 };
 
 const GendersConst = ({genderNum = 0}) => {
-    const { t } = useTranslation();
+    const { t } = useTranslation('translations');
     let gender;
     switch (genderNum) {
         case 1:
@@ -24,7 +25,7 @@ const GendersConst = ({genderNum = 0}) => {
         gender = GENDER.UNKNOWN;
     }
 
-    return t(`genders.${gender.toLowerCase()}`);
+    return t(`genders.${gender.toLowerCase()}`, d_translations.genders[gender.toLowerCase()]);
     
 }
 

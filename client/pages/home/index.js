@@ -6,6 +6,7 @@ import MovieList from '../../components/movie-list/MovieList';
 import { mvtvType, movieType, tvType } from '../api/tmdbApi';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
+import d_translations from '../../public/locales/cs/translations.json'
 /*import RandomGenerator from '../components/random-generator/RandomGenerator';
 import ReactGA from 'react-ga4';*/
 
@@ -14,7 +15,7 @@ export default function Home() {
   const router = useRouter();
   const { locale } = router;
   const language = locale;
-  const { t, ready } = useTranslation()
+  const { t, ready } = useTranslation('translations')
   const [region, setRegion] = useState();
 
   /*const regionSelectedOption = () => {
@@ -67,22 +68,22 @@ export default function Home() {
       <div className="container">
         <div className="section mb-5">
           <div className="mvtv-title mb-5">
-            <h1 className="text-white">{t('common.movies')}</h1>
+            <h1 className="text-white">{t('common.movies', d_translations.common.movies)}</h1>
             <div className='divider'></div>
           </div>
           <div className="section_header mb-2">
-            <h2>{t(['home.nowPlayingMovies'])}</h2>
+            <h2>{t('home.nowPlayingMovies', d_translations.home.nowPlayingMovies)}</h2>
             <Link href="/discover/movie">
-              <button className='btn btn-outline-light'>{t(['common.showMore'])}</button>
+              <button className='btn btn-outline-light'>{t('common.showMore', d_translations.common.showMore)}</button>
             </Link>
           </div>
           {<MovieList mvtvType={mvtvType.movie} type={movieType.now_playing} with_original_language={process.env.LIST_ORIGINAL_LANGUAGES} language={language} with_origin_country={region}></MovieList>}
         </div>
         <div className="section mb-5">
           <div className="section_header mb-2">
-            <h2>{t(['home.newest'])}</h2>
+            <h2>{t('home.newest', d_translations.home.newest)}</h2>
             <Link href="/discover/movie">
-              <button className='btn btn-outline-light'>{t(['common.showMore'])}</button>
+              <button className='btn btn-outline-light'>{t('common.showMore', d_translations.common.showMore)}</button>
             </Link>
           </div>
           <MovieList mvtvType={mvtvType.movie} type={movieType.upcoming} with_original_language={process.env.LIST_ORIGINAL_LANGUAGES} language={language} with_origin_country={region}></MovieList>
@@ -90,31 +91,31 @@ export default function Home() {
 
         <div className="section mb-5">
           <div className="mvtv-title mb-5">
-            <h1 className="text-white">{t(['common.tvs'])}</h1>
+            <h1 className="text-white">{t('common.tvs', d_translations.common.tvs)}</h1>
             <div className='divider'></div>
           </div>
           <div className="section_header mb-2">
-            <h2>{t(['home.nowInTV'])}</h2>
+            <h2>{t('home.nowInTV', d_translations.home.nowInTV)}</h2>
             <Link href="/discover/tv">
-              <button className='btn btn-outline-light'>{t(['common.showMore'])}</button>
+              <button className='btn btn-outline-light'>{t('common.showMore', d_translations.common.showMore)}</button>
             </Link>
           </div>
           <MovieList mvtvType={mvtvType.tv} type={tvType.on_the_air} with_original_language={process.env.LIST_ORIGINAL_LANGUAGES} language={language} with_origin_country={region}></MovieList>
         </div>
         <div className="section mb-5">
           <div className="section_header mb-2">
-            <h2>{t(['home.popular'])}</h2>
+            <h2>{t('home.popular', d_translations.home.popular)}</h2>
             <Link href="/discover/tv">
-              <button className='btn btn-outline-light'>{t(['common.showMore'])}</button>
+              <button className='btn btn-outline-light'>{t('common.showMore', d_translations.common.showMore)}</button>
             </Link>
           </div>
           <MovieList mvtvType={mvtvType.tv} type={tvType.popular} with_original_language={process.env.LIST_ORIGINAL_LANGUAGES} language={language} with_origin_country={region}></MovieList>
         </div>
         <div className="section mb-5">
           <div className="section_header mb-2">
-            <h2>{t(['home.bestRating'])}</h2>
+            <h2>{t('home.bestRating', d_translations.home.bestRating)}</h2>
             <Link href="/discover/tv">
-              <button className='btn btn-outline-light'>{t(['common.showMore'])}</button>
+              <button className='btn btn-outline-light'>{t('common.showMore', d_translations.common.showMore)}</button>
             </Link>
           </div>
           <MovieList mvtvType={mvtvType.tv} type={tvType.top_rated} with_original_language={process.env.LIST_ORIGINAL_LANGUAGES} language={language} with_origin_country={region}></MovieList>

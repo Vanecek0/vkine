@@ -8,12 +8,15 @@ import MovieCard from '../movie-card/MovieCard';
 import { Box, IconButton, TextField } from '@mui/material';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import People from '../people/People';
+import { useTranslation } from 'next-i18next';
+import d_translations from '../../public/locales/cs/translations.json'
 
 const MultiSearch = (props) => {
   const inputRef = useRef();
   const multiSearchRef = useRef();
   const [searchItems, setSearchItems] = useState([]);
   const [inputSearch, setInputSearch] = useState(props.inputSearch ? props.inputSearch : '');
+  const { t } = useTranslation('translations');
 
   setTimeout(() => {
     try {
@@ -23,18 +26,12 @@ const MultiSearch = (props) => {
     }
   }, 100)
 
-  /*if (props.isActive) {
-    document.body.classList.add('no-scroll')
-  } else {
-    document.body.classList.remove('no-scroll')
-  }*/
 
   const goToSearch = useCallback(async () => {
     let response = null;
     const items_count = props.count != null ? props.count : 60;
     const params = {
       language: props.language,
-      without_keywords: '248841|210024|210024-anime|290799',
       region: props.region,
       query: inputSearch
     };
@@ -91,7 +88,7 @@ const MultiSearch = (props) => {
                       onChange={(e) => setInputSearch(e.target.value)}
                       id="search-input"
                       className={multiSearchStyle.searchInput}
-                      label="Hledat film, seriál, osobu, ..." //Translate!
+                      label={t("search.searchLabel", d_translations.search.searchLabel)}
                       variant="standard"
                       InputLabelProps={{ style: { fontSize: 20 } }}
                       InputProps={
@@ -123,7 +120,7 @@ const MultiSearch = (props) => {
                 {searchItems.some(e => e.profile_path) ? (
                   <div className={multiSearchStyle.people}>
                     <div className={`${multiSearchStyle.mvtvTitle} mt-5 mb-4`}>
-                      <h2 className="text-white">Lidé</h2>
+                      <h2 className="text-white">{t('search.people', d_translations.search.people)}</h2>
                       <div className="divider"></div>
                     </div>
                     <div className={multiSearchStyle.peopleGrid}>

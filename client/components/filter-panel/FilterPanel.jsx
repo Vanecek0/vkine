@@ -17,6 +17,7 @@ import { useTranslation } from 'next-i18next'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { ChevronDown, ChevronUp } from 'react-bootstrap-icons'
 import Sorting from '../../components/constants/Sorting'
+import d_translations from '../../public/locales/cs/translations.json'
 
 const FilterPanel = (props) => {
   const refButton = useRef();
@@ -137,11 +138,11 @@ const FilterPanel = (props) => {
             <Paper elevation={0} sx={{ width: '100%'}}>
               <List>
                 <ListItemButton onClick={() => handleListClick(0)}>
-                    <ListItemText primary={t(['filters.order'])} />
+                    <ListItemText primary={t('filters.order', d_translations.filters.order)} />
                     {open.includes(0) ? <ChevronUp /> : <ChevronDown />}
                   </ListItemButton>
                   <Collapse in={!open.includes(0)} timeout='auto' unmountOnExit>
-                    <FilterSorting setSelectedSorting={setSelectedSorting} title={t(['filters.sortOrdersTitle'])}/>
+                    <FilterSorting setSelectedSorting={setSelectedSorting} title={t('filters.sortOrdersTitle', d_translations.filters.sortOrdersTitle)}/>
                   </Collapse>
               </List>
             </Paper>
@@ -169,29 +170,29 @@ const FilterPanel = (props) => {
             <Paper elevation={0} sx={{ width: '100%'}}>
               <List>
                 <ListItemButton onClick={() => handleListClick(1)}>
-                    <ListItemText primary={t(['filters.filtersTitle'])} />
+                    <ListItemText primary={t('filters.filtersTitle', d_translations.filters.filtersTitle)} />
                     {open.includes(1) ? <ChevronUp /> : <ChevronDown />}
                   </ListItemButton>
                   <Collapse in={open.includes(1)} timeout='auto' unmountOnExit>
                     {
                       props.mvtvType == 'movie' ? (
                         <>
-                        <FilterDate setSelectedDate={setSelectedPrimaryReleaseDate} type='primary_release_date' title={t(['filters.releaseDatePremiere'])}/>
-                        <FilterDate setSelectedDate={setSelectedReleaseDate} type='release_date' title={t(['filters.releaseDate'])}/>
+                        <FilterDate setSelectedDate={setSelectedPrimaryReleaseDate} type='primary_release_date' title={t('filters.releaseDatePremiere', d_translations.filters.releaseDatePremiere)}/>
+                        <FilterDate setSelectedDate={setSelectedReleaseDate} type='release_date' title={t('filters.releaseDate', d_translations.filters.releaseDate)}/>
                         </>
                       ):
                       (
                         <>
-                        <FilterDate setSelectedDate={setSelectedFirstAirDate} type='first_air_date' title={t(['filters.releaseDatePremiere'])}/>
-                        <FilterDate setSelectedDate={setSelectedAirDate} type='air_date' title={t(['filters.releaseDate'])}/>
+                        <FilterDate setSelectedDate={setSelectedFirstAirDate} type='first_air_date' title={t('filters.releaseDatePremiere', d_translations.filters.releaseDatePremiere)}/>
+                        <FilterDate setSelectedDate={setSelectedAirDate} type='air_date' title={t('filters.releaseDate', d_translations.filters.releaseDate)}/>
                         </>
                       )
                     }
-                    <FilterGenres setSelectedGenres={setSelectedGenres} mvtvType={props.mvtvType} language={props.language} title={t(['filters.genresTitle'])}/>
-                    <FilterReviewRange setSelectedReviewRange={setSelectedReviewRange} mvtvType={props.mvtvType} title={t(['filters.reviewTitle'])}/>
-                    <FilterReviewCountRange setSelectedReviewCountRange={setSelectedReviewCountRange} mvtvType={props.mvtvType} title={t(['filters.reviewCountTitle'])}/>
-                    <FilterMediaLength setSelectedMediaLength={setSelectedMediaLength} mvtvType={props.mvtvType} title={t(['filters.mediaTitle'])}/>
-                    <FilterTagsInput setSelectedTags={setSelectedTags} mvtvType={props.mvtvType} title={t(['filters.filterTagsTitle'])}/>
+                    <FilterGenres setSelectedGenres={setSelectedGenres} mvtvType={props.mvtvType} language={props.language} title={t('filters.genresTitle', d_translations.filters.genresTitle)}/>
+                    <FilterReviewRange setSelectedReviewRange={setSelectedReviewRange} mvtvType={props.mvtvType} title={t('filters.reviewTitle', d_translations.filters.reviewTitle)}/>
+                    <FilterReviewCountRange setSelectedReviewCountRange={setSelectedReviewCountRange} mvtvType={props.mvtvType} title={t('filters.reviewCountTitle', d_translations.filters.reviewCountTitle)}/>
+                    <FilterMediaLength setSelectedMediaLength={setSelectedMediaLength} mvtvType={props.mvtvType} title={t('filters.mediaTitle', d_translations.filters.mediaTitle)}/>
+                    <FilterTagsInput setSelectedTags={setSelectedTags} mvtvType={props.mvtvType} title={t('filters.filterTagsTitle', d_translations.filters.filterTagsTitle)}/>
                   </Collapse>
               </List>
             </Paper>
@@ -269,7 +270,7 @@ const FilterSorting = (props) => {
       classNamePrefix={'select-filter'}
       onChange={(e) => handleChange(e.value)}
       defaultValue={""}
-      placeholder={t(["common.selectLabel"])}
+      placeholder={t("common.selectLabel", d_translations.common.selectLabel)}
 
       theme={(theme) => ({
         ...theme,

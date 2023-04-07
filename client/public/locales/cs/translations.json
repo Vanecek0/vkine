@@ -30,6 +30,11 @@
         "sk": "Slovenština",
         "en": "Angličtina (Spojené státy)"
     },
+    "search": {
+        "people": "Lidé",
+        "searchLabel": "Hledat film, seriál, osobu, ..."
+
+    },
     "genres": {
         "28": "Akční",
         "12": "Dobrodružný",

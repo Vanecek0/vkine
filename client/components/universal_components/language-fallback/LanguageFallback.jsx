@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useTranslation } from "next-i18next";
 import ShowMoreLess from "../show-more-less/ShowMoreLess";
+import d_translations from '../../../public/locales/cs/translations.json'
 
 const LanguageFallback = ({fetchData, language, isString=false, maxTextLength, resKey='', mainParams, showMoreLessButton=true, otherParams}) => {
   const [data, setData] = useState('');
@@ -20,7 +21,7 @@ const LanguageFallback = ({fetchData, language, isString=false, maxTextLength, r
             }
             response = await fetchData(...mainParams, {params})
             if(response[resKey].length <= 0 || response[resKey] == null) {
-                return setData(t(['common.descriptionNotAvailable']))
+                return setData(t('common.descriptionNotAvailable', d_translations.common.descriptionNotAvailable))
             }
         }
         setData(response[resKey])
