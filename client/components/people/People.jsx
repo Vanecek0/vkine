@@ -3,7 +3,6 @@ import Link from 'next/link';
 import config from '../../pages/api/config';
 import noImagePerson from '../../assets/noimage_person.svg';
 import peopleStyle from "./People.module.css"
-import { blue } from '@mui/material/colors';
 
 const People = (props) => {
     const item = props.item;

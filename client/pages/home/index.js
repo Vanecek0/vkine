@@ -10,7 +10,6 @@ import d_translations from '../../public/locales/cs/translations.json'
 /*import RandomGenerator from '../components/random-generator/RandomGenerator';
 import ReactGA from 'react-ga4';*/
 
-
 export default function Home() {
   const router = useRouter();
   const { locale } = router;
@@ -41,28 +40,28 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Vkine.cz – Databáze filmů a seriálů pro opravdové nadšence</title>
-        <meta property="og:title" content="Vkine.cz – Databáze filmů a seriálů pro opravdové nadšence"></meta>
-        <meta name='description' content='Databáze filmů a seriálů pro každého. Procházejte tisíce titulů, hledejte své oblíbené filmy nebo seriály a objevujte nové. Informace o filmech a seriálech, jejich obsazení, plakáty a trailers k dispozici jedním kliknutím.'></meta>
-        <meta property="og:description" content='Databáze filmů a seriálů pro každého. Procházejte tisíce titulů, hledejte své oblíbené filmy nebo seriály a objevujte nové. Informace o filmech a seriálech, jejich obsazení, plakáty a trailers k dispozici jedním kliknutím.'></meta>
-        <meta name='keywords' content='filmy, seriály, databáze filmů, databáze seriálů, vyhledávání filmů, vyhledávání seriálů, filmový katalog, seriálový katalog, informace o filmech, informace o seriálech, Vkine.cz, online filmy, online seriály, filmové novinky, seriálové novinky, filmy online, seriály online'></meta>
+        <title>{t('head.defaultTitle', d_translations.head.defaultTitle)}</title>
+        <meta property="og:title" content={t('head.defaultTitle', d_translations.head.defaultTitle)}></meta>
+        <meta name='description' content={t('head.description', d_translations.head.description)}></meta>
+        <meta property="og:description" content={t('head.description', d_translations.head.description)}></meta>
+        <meta name='keywords' content={t('head.keywords')}></meta>
         <link rel="canonical" href="https://www.vkine.cz/"></link>
         <meta property="og:locale" content="cs_CZ"></meta>
         <meta property="og:locale:alternate" content="sk_SK"></meta>
         <meta property="og:locale:alternate" content="en_US"></meta>
         <meta property="og:type" content="website"></meta>
         <meta property="og:url" content="https://www.vkine.cz/"></meta>
-        <meta property="og:site_name" content="Vkine.cz – Databáze filmů a seriálů pro opravdové nadšence"></meta>
-        <meta property="og:image" content="https://www.vkine.cz/static/meta_image.png"></meta>
-        <meta property="og:image:secure_url" content="https://www.vkine.cz/static/meta_image.png"></meta>
+        <meta property="og:site_name" content={t('head.defaultTitle', d_translations.head.defaultTitle)}></meta>
+        <meta property="og:image" content="https://www.vkine.cz/meta_image.png"></meta>
+        <meta property="og:image:secure_url" content="https://www.vkine.cz/meta_image.png"></meta>
         <meta property="og:image:width" content="1588"></meta>
         <meta property="og:image:height" content="1588"></meta>
-        <meta property="og:image:alt" content="Vkine.cz – Databáze filmů a seriálů pro opravdové nadšence"></meta>
+        <meta property="og:image:alt" content={t('head.defaultTitle', d_translations.head.defaultTitle)}></meta>
         <meta property="og:image:type" content="image/png"></meta>
         <meta name="twitter:card" content="summary_large_image"></meta>
-        <meta name="twitter:image" content="https://www.vkine.cz/static/meta_image.png"></meta>
-        <meta name="twitter:title" content="Vkine.cz – Databáze filmů a seriálů pro opravdové nadšence"></meta>
-        <meta name="twitter:description" content="Databáze filmů a seriálů pro každého. Procházejte tisíce titulů, hledejte své oblíbené filmy nebo seriály a objevujte nové. Informace o filmech a seriálech, jejich obsazení, plakáty a trailers k dispozici jedním kliknutím."></meta>
+        <meta name="twitter:image" content="https://www.vkine.cz/meta_image.png"></meta>
+        <meta name="twitter:title" content={t('head.defaultTitle', d_translations.head.defaultTitle)}></meta>
+        <meta name="twitter:description" content={t('head.description', d_translations.head.description)}></meta>
       </Head>
       <HeroSlide mvtvType={mvtvType.movie} language={language} with_origin_country={region} />
       <div className="container">

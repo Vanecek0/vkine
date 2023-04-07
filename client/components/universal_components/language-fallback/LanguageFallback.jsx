@@ -3,41 +3,41 @@ import { useTranslation } from "next-i18next";
 import ShowMoreLess from "../show-more-less/ShowMoreLess";
 import d_translations from '../../../public/locales/cs/translations.json'
 
-const LanguageFallback = ({fetchData, language, isString=false, maxTextLength, resKey='', mainParams, showMoreLessButton=true, otherParams}) => {
-  const [data, setData] = useState('');
-  const {t} = useTranslation('translations');
+const LanguageFallback = ({ fetchData, language, isString = false, maxTextLength, resKey = '', mainParams, showMoreLessButton = true, otherParams }) => {
+    const [data, setData] = useState('');
+    const { t } = useTranslation('translations');
 
-  useEffect(() => {
-    const getData = async () => {
-        var params = {
-            ...otherParams,
-            language: language
-        }
-        var response = await fetchData(...mainParams, {params});
-        if(response[resKey].length <= 0 || response[resKey] == null) {
-            params = {
+    useEffect(() => {
+        const getData = async () => {
+            var params = {
                 ...otherParams,
-                language: null
+                language: language
             }
-            response = await fetchData(...mainParams, {params})
-            if(response[resKey].length <= 0 || response[resKey] == null) {
-                return setData(t('common.descriptionNotAvailable', d_translations.common.descriptionNotAvailable))
+            var response = await fetchData(...mainParams, { params });
+            if (response[resKey].length <= 0 || response[resKey] == null) {
+                params = {
+                    ...otherParams,
+                    language: null
+                }
+                response = await fetchData(...mainParams, { params })
+                if (response[resKey].length <= 0 || response[resKey] == null) {
+                    return setData(t('common.descriptionNotAvailable', d_translations.common.descriptionNotAvailable))
+                }
             }
-        }
-        setData(response[resKey])
-      };
-      getData();
-  }, [fetchData, language]);
+            setData(response[resKey])
+        };
+        getData();
+    }, [fetchData, language]);
 
-  return (
-    isString ? 
-    <ShowMoreLess
-        text={data}
-        maxLength={maxTextLength}
-        showButton={showMoreLessButton}
-    />
-    :
-    data
+    return (
+        isString ?
+            <ShowMoreLess
+                text={data}
+                maxLength={maxTextLength}
+                showButton={showMoreLessButton}
+            />
+            :
+            data
     )
 };
 

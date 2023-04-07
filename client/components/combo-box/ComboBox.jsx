@@ -12,46 +12,46 @@ const ComboBox = (props) => {
     var localItemObject = () => {
         try {
             return JSON.parse(localStorage.getItem(props.localStorageTitle));
-        } catch(e) {
+        } catch (e) {
             return e;
         }
     }
 
     const convert = () => {
-        if(typeof props.items === 'object' && !Array.isArray(props.items)) {
-            setItems(Object.entries(props.items).map((e) => ( { "label": e[1], "values": [...e] })));
+        if (typeof props.items === 'object' && !Array.isArray(props.items)) {
+            setItems(Object.entries(props.items).map((e) => ({ "label": e[1], "values": [...e] })));
         }
         else setItems(props.items);
     }
     useEffect(() => {
         convert()
-    },[language])
+    }, [language])
 
     const darkTheme = createTheme({
         palette: {
-          mode: 'dark',
+            mode: 'dark',
         },
-      });
-  return (
-    <>
-    <ThemeProvider theme={darkTheme}>
-        <Autocomplete
-            disablePortal
-            clearOnEscape
-            isOptionEqualToValue={localItemObject}
-            defaultValue={ localItemObject }
-            getOptionLabel={(option) => option.label}
-            options={items}
-            onChange={(e, value) => {
-                setValue(value);
-                props.handleChange(true);
-                props.setToLocalStorage && localStorage.setItem(props.localStorageTitle, JSON.stringify(value))
-            }}
-            sx={{ width: 300 }}
-            renderInput={(params) => <TextField {...params} label={props.placeholder} />}
-        />
-    </ThemeProvider>
-    </>
-  );
+    });
+    return (
+        <>
+            <ThemeProvider theme={darkTheme}>
+                <Autocomplete
+                    disablePortal
+                    clearOnEscape
+                    isOptionEqualToValue={localItemObject}
+                    defaultValue={localItemObject}
+                    getOptionLabel={(option) => option.label}
+                    options={items}
+                    onChange={(e, value) => {
+                        setValue(value);
+                        props.handleChange(true);
+                        props.setToLocalStorage && localStorage.setItem(props.localStorageTitle, JSON.stringify(value))
+                    }}
+                    sx={{ width: 300 }}
+                    renderInput={(params) => <TextField {...params} label={props.placeholder} />}
+                />
+            </ThemeProvider>
+        </>
+    );
 }
 export default ComboBox

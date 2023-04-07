@@ -20,6 +20,14 @@
         "dataNotAvailable": "Žádná data nenalezena",
         "selectLabel": "Vybrat..."
     },
+    "head": {
+        "defaultTitle": "Vkine.cz – Databáze filmů a seriálů pro opravdové nadšence",
+        "discoverTitle": "Objevujte – Vkine.cz",
+        "moviesTitle": "Filmy – Vkine.cz",
+        "seriesTitle": "Seriály – Vkine.cz",
+        "description": "Databáze filmů a seriálů pro každého. Procházejte tisíce titulů, hledejte své oblíbené filmy nebo seriály a objevujte nové. Informace o filmech a seriálech, jejich obsazení, plakáty a trailers k dispozici jedním kliknutím.",
+        "keywords": "filmy, seriály, databáze filmů, databáze seriálů, vyhledávání filmů, vyhledávání seriálů, filmový katalog, seriálový katalog, informace o filmech, informace o seriálech, Vkine.cz, online filmy, online seriály, filmové novinky, seriálové novinky, filmy online, seriály online"
+    },
     "header": {
         "regionText": "Region",
         "languageTitle": "Jazyk",
@@ -138,6 +146,8 @@
         "wallpapers": "Plakáty"
     },
     "collection": {
+        "showCollection": "Zobrazit kolekci",
+        "containsText": "Obsahuje:",
         "partsTitle": "Počet filmů"
     },
     "people": {

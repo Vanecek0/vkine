@@ -9,7 +9,6 @@ import config from '../../pages/api/config';
 import ProgressiveLoader from '../progressive-loader/ProgressiveLoader';
 
 const MediaView = (props) => {
-    const [mediaSource, setMediaSource] = useState(null);
     const navigationPrevRef = useRef(null);
     const navigationNextRef = useRef(null);
     const swiperMediaViewRef = useRef(null);
@@ -20,7 +19,6 @@ const MediaView = (props) => {
     const closeModal = () => {
         props.setIsActive(false);
     }
-
 
     const downloadImage = (url) => {
         var filename = url.substring(url.lastIndexOf("/") + 1).split("?")[0];
@@ -40,7 +38,7 @@ const MediaView = (props) => {
 
     useEffect(() => {
         (swiperMediaViewRef.current) && swiperMediaViewRef.current.swiper.slideTo(props.startIndex)
-    },[props.startIndex])
+    }, [props.startIndex])
 
     useEffect(() => {
         if (props.isActive) {

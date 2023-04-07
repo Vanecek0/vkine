@@ -3,9 +3,6 @@
   "version": "1.0.0",
   "description": "This is a starter template for [Learn Next.js](https://nextjs.org/learn).",
   "main": "index.js",
-  "cacheDirectories": [
-    "client/.next/cache"
-  ],
   "scripts": {
     "dev": "next dev ./client -p 3001 & nodemon ./server/server.js",
     "server": "nodemon ./server/server.js",

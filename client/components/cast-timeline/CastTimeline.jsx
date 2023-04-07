@@ -3,10 +3,9 @@ import Link from 'next/link';
 import tmdbApi from '../../pages/api/tmdbApi';
 import castTimelineStyle from './CastTimeline.module.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { ChevronDown, ChevronExpand, ChevronUp, Circle, CircleFill } from 'react-bootstrap-icons';
+import { ChevronDown, ChevronUp, CircleFill } from 'react-bootstrap-icons';
 import { List, ListItemButton, ListItemText, Collapse, Paper, Box } from '@mui/material';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import { compose } from '@mui/system';
 
 const CastTimeline = (props) => {
   const id = props.personId;
@@ -14,7 +13,6 @@ const CastTimeline = (props) => {
   var dateNodes = [];
   var itemNodes = [];
   var dateUndefined = [];
-  const [openedArray, setOpenedArray] = useState({})
 
   useEffect(() => {
     const getData = async () => {
@@ -95,21 +93,6 @@ const CastTimeline = (props) => {
   }
   fillData();
 
-  /*const handleClick = (date) => {
-    setOpenedArray(oldValue => {
-      if (date in openedArray) {
-        if(openedArray[date] == false )
-          setOpen({...open, [date]: true})
-        else
-          setOpen({...open, [date]: false})
-      }
-      else {
-        setOpen({...open, [date]: true})
-      }
-      return open
-    })
-  };*/
-
   const [open, setOpen] = useState([]);
   const handleClick = (clickedIndex) => {
     if (open.includes(clickedIndex)) {
@@ -182,46 +165,6 @@ const CastTimeline = (props) => {
             </Paper>
           </ThemeProvider>
         </Box>
-        {/*
-        <ul className='timeline'>
-            {
-              itemNodes.map((item, i) => (
-                <li className='event' key={i} data-date={item.date.split('-')[0]}>
-                  {
-                    item.data.map((innerItem, i) => (
-                      <div key={i} className='content'>
-                        <p>
-                          <Link to={'/' + innerItem.media_type + '/' + innerItem.id}><b>{innerItem.title}</b></Link>
-                          {innerItem.character != '' && innerItem.character != null ? (<> <span className='text-muted'>jako</span> <span color='#ffffffb8'>{innerItem.character}</span></>) : ''}
-                          {innerItem.department != '' && innerItem.department != null ? (<> <span className='text-muted'>...</span> <span color='#ffffffb8'>{innerItem.job}</span></>) : ''}
-                        </p>
-                      </div>
-                    ))
-                  }
-                </li>
-              ))
-            }
-            {
-              dateUndefined.data.length > 0 && (
-              <>
-                <li className='event' data-date={'Nezařazeno'}>
-                {
-                  dateUndefined.data.map((item, i) => (
-                    <div key={i} className='content'>
-                      <p>
-                      <Link to={'/' + item.media_type + '/' + item.id}><b>{item.title}</b></Link>
-                      {item.character != '' && item.character != null ? (<> <span className='text-muted'>jako</span> <span color='#ffffffb8'>{item.character}</span></>) : ''}
-                      {item.department != '' && item.department != null ? (<> <span className='text-muted'>...</span> <span color='#ffffffb8'>{item.job}</span></>) : ''}
-                      </p>
-                    </div>
-                  ))
-                }
-                </li>
-              </>
-              )
-            }
-          </ul>
-         */}
       </div>
     </>
   )

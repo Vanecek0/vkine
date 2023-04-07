@@ -8,7 +8,7 @@ const OPTIONS = {
 
 const useVisible = (elementRef) => {
   const [isVisible, setIsVisible] = useState(false);
-  
+
   useEffect(() => {
     if (elementRef.current) {
       const observer = new IntersectionObserver((entries, observer) => {

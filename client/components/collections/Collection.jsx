@@ -5,23 +5,20 @@ import LanguageFallback from '../../components/universal_components/language-fal
 import noImage from '../../assets/image.svg';
 import ProgressiveLoader from '../progressive-loader/ProgressiveLoader';
 import collectionStyle from './Collection.module.css'
-import MovieList from '../movie-list/MovieList';
 import MovieCard from '../movie-card/MovieCard';
 import Link from 'next/link';
 import useVisible from '../../components/universal_components/viewport-rendering/useVisible';
 import ShowMoreLess from '../../components/universal_components/show-more-less/ShowMoreLess';
+import { useTranslation } from 'next-i18next';
+import d_translations from '../../public/locales/cs/translations.json'
 
-const Collection = () => {
-    return (
-        <div>Collection</div>
-    )
-}
 
 export const CollectionBanner = ({ collection_name, collection_id, language }) => {
     const [collection, setCollection] = useState();
     var bg = config.noImage(noImage);
     const collectionRef = useRef();
     const isVisible = useVisible(collectionRef);
+    const { t } = useTranslation('translations')
 
     const nameDashed = collection_name != null ? collection_name.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[\s:,]+/g, '-').replace(/[\/\\]+/g, '-') : '';
     const link = '/collection/' + collection_id + '-' + nameDashed;
@@ -69,14 +66,14 @@ export const CollectionBanner = ({ collection_name, collection_id, language }) =
                             }
                         </div>
                         <div className={`${collectionStyle.collection_parts} mt-3`}>
-                            <p>Obsahuje:</p>
+                            <p>{t('collection.containsText', d_translations.collection.containsText)}</p>
                             <div className={collectionStyle.collection_content}>
                                 {collection.parts.slice(0, 15).map((item, i) => (
                                     <MovieCard key={i} item={item} mvtvType={mvtvType.movie}></MovieCard>
                                 ))}
                             </div>
                         </div>
-                        <Link href={link} className={"btn btn-lg btn-primary"}>Zobrazit kolekci</Link> {/**Translate!!! */}
+                        <Link href={link} className={"btn btn-lg btn-primary"}>{t('collection.showCollection', d_translations.collection.showCollection)}</Link>
                     </div>
                 </>
             ) : null}
@@ -84,4 +81,4 @@ export const CollectionBanner = ({ collection_name, collection_id, language }) =
     )
 }
 
-export default Collection
+export default CollectionBanner

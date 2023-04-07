@@ -1,21 +1,21 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import PropTypes from 'prop-types';
 import { useAutocomplete } from '@mui/material';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { CheckLg, XLg} from 'react-bootstrap-icons';
+import { CheckLg, XLg } from 'react-bootstrap-icons';
 import { styled } from '@mui/material/styles';
 import tagInputStyle from "./TagInput.module.css"
 
 
 const Root = styled('div')(
-    ({ theme }) => `
+  ({ theme }) => `
     color: rgba(255,255,255,0.65);
     font-size: 14px;
   `,
-  );
-  
-  const InputWrapper = styled('div')(
-    ({ theme }) => `
+);
+
+const InputWrapper = styled('div')(
+  ({ theme }) => `
     width: 300px;
     border: 1px solid #434343;
     background-color: #141414;
@@ -47,25 +47,25 @@ const Root = styled('div')(
       outline: 0;
     }
   `,
+);
+
+function Tag(props) {
+  const { label, onDelete, ...other } = props;
+  return (
+    <div {...other}>
+      <span>{label}</span>
+      <XLg color='white' onClick={onDelete} />
+    </div>
   );
-  
-  function Tag(props) {
-    const { label, onDelete, ...other } = props;
-    return (
-      <div {...other}>
-        <span>{label}</span>
-        <XLg color='white' onClick={onDelete} />
-      </div>
-    );
-  }
-  
-  Tag.propTypes = {
-    label: PropTypes.string.isRequired,
-    onDelete: PropTypes.func.isRequired,
-  };
-  
-  const StyledTag = styled(Tag)(
-    ({ theme }) => `
+}
+
+Tag.propTypes = {
+  label: PropTypes.string.isRequired,
+  onDelete: PropTypes.func.isRequired,
+};
+
+const StyledTag = styled(Tag)(
+  ({ theme }) => `
     display: flex;
     align-items: center;
     height: 24px;
@@ -98,10 +98,10 @@ const Root = styled('div')(
       padding: 1px;
     }
   `,
-  );
-  
-  const Listbox = styled('ul')(
-    ({ theme }) => `
+);
+
+const Listbox = styled('ul')(
+  ({ theme }) => `
     width: 300px;
     margin: 2px 0 0;
     padding: 0;
@@ -146,56 +146,56 @@ const Root = styled('div')(
       }
     }
   `,
+);
+
+const TagInput = (props) => {
+
+  const {
+    getRootProps,
+    getInputProps,
+    getTagProps,
+    getListboxProps,
+    getOptionProps,
+    groupedOptions,
+    value,
+    focused,
+    setAnchorEl,
+  } = useAutocomplete({
+    id: 'tagInput',
+    onInputChange: (e, value) => props.setOnChangeInput(value),
+
+    multiple: true,
+    options: props.items,
+    getOptionLabel: (option) => option.name,
+  });
+
+  useEffect(() => {
+    props.setTags(value);
+  }, [value])
+
+  return (
+    <Root>
+      <div {...getRootProps()}>
+        <InputWrapper ref={setAnchorEl} className={`${tagInputStyle.tagInput} ${focused ? 'focused' : ''}`}>
+          {value.map((option, index) => (
+            <StyledTag key={index} label={option.name} {...getTagProps({ index })} />
+          ))}
+          <input {...getInputProps()} />
+        </InputWrapper>
+      </div>
+      {groupedOptions.length > 0 ? (
+        <Listbox {...getListboxProps()}>
+          {groupedOptions.map((option, index) => (
+            <li key={index} {...getOptionProps({ option, index })}>
+              <span>{option.name}</span>
+              <CheckLg />
+            </li>
+          ))}
+        </Listbox>
+      ) : null}
+    </Root>
   );
-  
-  const TagInput = (props) => {
+}
 
-    const {
-      getRootProps,
-      getInputProps,
-      getTagProps,
-      getListboxProps,
-      getOptionProps,
-      groupedOptions,
-      value,
-      focused,
-      setAnchorEl,
-    } = useAutocomplete({
-      id: 'tagInput',
-      onInputChange: (e, value) => props.setOnChangeInput(value),
-
-      multiple: true,
-      options: props.items,
-      getOptionLabel: (option) => option.name,
-    });
-
-    useEffect(() => {
-      props.setTags(value);
-    }, [value])
-  
-    return (
-      <Root>
-        <div {...getRootProps()}>
-          <InputWrapper ref={setAnchorEl} className={`${tagInputStyle.tagInput} ${focused ? 'focused' : ''}`}>
-            {value.map((option, index) => (
-              <StyledTag key={index} label={option.name} {...getTagProps({index})} />
-            ))}
-            <input {...getInputProps()} />
-          </InputWrapper>
-        </div>
-        {groupedOptions.length > 0 ? (
-          <Listbox {...getListboxProps()}>
-            {groupedOptions.map((option, index) => (
-              <li key={index} {...getOptionProps({ option, index })}>
-                <span>{option.name}</span>
-                <CheckLg />
-              </li>
-            ))}
-          </Listbox>
-        ) : null}
-      </Root>
-    );
-  }
-    
 
 export default TagInput

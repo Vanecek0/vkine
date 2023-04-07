@@ -500,7 +500,6 @@ const FilterReviewCountRange = (props) => {
 
 const FilterDate = (props) => {
   const now = new Date();
-  //const incrementedDate = now.setMonth(now.getMonth() + 12);
   const [dateFrom, setDateFrom] = useState(null);
   const [dateTo, setDateTo] = useState(null);
 

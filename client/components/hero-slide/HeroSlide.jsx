@@ -5,12 +5,10 @@ import SwiperCore, { Autoplay } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { useRouter } from 'next/navigation';
 import 'bootstrap/dist/css/bootstrap.css'
-import Modal, { ModalContent } from '../modal/Modal';
 import Rating from '../rating/Rating';
 import heroStyle from '../hero-slide/HeroSlide.module.css'
 import noImage from '../../assets/image.png'
 import noBackground from '../../assets/default_background1.png';
-import { XLg } from 'react-bootstrap-icons';
 import { useTranslation } from 'react-i18next';
 import { Genres, GenresList } from '../constants/genres/Genres';
 import ProgressiveLoader from '../progressive-loader/ProgressiveLoader';
@@ -19,7 +17,6 @@ import ShowMoreLess from '../universal_components/show-more-less/ShowMoreLess';
 import languagesByRegion from '../constants/LanguagesByRegions.json'
 import MediaView from '../media-view/MediaView';
 import d_translations from '../../public/locales/cs/translations.json'
-
 
 export default function HeroSlide(props) {
     SwiperCore.use([Autoplay]);
@@ -95,9 +92,9 @@ export default function HeroSlide(props) {
                 </div>
                 {trailerItems.length > 0 ? (
                     <>
-                    <MediaView items={trailerItems} type='videos' isActive={trailerModalActive} setIsActive={setTrailerModalActive} startIndex={0}/>
+                        <MediaView items={trailerItems} type='videos' isActive={trailerModalActive} setIsActive={setTrailerModalActive} startIndex={0} />
                     </>
-                ): ''}
+                ) : ''}
             </div>
         </>
     );
@@ -111,7 +108,7 @@ const HeroSlideItem = (props) => {
     const { t } = useTranslation();
     const [trailerItems, setTrailerItems] = useState();
 
-    const onTrailerItemsHandle = async() => {
+    const onTrailerItemsHandle = async () => {
         props.setTrailerItems(trailerItems);
         props.setIsTrailerModalActive(true);
     }
@@ -122,19 +119,8 @@ const HeroSlideItem = (props) => {
             setTrailerItems(videos.results);
         }
         trailerItems();
-    },[item])
+    }, [item])
 
-    /*const setModalActive = async () => {
-        const modal = document.querySelector(`#modal_${item.id}`);
-        const videos = (props.mvtvType === mvtvType.movie ? await tmdbApi.getVideos(mvtvType.movie, item.id, { params: {} }) : await tmdbApi.getVideos(mvtvType.tv, item.id, { params: {} }));
-        if (videos.results.length > 0) {
-            const videSrc = 'https://www.youtube.com/embed/' + videos.results[0].key;
-            modal.querySelector(`#modal_${item.id} div > iframe`).setAttribute('src', videSrc);
-        } else {
-            modal.querySelector('.modal___content .modal___children').innerHTML = '<div class="no-content">No trailer</div>';
-        }
-        modal.classList.toggle('modal-active');
-    }*/
     return (
         <>
             <div ref={ref} className={`${heroStyle.heroSlide__item} ${props.className}`}>
@@ -199,39 +185,5 @@ const HeroSlideItem = (props) => {
                 </>
             </div>
         </>
-    )
-}
-
-const TrailerModal = (props) => {
-    const active = props.active;
-    const trailerSrc = props.src;
-    const iframeRef = useRef(null);
-    const onClose = () => iframeRef.current.setAttribute('src', '');
-    const modalRef = useRef(null);
-    const contentRef = useRef(null);
-
-    const closeModal = () => {
-        modalRef.current.classList.remove('modal-active');
-        onClose();
-    }
-
-    return (
-        <>
-            <div ref={modalRef} className={` ${active ? 'modal-active' : ''}`} onClick={closeModal}>
-                <div ref={contentRef}>
-                    <div >
-                        <iframe allow="fullscreen;" src={trailerSrc} ref={iframeRef} width="560" height="315" title="trailer"></iframe>
-                    </div>
-                    <div onClick={closeModal}>
-                        <button><XLg size={25}></XLg></button>
-                    </div>
-                </div>
-            </div>
-        </>
-        /*<Modal active={active} id={`modal_${item.id}`} onClose={onClose}>
-            <ModalContent onClose={onClose}>
-                <iframe allow="fullscreen;" ref={iframeRef} width="560" height="315" title="trailer"></iframe>
-            </ModalContent>
-        </Modal>*/
     )
 }

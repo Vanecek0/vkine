@@ -4,8 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Search, X, XLg } from 'react-bootstrap-icons';
 import tmdbApi from '../../pages/api/tmdbApi';
 import MovieCard from '../movie-card/MovieCard';
-//import './../movie-card/movie-card.css';
-import { Box, IconButton, TextField } from '@mui/material';
+import { IconButton, TextField } from '@mui/material';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import People from '../people/People';
 import { useTranslation } from 'next-i18next';
@@ -71,74 +70,74 @@ const MultiSearch = (props) => {
 
   return (
     <div ref={multiSearchRef} className='multi-search-wrapper'>
-        <>
-          <div className={`${multiSearchStyle.multiSearchContent} ${props.isActive ? multiSearchStyle.active : ''}`}>
-            <button className={`${multiSearchStyle.searchContentClose} m-5`} onClick={closeSearchHandler}>
-              <XLg fontSize={25} className='text-white'></XLg>
-            </button>
-            <div tabIndex={0} className={`container ${multiSearchStyle.content}`}>
-              <div className={`${multiSearchStyle.searchBox} mt-5 mb-5 ${searchItems.length <= 0 ? multiSearchStyle.fullscreen : ''}`}>
-                <>
-                  <ThemeProvider theme={darkTheme}>
+      <>
+        <div className={`${multiSearchStyle.multiSearchContent} ${props.isActive ? multiSearchStyle.active : ''}`}>
+          <button className={`${multiSearchStyle.searchContentClose} m-5`} onClick={closeSearchHandler}>
+            <XLg fontSize={25} className='text-white'></XLg>
+          </button>
+          <div tabIndex={0} className={`container ${multiSearchStyle.content}`}>
+            <div className={`${multiSearchStyle.searchBox} mt-5 mb-5 ${searchItems.length <= 0 ? multiSearchStyle.fullscreen : ''}`}>
+              <>
+                <ThemeProvider theme={darkTheme}>
 
-                    <TextField
-                      size='small'
-                      inputRef={inputRef}
-                      value={inputSearch}
-                      onChange={(e) => setInputSearch(e.target.value)}
-                      id="search-input"
-                      className={multiSearchStyle.searchInput}
-                      label={t("search.searchLabel", d_translations.search.searchLabel)}
-                      variant="standard"
-                      InputLabelProps={{ style: { fontSize: 20 } }}
-                      InputProps={
-                        {
-                          style: { fontSize: 20 },
-                          endAdornment: (
-                            <IconButton onClick={handleClearInput}><X /></IconButton>
-                          )
-                        }
+                  <TextField
+                    size='small'
+                    inputRef={inputRef}
+                    value={inputSearch}
+                    onChange={(e) => setInputSearch(e.target.value)}
+                    id="search-input"
+                    className={multiSearchStyle.searchInput}
+                    label={t("search.searchLabel", d_translations.search.searchLabel)}
+                    variant="standard"
+                    InputLabelProps={{ style: { fontSize: 20 } }}
+                    InputProps={
+                      {
+                        style: { fontSize: 20 },
+                        endAdornment: (
+                          <IconButton onClick={handleClearInput}><X /></IconButton>
+                        )
                       }
-                    />
-                  </ThemeProvider>
-                </>
+                    }
+                  />
+                </ThemeProvider>
+              </>
+            </div>
+            <div className={`${multiSearchStyle.movieGrid} ${searchItems.length <= 0 ? 'empty' : ''}`}>
+              <div className={multiSearchStyle.media}>
+                <div className={multiSearchStyle.mediaGrid}>
+                  {
+                    searchItems.map((item, i) => (
+                      item.media_type != 'person' && (
+                        <div key={i} onClick={closeSearchHandler}>
+                          {<MovieCard key={i} item={item} mvtvType={item.media_type} />}
+                        </div>
+                      )
+                    ))
+                  }
+                </div>
               </div>
-              <div className={`${multiSearchStyle.movieGrid} ${searchItems.length <= 0 ? 'empty' : ''}`}>
-                <div className={multiSearchStyle.media}>
-                  <div className={multiSearchStyle.mediaGrid}>
+              {searchItems.some(e => e.profile_path) ? (
+                <div className={multiSearchStyle.people}>
+                  <div className={`${multiSearchStyle.mvtvTitle} mt-5 mb-4`}>
+                    <h2 className="text-white">{t('search.people', d_translations.search.people)}</h2>
+                    <div className="divider"></div>
+                  </div>
+                  <div className={multiSearchStyle.peopleGrid}>
                     {
                       searchItems.map((item, i) => (
-                        item.media_type != 'person' && (
+                        item.media_type == 'person' && (
                           <div key={i} onClick={closeSearchHandler}>
-                            {<MovieCard key={i} item={item} mvtvType={item.media_type} />}
+                            <People key={i} item={item}></People>
                           </div>
                         )
                       ))
                     }
                   </div>
-                </div>
-                {searchItems.some(e => e.profile_path) ? (
-                  <div className={multiSearchStyle.people}>
-                    <div className={`${multiSearchStyle.mvtvTitle} mt-5 mb-4`}>
-                      <h2 className="text-white">{t('search.people', d_translations.search.people)}</h2>
-                      <div className="divider"></div>
-                    </div>
-                    <div className={multiSearchStyle.peopleGrid}>
-                      {
-                        searchItems.map((item, i) => (
-                          item.media_type == 'person' && (
-                            <div key={i} onClick={closeSearchHandler}>
-                              <People key={i} item={item}></People>
-                            </div>
-                          )
-                        ))
-                      }
-                    </div>
-                  </div>) : null}
-              </div>
+                </div>) : null}
             </div>
           </div>
-        </>
+        </div>
+      </>
     </div>
   )
 }

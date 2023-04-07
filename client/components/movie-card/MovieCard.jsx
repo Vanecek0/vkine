@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { mvtvType } from '../../pages/api/tmdbApi';
 import config from '../../pages/api/config';
 import Link from 'next/link';
-import { Info, InfoCircle, InfoCircleFill, InfoSquare, PlayFill } from 'react-bootstrap-icons';
+import { Info } from 'react-bootstrap-icons';
 import noImage from '../../assets/image.png';
 import Rating from '../rating/Rating';
 import ProgressiveLoader from '../progressive-loader/ProgressiveLoader';

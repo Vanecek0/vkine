@@ -20,6 +20,14 @@
         "dataNotAvailable": "Data not found",
         "selectLabel": "Select..."
     },
+    "head": {
+        "defaultTitle": "Vkine.cz - Movie and TV series database for true enthusiasts",
+        "discoverTitle": "Discover – Vkine.cz",
+        "moviesTitle": "Movies – Vkine.cz",
+        "seriesTitle": "Series – Vkine.cz",
+        "description": "Database of movies and series for everyone. Browse thousands of titles, search for your favorite movies or series and discover new ones. Information about movies and TV series, their casts, posters and trailers available with one click.",
+        "keywords": "movies, series, movie database, series database, movie search, series search, movie catalog, series catalog, movie information, series information, Vkine.cz, online movies, online series, movie news, series news, movies online, series online"
+    },
     "header": {
         "regionText": "Region",
         "languageTitle": "Language",
@@ -137,6 +145,8 @@
         "wallpapers": "Wallpapers"
     },
     "collection": {
+        "showCollection": "Show collection",
+        "containsText": "Contains:",
         "partsTitle": "Number of movies"
     },
     "people": {
