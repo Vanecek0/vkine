@@ -26,6 +26,7 @@
     "body-parser": "^1.20.1",
     "bootstrap": "^5.2.3",
     "cors": "^2.8.5",
+    "dangerously-set-html-content": "^1.0.13",
     "dateformat": "^5.0.3",
     "dayjs": "^1.11.7",
     "dotenv": "^16.0.3",
