@@ -296,6 +296,7 @@
         align-content: center;
         justify-content: center;
         align-items: center;
+        flex-wrap: wrap;
     }
 
     .heroSlide__item__content__info .rating {
