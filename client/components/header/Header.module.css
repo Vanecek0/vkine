@@ -34,7 +34,7 @@
     border: none;
 }
 
-@media only screen and (max-device-width: 960px) {
+@media only screen and (max-width: 960px) {
     .logo img {
         width: calc(120px / 1.5);
         margin-right: 0;

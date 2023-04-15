@@ -85,11 +85,6 @@
     font-weight: 400;
     font-size: 1.2rem;
     margin: 2em 0 2em 0;
-    overflow: hidden;
-    max-width: 600px;
-    display: -webkit-box;
-    -webkit-line-clamp: 7;
-    -webkit-box-orient: vertical;
 }
 
 .heroSlide__item__content__info .overview p {
@@ -215,7 +210,7 @@
 
 @media only screen and (max-width: 480px) {
     .heroSlide__content__wrapper {
-        padding: 100pt 20pt !important;
+        padding: 60pt 20pt !important;
     }
 }
 
@@ -250,6 +245,10 @@
         padding: 0;
     }
 
+    .heroSlide__item__content__info .overview p {
+        -webkit-line-clamp: 3;
+    }
+
     .heroSlide__item.active .heroSlide__item__content__info .btns {
         display: flex;
         flex-wrap: wrap;
@@ -260,6 +259,7 @@
         width: 100%;
         margin-bottom: 10px;
         margin-right: 0;
+        font-size: 1em;
     }
 
     .heroSlide__item__content__info .rating {
@@ -271,6 +271,7 @@
         justify-content: center;
     }
 
+
     .heroSlide__item__content__info .title {
         text-align: center;
         font-size: 1.8rem;
@@ -280,13 +281,11 @@
 
     .heroSlide__item__content__poster img {
         width: 100% !important;
-        max-width: 225px;
-        min-width: 225px;
+        max-width: 205px;
+        min-width: 205px;
         position: relative;
         transition: 0.5s ease;
     }
-
-    
 
     .heroSlide__item__content__info .overview {
         font-size: 1.0rem;
@@ -310,6 +309,7 @@
     .heroSlide .heroSlideContent .swiper-slide {
         max-height: 1280px;
     }
+
 }
 
 @media (min-width:961px) and (max-width: 1024px) {
@@ -322,6 +322,11 @@
     .heroSlide__item__content__poster img {
         width: 320px;
         position: relative;
+    }
+
+    .heroSlide__item__content__info .btns button {
+        width: 100%;
+        font-size: 1em;
     }
 }
 

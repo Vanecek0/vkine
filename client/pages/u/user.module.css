@@ -1,0 +1,28 @@
+.profileContainer {
+
+    height: 100vh;
+    padding: 100pt 30pt;
+}
+
+.profileContainer .profilePhoto {
+    width: 150px;
+    height: 150px;
+    background-color: blue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profileContainer .profilePhoto a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.profileContainer .profilePhoto a span {
+    display: inline-flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+    font-size: 4em;
+}

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import 'swiper/swiper-bundle.min.css'
 import 'swiper/swiper.min.css'
 import castMediaStyle from "./CastMedia.module.css"
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -32,7 +31,6 @@ const CastMedia = (props) => {
           slidesPerGroup={2}
           slidesPerView={'auto'}
           direction={'horizontal'}
-          mousewheel={{ enabled: true, invert: true, thresholdTime: 50 }}
           navigation={{
             prevEl: navigationPrevRef.current,
             nextEl: navigationNextRef.current

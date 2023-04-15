@@ -35,7 +35,6 @@ const ImageList = (props) => {
                             grabCursor={true}
                             slidesPerView={'auto'}
                             observer={true}
-                            mousewheel={{ enabled: true, invert: true, thresholdTime: 50 }}
                             touchEventsTarget={'container'}
                             className={'imageSwiper'}
                             wrapperClass={'imageSwiperWrapper'}

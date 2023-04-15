@@ -5,7 +5,7 @@
 .movieList .castMediaSlide {
     width: 15%;
     position: relative;
-  }
+}
 
 .movieCard::before {
     content: "";
@@ -52,4 +52,11 @@
     right: 1px;
     width: 50px;
     font-weight: bold;
+}
+
+@media only screen and (max-width: 960px) {
+    .movieList .castMediaSlide {
+        width: 40%;
+        max-width: 200px;
+    }
 }

@@ -347,4 +347,12 @@ body {
     gap: 10pt; 
     margin-left: 5pt;
   }
+
+  .section_header .btn {
+    font-size: 0.95em;
+  }
+
+  .castSwiperWrapper .swiper-slide {
+    width: 115px;
+  }
 }

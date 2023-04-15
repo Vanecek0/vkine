@@ -82,6 +82,13 @@
 }
 
 @media only screen and (max-width: 960px) {
+    .movieCard .rating {
+        width: 45px;
+    }
+
+    .movieCard:hover .btn {
+        transform: translate(-50%, -50%) scale(0.75);
+    }
     
 }
 @media (min-width:961px) and (max-width: 1024px) {

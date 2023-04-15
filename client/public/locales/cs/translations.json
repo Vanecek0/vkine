@@ -132,6 +132,15 @@
         "popular": "Populární",
         "bestRating": "Nejlépe hodnocené"
     },
+    "loginPage": {
+        "headline": "Přihlaste se ke svému účtu",
+        "socialNetworks": "Nebo se přihlaste pomocí sociálních sítí",
+        "loginBtn": "Přihlásit se",
+        "forgottenPsw": "Zapomenuté heslo",
+        "newHere": "Jste tu poprvé?",
+        "newHereDescription": "Zaregistrujte se zcela zdarma, je to tak snadné. Klikněte na tlačítko níže...",
+        "registerBtn": "Zaregistrovat se"
+    },
     "detail": {
         "runtime": "Délka",
         "cast": "Obsazení",

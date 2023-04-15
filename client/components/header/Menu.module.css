@@ -113,8 +113,8 @@
     }
 
     .mobileMenuLogo img {
-        width: calc(120px / 1.15);
-        margin-right: 10px;
+        width: calc(120px / 1.25);
+        /*margin-right: 10px;*/
     }
 
     .logo img {

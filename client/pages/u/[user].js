@@ -1,32 +1,54 @@
-import { PrismaClient } from "@prisma/client";
-import { useSession, signIn, signOut } from 'next-auth/react';
+import { PrismaClient } from '@prisma/client';
+import { signOut, useSession } from 'next-auth/react';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import userStyle from './user.module.css'
 
-const prisma = new PrismaClient();
 
 export default function User({ data }) {
-    const { authData, status } = useSession();
-    if (status === 'loading') return <h1> loading... please wait</h1>;
-    if (status === 'authenticated') {
-        return (
-            <div className="container">
-                <h1>Hi {authData.user.name}</h1>
-                <img src={authData.user.image} alt={data.user.name + ' photo'} />
-                <button onClick={signOut}>sign out</button>
-            </div>
-        )
-    }
+    const router = useRouter();
+    const session = useSession();
+
     return (
-        <div className="container" style={{padding: '100px'}}>
-            <button onClick={() => signIn('google')}>sign in with gooogle</button>
+        <div className='container-fluid'>
+            <div className={`container ${userStyle.profileContainer}`}>
+                <div className={`rounded-circle ${userStyle.profilePhoto}`}>
+                    <Link href={`/u/${data.username}`}><span>{data.username[0].toUpperCase()}</span></Link>
+                </div>
+                {data.name}
+                <div className="container" style={{ padding: '100px' }}>
+                    <button onClick={() => signOut()}>Test</button>
+                </div>
+            </div>
         </div>
     )
+
 }
 
-export async function getServerSideProps() {
-    const users = await prisma.user.findMany();
-    return {
-        props: {
-            data: users
+export const getServerSideProps = async (context) => {
+    const prisma = new PrismaClient();
+    const { user } = context.query;
+    const userData = await prisma.user.findFirst({
+        where: {
+            username: user
+        },
+        select: {
+            username: true,
+            name: true,
+            email: true
+        }
+    })
+
+    if (!userData) {
+        return {
+            notFound: true,
         }
     }
+
+    return {
+        props: {
+            data: userData,
+        }
+    }
+
 }

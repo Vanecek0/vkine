@@ -6,6 +6,7 @@ import MovieList from '../../components/movie-list/MovieList';
 import { mvtvType, movieType, tvType } from '../api/tmdbApi';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
+import homeStyles from './home.module.css'
 import d_translations from '../../public/locales/cs/translations.json'
 /*import RandomGenerator from '../components/random-generator/RandomGenerator';
 import ReactGA from 'react-ga4';*/
@@ -96,7 +97,7 @@ export default function Home() {
           <div className="section_header mb-2">
             <h2>{t('home.nowInTV', d_translations.home.nowInTV)}</h2>
             <Link href="/discover/tv">
-              <button className='btn btn-outline-light'>{t('common.showMore', d_translations.common.showMore)}</button>
+              <button className={`btn btn-outline-light`}>{t('common.showMore', d_translations.common.showMore)}</button>
             </Link>
           </div>
           <MovieList mvtvType={mvtvType.tv} type={tvType.on_the_air} with_original_language={process.env.LIST_ORIGINAL_LANGUAGES} language={language} with_origin_country={region}></MovieList>

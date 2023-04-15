@@ -35,7 +35,6 @@ const CastList = (props) => {
                         className={'castSwiper'}
                         wrapperClass={'castSwiperWrapper'}
                         direction={'horizontal'}
-                        mousewheel={{ enabled: true, invert: true, thresholdTime: 50 }}
                         navigation={{
                             prevEl: navigationPrevRef.current,
                             nextEl: navigationNextRef.current

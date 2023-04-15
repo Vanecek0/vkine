@@ -70,7 +70,6 @@ const MovieList = (props) => {
                                 slidesPerGroup={2}
                                 spaceBetween={10}
                                 direction={'horizontal'}
-                                mousewheel={{ enabled: true, invert: true, thresholdTime: 50 }}
                                 touchEventsTarget={'container'}
                                 slidesPerView={'auto'}
                                 navigation={{
@@ -157,7 +156,6 @@ export const MovieListByGenres = (props) => {
                                             grabCursor={true}
                                             spaceBetween={10}
                                             direction={'horizontal'}
-                                            mousewheel={{ enabled: true, invert: true, thresholdTime: 50 }}
                                             slidesPerView={'auto'}
                                             navigation={{
                                                 prevEl: navigationPrevRef.current,

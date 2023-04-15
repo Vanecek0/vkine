@@ -1,0 +1,79 @@
+.loginContainer {
+    height: 100vh;
+    padding: 100pt 30pt;
+}
+
+.login_bac::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.55);
+    transition: .5s ease;
+}
+
+.login_bac {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: -1;
+}
+
+.loginContent {
+    background-color: rgba(24, 24, 24, 0.975);
+    color: #ffffff;
+    border-radius: 15px;
+    text-align: center;
+    width: 100%;
+    padding: 20pt 40pt;
+    max-width: 550px;
+}
+
+.loginContent .social button {
+    list-style: none;
+    text-decoration: none;
+    color: white;
+}
+
+.loginContent .social button:hover {
+    color: #dfdfdf;
+}
+
+.loginContent h2 {
+    font-size: 1.15em;
+    color: #dfdfdf;
+}
+
+.loginContent button,
+.registerContent button {
+    font-weight: bold;
+}
+
+.registerContent {
+    background-color: rgba(24, 24, 24, 0.975);
+    color: white;
+    text-align: center;
+    width: 50%;
+}
+
+@media only screen and (max-width: 960px) {
+    .loginContent {
+        width: 100% !important;
+        min-width: 250px;
+        border-radius: 5px 5px 0 0 !important;
+    }
+
+    .registerContent {
+        width: 100% !important;
+        min-width: 250px;
+        border-radius: 0px 0px 5px 5px !important;
+    }
+}

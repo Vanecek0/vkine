@@ -34,7 +34,6 @@ const VideoList = (props) => {
                             grabCursor={true}
                             slidesPerView={'auto'}
                             observer={true}
-                            mousewheel={{ enabled: true, invert: true, thresholdTime: 50 }}
                             touchEventsTarget={'container'}
                             spaceBetween={10}
                             className={'videoSwiper'}

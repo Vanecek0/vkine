@@ -66,7 +66,6 @@ const MediaView = (props) => {
                         onSlideChange={slide => setActiveIndex(slide.activeIndex)}
                         slidesPerView={1}
                         direction={'horizontal'}
-                        mousewheel={{ enabled: true, invert: true, releaseOnEdges: true, thresholdTime: 50 }}
                         observer={true}
                         initialSlide={props.startIndex}
                         navigation={{
