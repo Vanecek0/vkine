@@ -69,6 +69,10 @@ const tmdbApi = {
         const url = mvtvType[mvtv] + "/" + id + "/images";
         return axiosFetch.get(url, params);
     },
+    getMultiSearch: (params) => { 
+        const url = '/search/multi';
+        return axiosFetch.get(url, params);
+    },
     search: (mvtv, params) => {
         const url = 'search/' + mvtvType[mvtv];
         return axiosFetch.get(url, params);
@@ -76,6 +80,14 @@ const tmdbApi = {
     searchKeywords: (params) => {
         const url = 'search/keyword';
         return axiosFetch.get(url, params)
+    },
+    searchPeople: (params) => { 
+        const url = '/search/person';
+        return axiosFetch.get(url, params);
+    },
+    searchCollection: (params) => { 
+        const url = '/search/collection';
+        return axiosFetch.get(url, params);
     },
     jobs: (params) => {
         const url = 'configuration/jobs';
@@ -120,10 +132,6 @@ const tmdbApi = {
     getLanguages: () => {
         const url = '/configuration/languages';
         return axiosFetch.get(url, {params: {}});
-    },
-    getMultiSearch: (params) => { 
-        const url = '/search/multi';
-        return axiosFetch.get(url, params);
     }
 }
 

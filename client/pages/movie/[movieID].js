@@ -57,7 +57,6 @@ export default function Detail() {
 
     const getVideos = async () => {
       const videos = await tmdbApi.getVideos(mvtvType.movie, movieID, { params: {} });
-      console.log(videos.results)
       setTrailerItems(videos.results);
     }
     if (isReady) {

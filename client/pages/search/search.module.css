@@ -1,0 +1,34 @@
+.searchContainer {
+    padding: 100pt 100pt;
+    min-height: 100vh;
+}
+
+.searchWrapper {
+    align-items: flex-start;
+}
+
+.searchForm {
+    margin-right: 15pt;
+    min-width: 328px;
+    margin-bottom: 10pt;
+    background-color: #151616;
+    border: 1px solid #212529;
+    border-radius: 5px;
+    padding: 10pt;
+}
+
+@media only screen and (max-device-width: 960px) {
+    .searchWrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .searchGrid {
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        margin-top: 30pt;
+    }
+    
+    .searchForm {
+        margin-right: 0 !important;
+    }
+}

@@ -98,12 +98,14 @@ const MediaView = (props) => {
                                                 </>
                                             ) : (
                                                 <div className={`${mediaViewStyle.mediaContent} ${mediaViewStyle.mediaVideo}`}>
-                                                    {
-                                                        (activeIndex == i) ? (
-                                                            <iframe ref={iframeRef} allowscriptaccess="always" loading='lazy' src={`https://www.youtube.com/embed/${item.key}?enablejsapi=1&version=3&playerapiid=ytplayer`}
-                                                                width="1120" height="630" allow="fullscreen; encrypted-media" title="trailer" allowFullScreen></iframe>
-                                                        ) : ''
-                                                    }
+                                                    <div className='container'>
+                                                        {
+                                                            (activeIndex == i) ? (
+                                                                <iframe ref={iframeRef} allowscriptaccess="always" loading='lazy' src={`https://www.youtube.com/embed/${item.key}?enablejsapi=1&version=3&playerapiid=ytplayer`}
+                                                                    width="1120" height="630" allow="fullscreen; encrypted-media" title="trailer" allowFullScreen></iframe>
+                                                            ) : ''
+                                                        }
+                                                    </div>
                                                 </div>
                                             )
                                         }

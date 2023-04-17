@@ -9,11 +9,13 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import People from '../people/People';
 import { useTranslation } from 'next-i18next';
 import d_translations from '../../public/locales/cs/translations.json'
+import { useRouter } from 'next/router';
 
 const MultiSearch = (props) => {
   const inputRef = useRef();
   const multiSearchRef = useRef();
   const [searchItems, setSearchItems] = useState([]);
+  const router = useRouter();
   const [inputSearch, setInputSearch] = useState(props.inputSearch ? props.inputSearch : '');
   const { t } = useTranslation('translations');
 
@@ -25,6 +27,11 @@ const MultiSearch = (props) => {
     }
   }, 100)
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    router.push({pathname: '/search' ,query: { query: inputSearch } })
+    closeSearchHandler();
+  }
 
   const goToSearch = useCallback(async () => {
     let response = null;
@@ -36,7 +43,6 @@ const MultiSearch = (props) => {
     };
     response = await tmdbApi.getMultiSearch({ params });
     setSearchItems(response.results.slice(0, items_count));
-
   }, [inputSearch])
 
 
@@ -59,7 +65,7 @@ const MultiSearch = (props) => {
       if (inputSearch) {
         goToSearch();
       }
-    }, 300)
+    }, 350)
 
 
     return () => {
@@ -77,9 +83,8 @@ const MultiSearch = (props) => {
           </button>
           <div tabIndex={0} className={`container ${multiSearchStyle.content}`}>
             <div className={`${multiSearchStyle.searchBox} mt-5 mb-5 ${searchItems.length <= 0 ? multiSearchStyle.fullscreen : ''}`}>
-              <>
+              <form onSubmit={handleSubmit}>
                 <ThemeProvider theme={darkTheme}>
-
                   <TextField
                     size='small'
                     inputRef={inputRef}
@@ -100,7 +105,7 @@ const MultiSearch = (props) => {
                     }
                   />
                 </ThemeProvider>
-              </>
+              </form>
             </div>
             <div className={`${multiSearchStyle.movieGrid} ${searchItems.length <= 0 ? 'empty' : ''}`}>
               <div className={multiSearchStyle.media}>

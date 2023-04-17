@@ -1,0 +1,21 @@
+.searchGrid {
+    display: grid;
+    flex: 4;
+    grid-template-columns: repeat(auto-fill, minmax(138px, 1fr));
+    gap: 20px;
+    margin-bottom: 3rem;
+    overflow-y: scroll;
+    height: 80%;
+    padding: 0 10pt 0 10pt;
+    justify-content: center;
+}
+
+.noResults {
+    height: 80vh;
+}
+
+@media only screen and (max-width: 960px) {
+    .searchGrid {
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    }
+}

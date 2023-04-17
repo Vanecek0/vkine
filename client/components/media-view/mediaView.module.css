@@ -99,6 +99,13 @@
 .mediaContent {
     display: flex;
     justify-content: center;
+    width: 100%;
+}
+
+.mediaContent iframe{
+    display: flex;
+    justify-content: center;
+    width: 100%;
 }
 
 .mediaImage img {

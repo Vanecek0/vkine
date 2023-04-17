@@ -43,11 +43,11 @@ const DiscoverGrid = (props) => {
             pageNum = 1
             const params = { page: pageNum, language: props.language, ...props.filterParams };
             let response = await tmdbApi.discover(props.mvtvType, { params });
-            console.log(params)
             setItems(response.results);
         }
         getDiscover();
     }, [props.filterParams, props.language])
+
     return (
         <div ref={ref} className={discoverGridStyle.discoverGrid}>
             {isVisible ?

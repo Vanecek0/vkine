@@ -5,15 +5,26 @@ import { appWithTranslation } from "next-i18next"
 import Footer from "../components/footer/Footer";
 import { SSRProvider } from "react-bootstrap";
 import { SessionProvider } from "next-auth/react"
+import Script from "next/script";
 
 const App = ({ Component, pageProps }) => {
   return (
     <SessionProvider session={pageProps.session}>
       <SSRProvider>
-      <Header />
-      <Component {...pageProps} />
-      <Footer />
-    </SSRProvider>
+        <Script src="https://www.googletagmanager.com/gtag/js?id=G-BTGDVNLPHG" strategy="afterInteractive" />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+        
+          gtag('config', 'G-BTGDVNLPHG');
+          `}
+        </Script>
+        <Header />
+        <Component {...pageProps} />
+        <Footer />
+      </SSRProvider>
     </SessionProvider>
   )
 }
