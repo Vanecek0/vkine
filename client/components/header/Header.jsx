@@ -38,7 +38,7 @@ const Header = () => {
       <Head>
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#90cdf4" />
-        {/*<script src="https://www.paypalobjects.com/donate/sdk/donate-sdk.js" charset="UTF-8"></script>*/}
+        <script src="https://www.paypalobjects.com/donate/sdk/donate-sdk.js" charset="UTF-8"></script>
       </Head>
       <div ref={headerRef} className={`${HeaderStyle.header} header`}>
         <div className={`${HeaderStyle.header__wrap} header__wrap container`}>
