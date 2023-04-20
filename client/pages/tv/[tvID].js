@@ -120,7 +120,7 @@ const Detail = (props) => {
                       isBackground={true}
                       otherClass={tvDetailStyle.tvContent__poster__img}
                       lowRes={(item.poster_path || item.backdrop_path) != null ? config.w300(item.poster_path ? item.poster_path : item.backdrop_path) : null}
-                      highRes={(item.poster_path || item.backdrop_path) != null ? config.w780(item.poster_path ? item.poster_path : item.backdrop_path) : bg}
+                      highRes={(item.poster_path || item.backdrop_path) != null ? config.w780(item.poster_path ? item.poster_path : item.backdrop_path) : bg.src}
                       blur={2}
                     >
                       <button className={`${tvDetailStyle.btn} btn btn-primary`}>

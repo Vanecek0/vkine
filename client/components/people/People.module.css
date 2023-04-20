@@ -3,6 +3,7 @@
 }
 
 .cast__item__img {
+    position: relative;
     width: 100px;
     height: 100px;
     background-position: center;
@@ -11,7 +12,29 @@
     border-radius: 90px;
     background-size: cover;
     margin-bottom: .5rem;
-  }
+}
+
+.cast__item__img::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0);
+    transition: .5s ease;
+}
+
+.cast__item__img:hover::before {
+    content: "";
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    position: absolute;
+    background: rgba(0, 0, 0, 0.35);
+    transition: .5s ease;
+}
 
 .cast__item a {
     color: white;

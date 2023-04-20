@@ -38,6 +38,36 @@ const Header = () => {
       <Head>
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#90cdf4" />
+        <noscript>
+          <style type="text/css">
+            {"\
+            html, body{\
+              margin: 0;\
+              height: 100%;\
+              overflow: hidden;\
+            }\
+            .noscriptmsg{\
+            position: fixed;\
+            left: 0;\
+            right: 0;\
+            bottom: 0;\
+            top: 0;\
+            background-color: black;\
+            color: white;\
+            display: flex;\
+            flex-direction: column;\
+            justify-content: center;\
+            align-items: center;\
+            text-align: center;\
+            }\
+          "}
+          </style>
+          <div className="noscriptmsg">
+            <h1>You don't have javascript enabled!</h1>
+            <h2>Please turn it on and have a great user experience here! :)</h2>
+          </div>
+        </noscript>
+
         <script src="https://www.paypalobjects.com/donate/sdk/donate-sdk.js" charset="UTF-8"></script>
       </Head>
       <div ref={headerRef} className={`${HeaderStyle.header} header`}>

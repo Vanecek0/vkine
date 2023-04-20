@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import tmdbApi from '../../pages/api/tmdbApi'
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { ChevronLeft, ChevronRight } from 'react-bootstrap-icons';
+import { CameraVideoOffFill, ChevronLeft, ChevronRight, Image } from 'react-bootstrap-icons';
 import noImage from '../../assets/image.png';
 import config from '../../pages/api/config';
 import mediaListStyle from "./mediaList.module.css";
@@ -71,7 +71,10 @@ const ImageList = (props) => {
                     </>
                 ) : (
                     <div className={mediaListStyle.noResults}>
-                        <p>{t('common.dataNotAvailable', d_translations.common.dataNotAvailable)}</p>
+                        <div>
+                            <Image size={40}></Image>
+                            <p className='pt-2 m-0'>{t('common.dataNotAvailable', d_translations.common.dataNotAvailable)}</p>
+                        </div>
                     </div>
                 )
             }

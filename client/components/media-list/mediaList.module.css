@@ -22,6 +22,32 @@
     content: "";
 }
 
+.mediaSlide::before{
+    content: "";
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-color: rgba(0,0,0,0);
+transition: .5s ease;
+}
+
+.mediaSlide:hover::before{
+    content: "";
+left: 0;
+right: 0;
+top: 0;
+bottom: 0;
+position: absolute;
+background: rgba(0,0,0,0.35);
+transition: .5s ease;
+}
+
+.mediaSlide:hover .mediaThumbnail .btn {
+    transform: translate(0, -50%) scale(1.25);
+}
+
 .mediaImage {
     clear: both;
     width: 100%;
@@ -41,11 +67,12 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translateY(-50%);
+    transform: translate(0, -50%) scale(1);
     margin-left: -35px;
     border-radius: 15px;
     background-color: red;
     color: white;
+    transition: transform .3s ease;
 }
 
 .mediaThumbnail img {
@@ -86,6 +113,7 @@
     justify-content: center;
     align-items: center;
     text-align: center;
+    color: gray;
 }
 
 @media only screen and (max-width: 960px) {

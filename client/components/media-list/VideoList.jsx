@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import tmdbApi from '../../pages/api/tmdbApi'
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { ChevronLeft, ChevronRight, PlayFill } from 'react-bootstrap-icons';
+import { CameraVideoOffFill, ChevronLeft, ChevronRight, PlayFill } from 'react-bootstrap-icons';
 import mediaListStyle from "./mediaList.module.css"
 import MediaView from '../media-view/MediaView';
 import ProgressiveLoader from '../progressive-loader/ProgressiveLoader';
@@ -46,7 +46,6 @@ const VideoList = (props) => {
                                 swiper.params.navigation.prevEl = navigationPrevRef.current;
                                 swiper.params.navigation.nextEl = navigationNextRef.current;
                             }}
-
                         >
                             {
                                 items.map((item, i) => (
@@ -74,7 +73,10 @@ const VideoList = (props) => {
                     </>
                 ) : (
                     <div className={mediaListStyle.noResults}>
-                        <p>{t('common.dataNotAvailable', d_translations.common.dataNotAvailable)}</p>
+                        <div>
+                            <CameraVideoOffFill size={40}></CameraVideoOffFill>
+                            <p className='pt-2 m-0'>{t('common.dataNotAvailable', d_translations.common.dataNotAvailable)}</p>
+                        </div>
                     </div>
                 )
             }

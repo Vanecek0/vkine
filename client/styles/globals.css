@@ -41,6 +41,7 @@ body {
   animation-delay: 0.3s;
 }
 
+
 @keyframes lds-ripple {
   0% {
     top: 50%;
@@ -339,6 +340,18 @@ body {
 }
 .fi-us {
   background-image: url(../assets/flags/4x3/us.svg);
+}
+
+.noscriptmsg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: #000;
 }
 
 @media only screen and (max-width: 480px) {
