@@ -9,7 +9,7 @@ import { useTranslation } from 'next-i18next';
 import d_translations from '../../public/locales/cs/translations.json'
 
 const Movies = () => {
-  const { locale } = useRouter().locale;
+  const { locale } = useRouter();
   const language = locale;
   var addedPage = false;
   const ref = useRef(null)

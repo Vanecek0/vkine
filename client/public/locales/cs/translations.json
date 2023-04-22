@@ -167,6 +167,8 @@
         "birthText": "Datum narození",
         "deathText": "Datum úmrtí",
         "birthPlaceText": "Místo narození",
-        "alsoKnownAsText": "Znáte také jako"
+        "alsoKnownAsText": "Znáte také jako",
+        "actorTitle": "Herec",
+        "crewTitle": "Štáb"
     }
 }

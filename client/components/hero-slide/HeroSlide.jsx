@@ -111,6 +111,8 @@ const HeroSlideItem = (props) => {
     const ref = useRef(null)
     const { t } = useTranslation();
     const [trailerItems, setTrailerItems] = useState();
+    const nameDashed = (item.title || item.name) != null ? (item.title || item.name).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[\s:,]+/g, '-').replace(/[\/\\]+/g, '-') : '';
+    const link = '/' + mvtvType[props.mvtvType] + '/' + item.id + '-' + nameDashed;
 
     const onTrailerItemsHandle = async () => {
         props.setTrailerItems(trailerItems);
@@ -139,7 +141,7 @@ const HeroSlideItem = (props) => {
                     <div className={`${heroStyle.heroSlide__item__content} container-fluid pt-4`}>
                         <div className={heroStyle.heroSlide__content__wrapper}>
                             <div className={heroStyle.heroSlide__item__content__info}>
-                                <div onClick={() => (props.mvtvType === mvtvType.movie ? history.push('/movie/' + item.id) : history.push('/tv/' + item.id))}>
+                                <div onClick={() => history.push(link)}>
                                     <h2 className={heroStyle.title}>{item.title == null ? item.name : item.title}</h2>
                                     <div className={`mt-3 d-flex flex-wrap ${heroStyle.genres}`}><Genres genresList={props.genres} genres={item.genre_ids} language={props.language} mvtvType={props.mvtvType}></Genres></div>
                                     {item.runtime > 0 ? <p className='mt-3'>{item.runtime}</p> : ''}
@@ -162,7 +164,7 @@ const HeroSlideItem = (props) => {
                                     </div>
                                 </div>
                                 <div className={heroStyle.btns}>
-                                    <button className='btn btn-lg btn-primary' onClick={() => (props.mvtvType === mvtvType.movie ? history.push('/movie/' + item.id) : history.push('/tv/' + item.id))}>
+                                    <button className='btn btn-lg btn-primary' onClick={() => history.push(link)}>
                                         {t('common.findMore', d_translations.common.findMore)}
                                     </button>
                                     <button className='btn btn-outline-light btn-lg' onClick={onTrailerItemsHandle}>
@@ -170,7 +172,7 @@ const HeroSlideItem = (props) => {
                                     </button>
                                 </div>
                             </div>
-                            <div onClick={() => (props.mvtvType === mvtvType.movie ? history.push('/movie/' + item.id) : history.push('/tv/' + item.id))}>
+                            <div onClick={() => history.push(link)}>
                                 <div className={heroStyle.heroSlide__item__content__poster}>
                                     <ProgressiveLoader
                                         isBackground={false}

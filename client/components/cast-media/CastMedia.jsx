@@ -15,11 +15,11 @@ const CastMedia = (props) => {
 
   useEffect(() => {
     const getCastMedia = async () => {
-      const response = await tmdbApi.getPeopleCreditsCombined(id, { params: {} })
+      const response = await tmdbApi.getPeopleCreditsCombined(id, { params: {language: props.language} })
       setItems(response.cast);
     }
     getCastMedia();
-  }, [id])
+  }, [id, props.language])
   return (
     <>
       <div className={castMediaStyle.movieList}>

@@ -256,6 +256,17 @@
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
 }
 
+.social {
+    display: flex;
+    justify-content: center;
+    font-size: 1.3rem;
+}
+
+.social a {
+    color: white;
+    padding: 0 10pt 0 10pt;
+}
+
 
 @media only screen and (max-width: 960px) {
     .movieContent {
@@ -278,6 +289,7 @@
         padding-left: 0;
     }
     .movieContent__poster {
+        display: none;
         max-width: 300px;
     }
 

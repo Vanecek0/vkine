@@ -3,7 +3,7 @@ import tmdbApi, { mvtvType } from '../../pages/api/tmdbApi';
 import config from '../../pages/api/config';
 import tvDetailStyle from './TvDetail.module.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { ArrowLeft, Film } from 'react-bootstrap-icons';
+import { ArrowLeft, Facebook, Film, Instagram, Link45deg, Twitter } from 'react-bootstrap-icons';
 import CastList from '../../components/cast-list/CastList';
 import { NumericFormat } from 'react-number-format';
 import TimeFormat from '../../components/time-format/TimeFormat';
@@ -40,6 +40,7 @@ const Detail = (props) => {
   var titleDashed = '';
   const [trailerModalActive, setTrailerModalActive] = useState(false);
   const [trailerItems, setTrailerItems] = useState({});
+  const [social, setSocial] = useState({});
 
   const mvtypePath = path.find(e => 'tv');
 
@@ -54,6 +55,12 @@ const Detail = (props) => {
         setLoading(false)
       } catch (e) { setItem({ status_code: 34 }); setLoading(false) }
     }
+
+    const getSocial = async () => {
+      const response = await tmdbApi.getDetailSocial(mvtvType.tv, tvID, { params: {} })
+      setSocial(response);
+    }
+
     const getVideos = async () => {
       const videos = await tmdbApi.getVideos(mvtvType.tv, tvID, { params: {} });
       console.log(videos.results)
@@ -63,7 +70,7 @@ const Detail = (props) => {
     if (isReady) {
       getDetail();
       getVideos();
-      window.scrollTo(0, 0);
+      getSocial();
     }
   }, [isReady, tvID, mvtypePath, language])
 
@@ -115,18 +122,26 @@ const Detail = (props) => {
                 />
                 <div className={`mb-3 ${tvDetailStyle.tvContent} container`}>
                   <button className={`${tvDetailStyle.backArrow} ${tvDetailStyle.btn} btn`} onClick={() => router.back()}><ArrowLeft size={30}></ArrowLeft></button>
-                  <div className={tvDetailStyle.tvContent__poster} onClick={onTrailerHandler}>
-                    <ProgressiveLoader
-                      isBackground={true}
-                      otherClass={tvDetailStyle.tvContent__poster__img}
-                      lowRes={(item.poster_path || item.backdrop_path) != null ? config.w300(item.poster_path ? item.poster_path : item.backdrop_path) : null}
-                      highRes={(item.poster_path || item.backdrop_path) != null ? config.w780(item.poster_path ? item.poster_path : item.backdrop_path) : bg.src}
-                      blur={2}
-                    >
-                      <button className={`${tvDetailStyle.btn} btn btn-primary`}>
-                        <Film size={40}></Film>
-                      </button>
-                    </ProgressiveLoader>
+                  <div className={tvDetailStyle.tvContent__poster}>
+                    <div onClick={onTrailerHandler} className='mb-4'>
+                      <ProgressiveLoader
+                        isBackground={true}
+                        otherClass={tvDetailStyle.tvContent__poster__img}
+                        lowRes={(item.poster_path || item.backdrop_path) != null ? config.w300(item.poster_path ? item.poster_path : item.backdrop_path) : null}
+                        highRes={(item.poster_path || item.backdrop_path) != null ? config.w780(item.poster_path ? item.poster_path : item.backdrop_path) : bg.src}
+                        blur={2}
+                      >
+                        <button className={`${tvDetailStyle.btn} btn btn-primary`}>
+                          <Film size={40}></Film>
+                        </button>
+                      </ProgressiveLoader>
+                    </div>
+                    <div className={`${tvDetailStyle.social} mb-4`}>
+                      {social.facebook_id != null && <a target="_blank" rel="noopener noreferrer" href={"https://www.facebook.com/" + social.facebook_id}><Facebook /></a>}
+                      {social.twitter_id != null && <a target="_blank" rel="noopener noreferrer" href={"https://www.twitter.com/" + social.twitter_id}><Twitter /></a>}
+                      {social.instagram_id != null && <a target="_blank" rel="noopener noreferrer" href={"https://www.instagram.com/" + social.instagram_id}><Instagram /></a>}
+                      {item.homepage != null && <a target="_blank" rel="noopener noreferrer" href={item.homepage}><Link45deg /></a>}
+                    </div>
                   </div>
                   <div className={tvDetailStyle.tvContent__info}>
                     <div className={tvDetailStyle.title}>

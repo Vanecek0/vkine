@@ -139,14 +139,14 @@ const Person = () => {
                       </div>
                       <div className={`${personStyle.knownFor} mt-4 mb-5`}>
                         <h4 className='text-white'>{t('people.knownFromLabel', d_translations.people.knownFromLabel)}</h4>
-                        <CastMedia personId={personID} />
+                        <CastMedia personId={personID} language={language}/>
                       </div>
 
                       <div className={`${personStyle.actor} mt-5 mb-4`}>
-                        <CastTimeline personId={personID} title='Herec' type='cast'></CastTimeline>
+                        <CastTimeline personId={personID} title={t('people.actorTitle', d_translations.people.actorTitle)} type='cast'></CastTimeline>
                       </div>
                       <div className={`${personStyle.crew} mt-5 mb-4`}>
-                        <CastTimeline personId={personID} title='Štáb' type='crew'></CastTimeline>
+                        <CastTimeline personId={personID} title={t('people.crewTitle', d_translations.people.crewTitle)} type='crew'></CastTimeline>
                       </div>
                     </div>
                   </div>

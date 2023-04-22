@@ -85,7 +85,7 @@
     color: white
 }
 
-@media only screen and (max-device-width: 960px) {
+@media only screen and (max-width: 960px) {
     .filterPanel {
         width: inherit;
         margin-right: 0;

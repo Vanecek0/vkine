@@ -146,7 +146,7 @@ const CastTimeline = (props) => {
                         {
                           item.data.map((innerItem, i) => (
                             <List key={i} className={`${castTimelineStyle.castTimelineItem} castTimelineItem`} component="div" disablePadding>
-                              <Link href={`/${innerItem.media_type}/${innerItem.id}`}>
+                              <Link href={`/${innerItem.media_type}/${innerItem.id}-${(innerItem.title || innerItem.name) != null ? (innerItem.title || innerItem.name).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[\s:,]+/g, '-').replace(/[\/\\]+/g, '-') : ''}`}>
                                 <ListItemButton sx={{ pl: 1 }}>
                                   <CircleFill size={10} color={"#0064FF"} />
                                   <ListItemText className={castTimelineStyle.castTimelineItemTitle} primary={innerItem.title} />

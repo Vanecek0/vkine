@@ -17,5 +17,8 @@
 @media only screen and (max-width: 960px) {
     .searchGrid {
         grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+        width: 100%;
+        border-top: 2px solid rgb(33 37 41);
+        padding-top: 10pt;
     }
 }

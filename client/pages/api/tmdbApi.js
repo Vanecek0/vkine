@@ -97,6 +97,10 @@ const tmdbApi = {
         const url = mvtvType[mvtv] + '/' + id;
         return axiosFetch.get(url, params);
     },
+    getDetailSocial: (mvtv, id, params) => {
+        const url = mvtvType[mvtv] + '/' + id + '/external_ids';
+        return axiosFetch.get(url, params);
+    },
     credits: (mvtv, id) => {
         const url = mvtvType[mvtv] + '/' + id + '/credits';
         return axiosFetch.get(url, {params: {}});

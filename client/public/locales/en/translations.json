@@ -167,7 +167,9 @@
         "birthText": "Date of birth",
         "deathText": "Date of death",
         "birthPlaceText": "Place of birth",
-        "alsoKnownAsText": "Also known as"
+        "alsoKnownAsText": "Also known as",
+        "actorTitle": "Actor",
+        "crewTitle": "Crew"
     }
     
 }
