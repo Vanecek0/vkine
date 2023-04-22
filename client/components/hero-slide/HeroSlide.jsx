@@ -19,82 +19,86 @@ import MediaView from '../media-view/MediaView';
 import d_translations from '../../public/locales/cs/translations.json'
 
 export default function HeroSlide(props) {
-    SwiperCore.use([Autoplay]);
-    const [mvtvItems, setmvtvItems] = useState([]);
+    const [mvtvItems, setmvtvItems] = useState();
     const genres = GenresList(props.mvtvType, props.language);
     const [trailerModalActive, setTrailerModalActive] = useState(false);
     const [trailerItems, setTrailerItems] = useState({});
-
-    const getMvtv = async () => {
-        const params = {
-            page: 1,
-            language: props.language,
-            with_original_language: `${(props.with_origin_country) ? languagesByRegion[props.with_origin_country].join("|") : process.env.LIST_ORIGINAL_LANGUAGES}`,
-            without_keywords: process.env.LIST_HIDDEN_GENRES
-        }
-        const universalParams = {
-            page: 1,
-            language: props.language,
-            with_original_language: process.env.LIST_ORIGINAL_LANGUAGES,
-            without_keywords: process.env.LIST_HIDDEN_GENRES
-        }
-        try {
-            var response = (props.mvtvType === mvtvType.movie ? await tmdbApi.getMoviesList(movieType.upcoming, { params }) : await tmdbApi.getTvList(tvType.on_the_air, { params }));
-            if (response.results.length <= 0) {
-                response = (props.mvtvType === mvtvType.movie ? await tmdbApi.getMoviesList(movieType.upcoming, { universalParams }) : await tmdbApi.getTvList(tvType.on_the_air, { universalParams }));
-            } else {
-                response = (props.mvtvType === mvtvType.movie ? await tmdbApi.getMoviesList(movieType.upcoming, { params }) : await tmdbApi.getTvList(tvType.on_the_air, { params }));
-            }
-
-            setmvtvItems(response.results)
-
-        } catch (e) {
-            setmvtvItems([{ error: e }])
-        }
-    }
+    const [randomInitialSlide, setRandomInitialSlide] = useState(0);
 
     useEffect(() => {
+        const getMvtv = async () => {
+            const params = {
+                page: 1,
+                language: props.language,
+                with_original_language: `${(props.with_origin_country) ? languagesByRegion[props.with_origin_country].join("|") : process.env.LIST_ORIGINAL_LANGUAGES}`,
+                without_keywords: process.env.LIST_HIDDEN_GENRES
+            }
+            const universalParams = {
+                page: 1,
+                language: props.language,
+                with_original_language: process.env.LIST_ORIGINAL_LANGUAGES,
+                without_keywords: process.env.LIST_HIDDEN_GENRES
+            }
+            try {
+                const method = (props.mvtvType === mvtvType.movie) ? tmdbApi.getMoviesList : tmdbApi.getTvList;
+                var response = await method((props.mvtvType === mvtvType.movie) ? movieType.upcoming : tvType.on_the_air, { params });
+                if (response.results.length <= 0) {
+                    response = await method((props.mvtvType === mvtvType.movie) ? movieType.upcoming : tvType.on_the_air, { universalParams });
+                }
+                setmvtvItems(response.results)
+                setRandomInitialSlide(Math.floor(Math.random() * response.results.length))
+            } catch (e) {
+                setmvtvItems([{ error: e }])
+            }
+        }
+
         getMvtv();
     }, [props.mvtvType, props.language, props.region, props.with_origin_country, props.with_original_language]);
 
     return (
         <>
             <div className={heroStyle.heroSlide}>
-                <div className={heroStyle.heroSlideContent}>
-                    <Swiper
-                        modules={[Autoplay]}
-                        grabCursor={true}
-                        spaceBetween={0}
-                        slidesPerView={1}
-                        className={heroStyle.heroSlideSwiper}
-                        wrapperClass={heroStyle.heroSlideSwiperWrapper}
-                        initialSlide={Math.floor(Math.random() * mvtvItems.length)}
-                        loop={false}
-                        speed={1000}
-                        autoplay={{
-                            delay: 10000,
-                            pauseOnMouseEnter: true,
-                        }}
-                        fadeEffect={{ crossFade: true }}
-                        effect={'fade'}
-                        watchSlidesProgress
-                    >
-                        {
-                            mvtvItems.map((item, i) => (
-                                <SwiperSlide key={i} className={heroStyle.heroSwiperSlide}>
-                                    {({ isActive }) => (
-                                        <HeroSlideItem setTrailerItems={setTrailerItems} setIsTrailerModalActive={setTrailerModalActive} mvtvType={props.mvtvType} genres={genres} language={props.language} item={item} className={`${isActive ? heroStyle.active : ''}`} />
-                                    )}
-                                </SwiperSlide>
-                            ))
-                        }
-                    </Swiper>
-                </div>
-                {trailerItems.length > 0 ? (
-                    <>
-                        <MediaView items={trailerItems} type='videos' isActive={trailerModalActive} setIsActive={setTrailerModalActive} startIndex={0} />
-                    </>
-                ) : ''}
+                {
+                    mvtvItems && (
+                        <>
+                            <div className={heroStyle.heroSlideContent}>
+                                <Swiper
+                                    modules={[Autoplay]}
+                                    grabCursor={true}
+                                    spaceBetween={0}
+                                    slidesPerView={1}
+                                    className={heroStyle.heroSlideSwiper}
+                                    wrapperClass={heroStyle.heroSlideSwiperWrapper}
+                                    initialSlide={randomInitialSlide}
+                                    loop={false}
+                                    speed={1000}
+                                    autoplay={{
+                                        delay: 10000,
+                                        pauseOnMouseEnter: true,
+                                    }}
+                                    fadeEffect={{ crossFade: true }}
+                                    effect={'fade'}
+                                    watchSlidesProgress
+                                >
+                                    {
+                                        mvtvItems != null && mvtvItems.map((item, i) => (
+                                            <SwiperSlide key={i} className={heroStyle.heroSwiperSlide}>
+                                                {({ isActive }) => (
+                                                    <HeroSlideItem setTrailerItems={setTrailerItems} setIsTrailerModalActive={setTrailerModalActive} mvtvType={props.mvtvType} genres={genres} language={props.language} item={item} className={`${isActive ? heroStyle.active : ''}`} />
+                                                )}
+                                            </SwiperSlide>
+                                        ))
+                                    }
+                                </Swiper>
+                            </div>
+                            {trailerItems && trailerItems.length ? (
+                                <>
+                                    <MediaView items={trailerItems} type='videos' isActive={trailerModalActive} setIsActive={setTrailerModalActive} startIndex={0} />
+                                </>
+                            ) : ''}
+                        </>
+                    )
+                }
             </div>
         </>
     );
@@ -158,7 +162,7 @@ const HeroSlideItem = (props) => {
                                     </div>
                                 </div>
                                 <div className={heroStyle.btns}>
-                                    <button className='btn btn-lg btn-primary' onClick={() => (props.mvtvType === mvtvType.movie ? history.push('/movie/' + item.id) : history('/tv/' + item.id))}>
+                                    <button className='btn btn-lg btn-primary' onClick={() => (props.mvtvType === mvtvType.movie ? history.push('/movie/' + item.id) : history.push('/tv/' + item.id))}>
                                         {t('common.findMore', d_translations.common.findMore)}
                                     </button>
                                     <button className='btn btn-outline-light btn-lg' onClick={onTrailerItemsHandle}>

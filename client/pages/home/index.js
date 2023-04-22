@@ -1,15 +1,11 @@
 import Head from 'next/head';
 import React, { useEffect, useState } from 'react'
-import Link from 'next/link'
 import HeroSlide from '../../components/hero-slide/HeroSlide';
-import MovieList from '../../components/movie-list/MovieList';
 import { mvtvType, movieType, tvType } from '../api/tmdbApi';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
-import homeStyles from './home.module.css'
 import d_translations from '../../public/locales/cs/translations.json'
-/*import RandomGenerator from '../components/random-generator/RandomGenerator';
-import ReactGA from 'react-ga4';*/
+import CategoriesMvTv from '../../components/categories-sections/CategoriesMvTv';
 
 export default function Home() {
   const router = useRouter();
@@ -18,25 +14,18 @@ export default function Home() {
   const { t, ready } = useTranslation('translations')
   const [region, setRegion] = useState();
 
-  /*const regionSelectedOption = () => {
-    try {
-      setRegion(JSON.parse(localStorage.getItem('REGION_SELECTED_OPTION')).value);
-    }
-    catch (e) {
-      setRegion(null)
-    }
-  }*/
 
-
-  /*useEffect(() => {
-    ReactGA.send({ hitType: "pageview", page: window.location.pathname });
-    ReactGA.event({
-      category: "test",
-      action: "call action",
-      label: "test label"
-    })
+  useEffect(() => {
+    const regionSelectedOption = () => {
+      try {
+        setRegion(JSON.parse(localStorage.getItem('REGION_SELECTED_OPTION')).value);
+      }
+      catch (e) {
+        setRegion(null)
+      }
+    }
     regionSelectedOption();
-  }, [])*/
+  }, [region])
 
   return (
     <>
@@ -71,22 +60,16 @@ export default function Home() {
             <h1 className="text-white">{t('common.movies', d_translations.common.movies)}</h1>
             <div className='divider'></div>
           </div>
-          <div className="section_header mb-2">
-            <h2>{t('home.nowPlayingMovies', d_translations.home.nowPlayingMovies)}</h2>
-            <Link href="/discover/movie">
-              <button className='btn btn-outline-light'>{t('common.showMore', d_translations.common.showMore)}</button>
-            </Link>
-          </div>
-          {<MovieList mvtvType={mvtvType.movie} type={movieType.now_playing} with_original_language={process.env.LIST_ORIGINAL_LANGUAGES} language={language} with_origin_country={region}></MovieList>}
+          <CategoriesMvTv mvtvType={mvtvType.movie} title={t('home.nowPlayingMovies', d_translations.home.nowPlayingMovies)} type={movieType.upcoming} language={language} region={region}></CategoriesMvTv>
         </div>
         <div className="section mb-5">
-          <div className="section_header mb-2">
-            <h2>{t('home.newest', d_translations.home.newest)}</h2>
-            <Link href="/discover/movie">
-              <button className='btn btn-outline-light'>{t('common.showMore', d_translations.common.showMore)}</button>
-            </Link>
-          </div>
-          <MovieList mvtvType={mvtvType.movie} type={movieType.upcoming} with_original_language={process.env.LIST_ORIGINAL_LANGUAGES} language={language} with_origin_country={region}></MovieList>
+          <CategoriesMvTv mvtvType={mvtvType.movie} title={t('home.newest', d_translations.home.newest)} type={movieType.now_playing} language={language} region={region}></CategoriesMvTv>
+        </div>
+        <div className="section mb-5">
+          <CategoriesMvTv mvtvType={mvtvType.movie} title={t('home.popular', d_translations.home.popular)} type={movieType.popular} language={language} region={region}></CategoriesMvTv>
+        </div>
+        <div className="section mb-5">
+          <CategoriesMvTv mvtvType={mvtvType.movie} title={t('home.bestRating', d_translations.home.bestRating)} type={movieType.top_rated} language={language} region={region}></CategoriesMvTv>
         </div>
 
         <div className="section mb-5">
@@ -94,33 +77,14 @@ export default function Home() {
             <h1 className="text-white">{t('common.tvs', d_translations.common.tvs)}</h1>
             <div className='divider'></div>
           </div>
-          <div className="section_header mb-2">
-            <h2>{t('home.nowInTV', d_translations.home.nowInTV)}</h2>
-            <Link href="/discover/tv">
-              <button className={`btn btn-outline-light`}>{t('common.showMore', d_translations.common.showMore)}</button>
-            </Link>
-          </div>
-          <MovieList mvtvType={mvtvType.tv} type={tvType.on_the_air} with_original_language={process.env.LIST_ORIGINAL_LANGUAGES} language={language} with_origin_country={region}></MovieList>
+          <CategoriesMvTv mvtvType={mvtvType.tv} title={t('home.nowInTV', d_translations.home.nowInTV)} type={tvType.on_the_air} language={language} region={region}></CategoriesMvTv>
         </div>
         <div className="section mb-5">
-          <div className="section_header mb-2">
-            <h2>{t('home.popular', d_translations.home.popular)}</h2>
-            <Link href="/discover/tv">
-              <button className='btn btn-outline-light'>{t('common.showMore', d_translations.common.showMore)}</button>
-            </Link>
-          </div>
-          <MovieList mvtvType={mvtvType.tv} type={tvType.popular} with_original_language={process.env.LIST_ORIGINAL_LANGUAGES} language={language} with_origin_country={region}></MovieList>
+          <CategoriesMvTv mvtvType={mvtvType.tv} title={t('home.popular', d_translations.home.popular)} type={tvType.popular} language={language} region={region}></CategoriesMvTv>
         </div>
         <div className="section mb-5">
-          <div className="section_header mb-2">
-            <h2>{t('home.bestRating', d_translations.home.bestRating)}</h2>
-            <Link href="/discover/tv">
-              <button className='btn btn-outline-light'>{t('common.showMore', d_translations.common.showMore)}</button>
-            </Link>
-          </div>
-          <MovieList mvtvType={mvtvType.tv} type={tvType.top_rated} with_original_language={process.env.LIST_ORIGINAL_LANGUAGES} language={language} with_origin_country={region}></MovieList>
+          <CategoriesMvTv mvtvType={mvtvType.tv} title={t('home.bestRating', d_translations.home.bestRating)} type={tvType.top_rated} language={language} region={region}></CategoriesMvTv>
         </div>
-        {/*<RandomGenerator language={language} />*/}
       </div>
     </>
   );

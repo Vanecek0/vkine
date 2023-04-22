@@ -25,7 +25,7 @@ const DonateButton = () => {
             });
             button.render(`#${buttonRef.current.id}`); // you can change the code and run it when DOM is ready
         } catch(e) {
-            console.log(e)
+            console.error(e)
         }
         
     }, []);

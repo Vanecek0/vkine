@@ -37,6 +37,11 @@
 }
 
 .movieList .noResults {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 35pt;
     background:#101010
 }
 

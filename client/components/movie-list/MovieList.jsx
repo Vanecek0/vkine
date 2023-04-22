@@ -138,51 +138,43 @@ export const MovieListByGenres = (props) => {
 
     return (
         <div className={`${loading ? 'pending' : 'MovieListGenresContent'}`}>
-            <div ref={movieListRef} className="section mb-5 pt-5">
-                {
-                    items &&
-                    (
-                        <>
-                            {items.length > 0 ? (
-                                <>
-                                    <div className="section_header mb-2">
-                                        <h2>{t(`genres.${props.genre}`, d_translations.genres[props.genre])}</h2>
-                                        <Link href={"/discover/" + props.mvtvType}>
-                                            <button className='btn btn-outline-light'>{t('common.showMore', d_translations.common.showMore)}</button>
-                                        </Link>
-                                    </div>
-                                    <div className={movieListStyle.movieList}>
-                                        <Swiper
-                                            grabCursor={true}
-                                            spaceBetween={10}
-                                            direction={'horizontal'}
-                                            slidesPerView={'auto'}
-                                            navigation={{
-                                                prevEl: navigationPrevRef.current,
-                                                nextEl: navigationNextRef.current
-                                            }}
-                                            onBeforeInit={(swiper) => {
-                                                swiper.params.navigation.prevEl = navigationPrevRef.current;
-                                                swiper.params.navigation.nextEl = navigationNextRef.current;
-                                            }}
-                                        >
-                                            {
-                                                items.map((item, i) => (
-                                                    <SwiperSlide className={movieListStyle.swiperSlide} key={i}>
-                                                        <MovieCard item={item} mvtvType={props.mvtvType}></MovieCard>
-                                                    </SwiperSlide>
-                                                ))
-                                            }
-                                            <div className={`${movieListStyle.customSwiperNavigation} ${movieListStyle.swiperNaviPrev}`} ref={navigationPrevRef}><ChevronLeft fontWeight={'bold'} /></div>
-                                            <div className={`${movieListStyle.customSwiperNavigation} ${movieListStyle.swiperNaviNext}`} ref={navigationNextRef}><ChevronRight /></div>
-                                        </Swiper>
-                                    </div>
-                                </>
-                            ) : null}
-                        </>
-                    )
-                }
-            </div>
+
+            {items && items.length ? (
+                <div ref={movieListRef} className="section mb-5 pt-5">
+                    <div className="section_header mb-2">
+                        <h2>{t(`genres.${props.genre}`, d_translations.genres[props.genre])}</h2>
+                        <Link href={"/discover/" + props.mvtvType}>
+                            <button className='btn btn-outline-light'>{t('common.showMore', d_translations.common.showMore)}</button>
+                        </Link>
+                    </div>
+                    <div className={movieListStyle.movieList}>
+                        <Swiper
+                            grabCursor={true}
+                            spaceBetween={10}
+                            direction={'horizontal'}
+                            slidesPerView={'auto'}
+                            navigation={{
+                                prevEl: navigationPrevRef.current,
+                                nextEl: navigationNextRef.current
+                            }}
+                            onBeforeInit={(swiper) => {
+                                swiper.params.navigation.prevEl = navigationPrevRef.current;
+                                swiper.params.navigation.nextEl = navigationNextRef.current;
+                            }}
+                        >
+                            {
+                                items.map((item, i) => (
+                                    <SwiperSlide className={movieListStyle.swiperSlide} key={i}>
+                                        <MovieCard item={item} mvtvType={props.mvtvType}></MovieCard>
+                                    </SwiperSlide>
+                                ))
+                            }
+                            <div className={`${movieListStyle.customSwiperNavigation} ${movieListStyle.swiperNaviPrev}`} ref={navigationPrevRef}><ChevronLeft fontWeight={'bold'} /></div>
+                            <div className={`${movieListStyle.customSwiperNavigation} ${movieListStyle.swiperNaviNext}`} ref={navigationNextRef}><ChevronRight /></div>
+                        </Swiper>
+                    </div>
+                </div>
+            ) : null}
         </div>
     )
 }
