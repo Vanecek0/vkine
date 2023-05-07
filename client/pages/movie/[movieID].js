@@ -49,7 +49,14 @@ export default function Detail() {
       const params = { language: language }
       try {
         const response = await tmdbApi.detail(mvtvType.movie, movieID, { params })
-        titleDashed = (response.title || response.name).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[\s:,]+/g, '-').replace(/[\/\\]+/g, '-');
+        titleDashed = (response.title || response.name).toLowerCase().normalize("NFD")
+        .replace(/[\u0300-\u036f]+/g, '')
+        .replace(/\s+/g, '-')
+        .replace(/–/g, '-')
+        .replace(/[\/\\"':;,\.\-\!\?\(\)\[\]\{\}\+\*\/=<>\|%~^&#@$€£¥]+/g, '-')
+        .replace(/\.{2,}/g, '-')
+        .replace(/-{2,}/g, '-')
+        .replace(/-+$/g, '');
         (movieID != (response.id + '-' + titleDashed)) ? router.push({ pathname: '../' + mvtypePath + '/' + response.id + '-' + titleDashed }) : null;
         setItem(response);
         setLoading(false)

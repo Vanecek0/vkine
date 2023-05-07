@@ -4,7 +4,7 @@ body {
   position: relative;
 }
 
-.pageContent {
+.pageContent, #__next {
   min-height: 100vh;
 }
 

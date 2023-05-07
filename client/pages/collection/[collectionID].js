@@ -34,7 +34,14 @@ const Collection = () => {
             try {
                 const response = await tmdbApi.getMovieCollection(collectionID, { params })
                 setItem(response);
-                const titleDashed = (response.name).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[\s:,]+/g, '-');
+                const titleDashed = (response.name).toLowerCase().normalize("NFD")
+                    .replace(/[\u0300-\u036f]+/g, '')
+                    .replace(/\s+/g, '-')
+                    .replace(/–/g, '-')
+                    .replace(/[\/\\"':;,\.\-\!\?\(\)\[\]\{\}\+\*\/=<>\|%~^&#@$€£¥]+/g, '-')
+                    .replace(/\.{2,}/g, '-')
+                    .replace(/-{2,}/g, '-')
+                    .replace(/-+$/g, '');
                 (collectionID != (response.id + '-' + titleDashed)) ? router.push({ pathname: '../collection/' + response.id + '-' + titleDashed }) : null;
             } catch (e) { setItem({ status_code: 34 }) }
         }

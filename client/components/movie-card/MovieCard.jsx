@@ -13,7 +13,15 @@ const MovieCard = (props) => {
     const item = props.item;
     const with_title = props.with_title == null ? true : props.with_title
     const with_rating = props.with_rating == null ? true : props.with_rating
-    const nameDashed = (item.title || item.name) != null ? (item.title || item.name).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[\s:,]+/g, '-').replace(/[\/\\]+/g, '-') : '';
+    const nameDashed = (item.title || item.name) != null ? (item.title || item.name).toLowerCase().normalize("NFD")
+        .replace(/[\u0300-\u036f]+/g, '')
+        .replace(/\s+/g, '-')
+        .replace(/–/g, '-')
+        .replace(/[\/\\"':;,\.\-\!\?\(\)\[\]\{\}\+\*\/=<>\|%~^&#@$€£¥]+/g, '-')
+        .replace(/\.{2,}/g, '-')
+        .replace(/-{2,}/g, '-')
+        .replace(/-+$/g, '')
+        : '';
     const link = '/' + mvtvType[props.mvtvType] + '/' + item.id + '-' + nameDashed;
 
     return (

@@ -38,7 +38,14 @@ const Person = () => {
       try {
         const response = await tmdbApi.getPeople(personID, { params })
         setItem(response);
-        const nameDashed = response.name.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[\s:,]+/g, '-');
+        const nameDashed = response.name.toLowerCase().normalize("NFD")
+          .replace(/[\u0300-\u036f]+/g, '')
+          .replace(/\s+/g, '-')
+          .replace(/–/g, '-')
+          .replace(/[\/\\"':;,\.\-\!\?\(\)\[\]\{\}\+\*\/=<>\|%~^&#@$€£¥]+/g, '-')
+          .replace(/\.{2,}/g, '-')
+          .replace(/-{2,}/g, '-')
+          .replace(/-+$/g, '');
         (personID != (response.id + '-' + nameDashed)) ? router.push({ pathname: '../person/' + response.id + '-' + nameDashed }) : null;
         setLoading(false)
       } catch (e) { setItem({ status_code: 34 }); setLoading(false); }
@@ -139,7 +146,7 @@ const Person = () => {
                       </div>
                       <div className={`${personStyle.knownFor} mt-4 mb-5`}>
                         <h4 className='text-white'>{t('people.knownFromLabel', d_translations.people.knownFromLabel)}</h4>
-                        <CastMedia personId={personID} language={language}/>
+                        <CastMedia personId={personID} language={language} />
                       </div>
 
                       <div className={`${personStyle.actor} mt-5 mb-4`}>

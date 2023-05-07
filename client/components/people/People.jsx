@@ -7,7 +7,15 @@ import peopleStyle from "./People.module.css"
 const People = (props) => {
     const item = props.item;
     var bg = '';
-    const nameDashed = (item.title || item.name) != null ? (item.title || item.name).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[\s:,]+/g, '-').replace(/[\/\\]+/g, '-') : '';
+    const nameDashed = (item.title || item.name) != null ? (item.title || item.name).toLowerCase().normalize("NFD")
+        .replace(/[\u0300-\u036f]+/g, '')
+        .replace(/\s+/g, '-')
+        .replace(/–/g, '-')
+        .replace(/[\/\\"':;,\.\-\!\?\(\)\[\]\{\}\+\*\/=<>\|%~^&#@$€£¥]+/g, '-')
+        .replace(/\.{2,}/g, '-')
+        .replace(/-{2,}/g, '-')
+        .replace(/-+$/g, '')
+        : '';
     const link = '/person/' + item.id + '-' + nameDashed;
 
     (item.profile_path != null) ? bg = config.w300(item.profile_path) : bg = config.noImage(noImagePerson).src;

@@ -1,14 +1,15 @@
 .footer {
-    position: relative;
-    padding-bottom: 0;
-    background-position: top;
-    background-size: cover;
-    background-repeat: no-repeat;
-    clear: both;
-    margin-top: 25pt;
+position: relative;
+background-position: top;
+background-size: cover;
+background-repeat: no-repeat;
+margin-top: 25pt;
+left: 0;
+right: 0;
+bottom: 0;
 }
 
-.footer__content {
+.footer_content {
     max-width: 1000px;
     padding-bottom: 2rem;
 }
@@ -27,6 +28,11 @@
 
 .copyright > * {
     padding: 5pt;
+}
+
+.buyMeACoffeeDonate {
+    display: flex;
+    justify-content: center;
 }
 
 @media only screen and (max-width: 960px) {
