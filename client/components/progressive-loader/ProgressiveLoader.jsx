@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-function ProgressiveLoader({ lowRes, highRes, isBackground, otherClass, blur, children }) {
+function ProgressiveLoader({ lowRes, highRes, isBackground, otherClass, blur, isVisible=true, children }) {
   const [image, setImage] = useState(lowRes);
 
   useEffect(() => {
@@ -12,10 +12,10 @@ function ProgressiveLoader({ lowRes, highRes, isBackground, otherClass, blur, ch
     };
   }, [lowRes, highRes]);
 
-  return isBackground ?
+  return isVisible && (isBackground ?
     <ProgressiveBackground image={image} lowRes={lowRes} highRes={highRes} otherClass={otherClass} blur={blur != null ? blur : 2}>{children}</ProgressiveBackground>
     :
-    <ProgressiveImage image={image} lowRes={lowRes} highRes={highRes} otherClass={otherClass} blur={blur != null ? blur : 2} />
+    <ProgressiveImage image={image} lowRes={lowRes} highRes={highRes} otherClass={otherClass} blur={blur != null ? blur : 2} />)
 
 }
 

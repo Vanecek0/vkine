@@ -6,6 +6,11 @@ import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
 import d_translations from '../../public/locales/cs/translations.json'
 import CategoriesMvTv from '../../components/categories-sections/CategoriesMvTv';
+import TextArticle from '../../components/article/TextArticle';
+import Link from 'next/link';
+import { Github, Instagram } from 'react-bootstrap-icons';
+import Socials from '../../components/socials/Socials';
+import donateBackground from '../../assets/articles/fast_and_furious.jpg'
 
 export default function Home() {
   const router = useRouter();
@@ -85,6 +90,18 @@ export default function Home() {
         <div className="section mb-5">
           <CategoriesMvTv mvtvType={mvtvType.tv} title={t('home.bestRating', d_translations.home.bestRating)} type={tvType.top_rated} language={language} region={region}></CategoriesMvTv>
         </div>
+      </div>
+      <div className="container">
+        <TextArticle backdrop_path={donateBackground}>
+            <h2>Podpořte nás a staňte se součástí projektu</h2>
+            <p>Líbí se Vám tato stránka a chtěli byste nás podpořit ve vývoji? 
+            <br/>Pomocí níže uvedeného tlačítka "Buy me a coffee" nám můžete zaslat peněžitý dar v libovolné hodnotě</p>
+            <div>
+            <Link className='w-0' href="https://www.buymeacoffee.com/vkinecz" target='_blank'><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=vkinecz&button_colour=5F7FFF&font_colour=ffffff&font_family=Arial&outline_colour=000000&coffee_colour=FFDD00" /></Link>
+            </div>
+            <p className='pt-3'>Sledujte také náš GitHub a Instagram</p>
+            <Socials darkMode={true} iconsSize={35}></Socials>
+        </TextArticle>
       </div>
     </>
   );

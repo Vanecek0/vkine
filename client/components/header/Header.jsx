@@ -8,6 +8,7 @@ import Menu from './Menu';
 import LanguageDropdown from './LanguageDropdown';
 import Head from 'next/head';
 import Script from 'next/script';
+import CookieConsent, { Cookies } from "react-cookie-consent";
 
 const Header = () => {
   const headerRef = useRef(null);
@@ -67,7 +68,7 @@ const Header = () => {
             <h2>Please turn it on and have a great user experience here! :)</h2>
           </div>
         </noscript>
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5585538415879907" crossOrigin="anonymous"></script>
+        <Script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5585538415879907" crossOrigin="anonymous"></Script>
       </Head>
       <div ref={headerRef} className={`${HeaderStyle.header} header`}>
         <div className={`${HeaderStyle.header__wrap} header__wrap container`}>
@@ -83,6 +84,18 @@ const Header = () => {
         </div>
       </div>
       <MultiSearch isActive={isSearchActive} setIsActive={setIsSearchActive}></MultiSearch>
+      <CookieConsent
+        location="bottom"
+        buttonText="Souhlasím"
+        containerClasses="d-flex align-items-center"
+        cookieName="cookie_consent"
+        style={{ background: "#151616" }}
+        buttonStyle={{ color: "#fff", background: "#0d6efd", fontSize: "15px" }}
+        expires={30}
+      >
+          <b>Tato webová stránka používá cookies</b>
+          <p>Dalším procházením tohoto webu vyjadřujete souhlas s jejich používáním.</p>
+      </CookieConsent>
     </>
   );
 }

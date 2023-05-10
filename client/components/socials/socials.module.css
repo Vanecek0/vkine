@@ -1,0 +1,12 @@
+.socials .socialIcons a{
+    text-decoration: none;
+    color: black;
+}
+
+.socials .socialIcons .darkMode a {
+    color: white !important;
+}
+
+.socials .socialIcons .darkMode a:hover {
+    color: rgb(230, 230, 230) !important;
+}

@@ -4,7 +4,7 @@
   "description": "This is a starter template for [Learn Next.js](https://nextjs.org/learn).",
   "main": "index.js",
   "scripts": {
-    "dev": "next dev ./client -p 3001 & nodemon ./server/server.js",
+    "dev": "nodemon ./server/server.js",
     "server": "nodemon ./server/server.js",
     "client": "next dev ./client -p 3001",
     "build": "next build ./client",
@@ -55,6 +55,7 @@
     "react-bootstrap": "^2.7.2",
     "react-bootstrap-icons": "^1.10.2",
     "react-circular-progressbar": "^2.1.0",
+    "react-cookie-consent": "^8.0.1",
     "react-device-detect": "^2.2.3",
     "react-dom": "18.2.0",
     "react-i18next": "^12.2.0",

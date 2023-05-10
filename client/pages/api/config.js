@@ -9,5 +9,6 @@ module.exports = {
     w780: (imgPath) => `https://image.tmdb.org/t/p/w780/${imgPath}`,
     w1280: (imgPath) => `https://image.tmdb.org/t/p/w1280/${imgPath}`,
     noImage: (imgPath) => imgPath,
+    staticImage: (imgPath) => imgPath,
     noBac: (imgPath) => imgPath
 }

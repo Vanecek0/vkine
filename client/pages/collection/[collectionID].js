@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
-import i18next from 'i18next';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { ArrowLeft } from 'react-bootstrap-icons';
 import config from '../api/config';
@@ -25,11 +24,12 @@ const Collection = () => {
     const [item, setItem] = useState();
     const [backdrops, setBackdrops] = useState();
     var bg = config.noImage(noImage);
-    const language = i18next.language;
+    const language = router.locale;
     const { t } = useTranslation('translations');
 
     useEffect(() => {
         const getCollectionDetail = async () => {
+            console.log(language)
             const params = { language: language }
             try {
                 const response = await tmdbApi.getMovieCollection(collectionID, { params })
