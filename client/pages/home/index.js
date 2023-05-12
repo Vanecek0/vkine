@@ -92,7 +92,7 @@ export default function Home() {
         </div>
       </div>
       <div className="container">
-        <TextArticle backdrop_path={donateBackground}>
+        <TextArticle backdrop_path={donateBackground} containerClass={"mb-3 mt-5"}>
             <h2>Podpořte nás a staňte se součástí projektu</h2>
             <p>Líbí se Vám tato stránka a chtěli byste nás podpořit ve vývoji? 
             <br/>Pomocí níže uvedeného tlačítka "Buy me a coffee" nám můžete zaslat peněžitý dar v libovolné hodnotě</p>

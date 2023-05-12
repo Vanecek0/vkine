@@ -170,6 +170,11 @@
         "alsoKnownAsText": "Taktiež známy ako",
         "actorTitle": "Herec",
         "crewTitle": "Štáb"
+    },
+    "legal": {
+        "documents": "Dokumenty",
+        "terms-of-use": "Zásady používania",
+        "privacy-policy": "Zásady ochrany osobných údajov"
     }
     
 }

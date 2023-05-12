@@ -5,17 +5,20 @@ import config from '../../pages/api/config'
 import noImage from '../../assets/image.svg';
 
 const TextArticle = (props) => {
-    var bg = config.noImage(noImage).src;
     return (
-        <div className={`${articleStyle.textArticle} mb-3 mt-5`}>
-            <ProgressiveLoader
-                isBackground={true}
-                isVisible={props.isBackgroundVisible}
-                otherClass={`${articleStyle.banner_img}`}
-                highRes={(props.backdrop_path) != null ? config.staticImage(props.backdrop_path).src : bg}
-                blur={2}
-            />
-            {props.children}
+        <div className={`${articleStyle.textArticle} ${props.containerClass}`}>
+            <div className={props.innerContainerClass}>
+                <ProgressiveLoader
+                    isBackground={true}
+                    isVisible={props.isBackgroundVisible}
+                    otherClass={`${articleStyle.banner_img}`}
+                    highRes={(props.backdrop_path) != null ? config.staticImage(props.backdrop_path).src : config.noImage(noImage).src}
+                    blur={2}
+                />
+                <div className={props.contentContainerClass}>
+                    {props.children}
+                </div>
+            </div>
         </div>
     )
 }
