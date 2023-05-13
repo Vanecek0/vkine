@@ -4,7 +4,19 @@ body {
   position: relative;
 }
 
-.pageContent, #__next {
+.__next_content {
+  min-height: 100vh;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.__next_main {
+  flex: 1 1 auto;
+}
+
+.pageContent,
+#__next {
   min-height: 100vh;
 }
 
@@ -21,7 +33,7 @@ body {
   display: none;
 }
 
-.pageContent .pending:first-of-type::after{
+.pageContent .pending:first-of-type::after {
   content: '';
   position: absolute;
   border: 4px solid #0064FF;
@@ -31,7 +43,7 @@ body {
   animation-delay: 0.7s;
 }
 
-.pageContent .pending:first-of-type::before{
+.pageContent .pending:first-of-type::before {
   content: '';
   position: absolute;
   border: 4px solid #fff;
@@ -51,6 +63,7 @@ body {
     height: 0;
     opacity: 0;
   }
+
   4.9% {
     top: 50%;
     left: 50%;
@@ -59,6 +72,7 @@ body {
     height: 0;
     opacity: 0;
   }
+
   5% {
     top: 50%;
     left: 50%;
@@ -67,6 +81,7 @@ body {
     height: 0;
     opacity: 1;
   }
+
   100% {
     top: 50%;
     left: 50%;
@@ -224,16 +239,16 @@ body {
   color: white;
 }
 
-.header.shrink>.header__wrap .header__nav .mobileMenu .mobileMenuWrapper .mobileMenuContent{
+.header.shrink>.header__wrap .header__nav .mobileMenu .mobileMenuWrapper .mobileMenuContent {
   background-color: rgba(0, 0, 0, 0.925);
 }
 
-.castSwiperWrapper .swiper-slide{
+.castSwiperWrapper .swiper-slide {
   width: 135px;
   position: relative;
 }
 
-.castSwiper .castSwiperWrapper .swiper-slide img{
+.castSwiper .castSwiperWrapper .swiper-slide img {
   width: 100%;
 }
 
@@ -242,21 +257,26 @@ body {
   margin-top: 10pt;
 }
 
-.casts:hover > .castSwiper .custom-swiper-navigation {
+.casts:hover>.castSwiper .custom-swiper-navigation {
   transition: ease .3s;
   opacity: 1;
   background-color: rgba(0, 0, 0, 0.45);
 }
 
-.videoSwiper:hover > .custom-swiper-navigation, .imageSwiper:hover > .custom-swiper-navigation,
-.mediaSwiper:hover > .custom-swiper-navigation, .castMediaSwiper:hover > .custom-swiper-navigation{
+.videoSwiper:hover>.custom-swiper-navigation,
+.imageSwiper:hover>.custom-swiper-navigation,
+.mediaSwiper:hover>.custom-swiper-navigation,
+.castMediaSwiper:hover>.custom-swiper-navigation {
   transition: ease .3s;
   opacity: 1;
   background-color: rgba(0, 0, 0, 0.45);
 }
 
-.castSwiper .custom-swiper-navigation, .videoSwiper .custom-swiper-navigation, .imageSwiper .custom-swiper-navigation,
-.mediaSwiper .custom-swiper-navigation, .castMediaSwiper .custom-swiper-navigation{
+.castSwiper .custom-swiper-navigation,
+.videoSwiper .custom-swiper-navigation,
+.imageSwiper .custom-swiper-navigation,
+.mediaSwiper .custom-swiper-navigation,
+.castMediaSwiper .custom-swiper-navigation {
   display: flex;
   opacity: 0;
   position: absolute;
@@ -276,8 +296,10 @@ body {
   display: none;
 }
 
-.videoSwiper .custom-swiper-navigation.swiper-button-disabled, .imageSwiper .custom-swiper-navigation.swiper-button-disabled, 
-.mediaSwiper .custom-swiper-navigation.swiper-button-disabled, .castMediaSwiper .custom-swiper-navigation.swiper-button-disabled{
+.videoSwiper .custom-swiper-navigation.swiper-button-disabled,
+.imageSwiper .custom-swiper-navigation.swiper-button-disabled,
+.mediaSwiper .custom-swiper-navigation.swiper-button-disabled,
+.castMediaSwiper .custom-swiper-navigation.swiper-button-disabled {
   display: none;
 }
 
@@ -294,9 +316,9 @@ body {
 }
 
 .timelineContent .castTimelineItem .MuiButtonBase-root {
-  display: grid; 
+  display: grid;
   grid-template-columns: 15pt 1fr 0.3fr 15pt;
-  gap: 15pt; 
+  gap: 15pt;
   margin-left: 15pt;
 }
 
@@ -317,6 +339,7 @@ body {
   background-position: 50%;
   background-repeat: no-repeat;
 }
+
 .fi {
   background-size: contain;
   background-position: 50%;
@@ -326,18 +349,23 @@ body {
   width: 1.33333333em;
   line-height: 1em;
 }
+
 .fi:before {
   content: '\00a0';
 }
+
 .fi-xx {
   background-image: url(../assets/flags/4x3/xx.svg);
 }
+
 .fi-cz {
   background-image: url(../assets/flags/4x3/cz.svg);
 }
+
 .fi-sk {
   background-image: url(../assets/flags/4x3/sk.svg);
 }
+
 .fi-us {
   background-image: url(../assets/flags/4x3/us.svg);
 }
@@ -357,7 +385,7 @@ body {
 @media only screen and (max-width: 480px) {
   .timelineContent .castTimelineItem .MuiButtonBase-root {
     grid-template-columns: 10pt 1fr 0.5fr 0pt;
-    gap: 10pt; 
+    gap: 10pt;
     margin-left: 5pt;
   }
 

@@ -21,9 +21,13 @@ const App = ({ Component, pageProps }) => {
           gtag('config', 'G-BTGDVNLPHG');
           `}
         </Script>
-        <Header />
-        <Component {...pageProps} />
-        <Footer />
+        <div className="__next_content">
+          <main className="__next_main">
+            <Header />
+            <Component {...pageProps} />
+          </main>
+          <Footer />
+        </div>
       </SSRProvider>
     </SessionProvider>
   )
