@@ -19,6 +19,7 @@ const Login = ({ data }) => {
   const handleClickShowPassword = () => setShowPassword((show) => !show);
   const router = useRouter();
   const [loginBackground, setLoginBackground] = useState('');
+  const session = useSession();
 
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
@@ -34,7 +35,7 @@ const Login = ({ data }) => {
     });
 
     if (res.error) {
-      throw (res.error)
+      throw ("Nastala chyba: " + res.error)
     } else {
       router.push('/u');
     }
@@ -152,6 +153,13 @@ export const getServerSideProps = async (context) => {
         props: {}
       }
     }
+    /*return {
+      redirect: {
+        destination: `/u/${userData.username}`,
+        permanent: false,
+      },
+      props: {}
+    }*/
   }
   else {
     return {

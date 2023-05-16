@@ -16,9 +16,11 @@ export default function User({ data }) {
                     <Link href={`/u/${data.username}`}><span>{data.username[0].toUpperCase()}</span></Link>
                 </div>
                 {data.name}
-                <div className="container" style={{ padding: '100px' }}>
-                    <button onClick={() => signOut()}>Test</button>
-                </div>
+                {session.status == "authenticated" ? (
+                    <div className="container" style={{ padding: '100px' }}>
+                        <button onClick={() => signOut()}>Odhlásit se</button>
+                    </div>
+                ) : ''}
             </div>
         </div>
     )

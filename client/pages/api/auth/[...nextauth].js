@@ -4,12 +4,13 @@ import Credentials from "next-auth/providers/credentials";
 import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
+const callbacks = {}
 
 export const options = {
     providers: [
         GoogleProvider({
-            clientId: process.env.NEXT_PUBLIC_GOOGLE_ID,
-            clientSecret: process.env.NEXT_PUBLIC_GOOGLE_SECRET,
+            clientId: process.env.GOOGLE_ID,
+            clientSecret: process.env.GOOGLE_SECRET,
         }),
         Credentials({
             name: "credentials",
@@ -32,21 +33,19 @@ export const options = {
     ],
     callbacks: {
         async signIn({ account, profile }) {
-          if (account.provider === "google") {
-            return profile
-          }
-          return true // Do different verification for other providers that don't have `email_verified`
+            if (account.provider === "google") {
+                return profile
+            }
+            return true // Do different verification for other providers that don't have `email_verified`
         },
-      },
+        
+    },
     pages: {
         signIn: "../../login",
         signUp: "../../register"
     },
-    session: {
-        strategy: 'jwt',
-        maxAge: 3 * 24 * 60 * 60,
-    },
-    secret: process.env.NEXT_PUBLIC_SECRET,
+    
+    secret: process.env.NEXTAUTH_SECRET,
 
 }
-export default NextAuth(options)
+export default (req, res) => NextAuth(req, res, options)
