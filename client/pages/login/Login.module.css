@@ -57,6 +57,11 @@
     font-weight: bold;
 }
 
+.loginErrorMessage {
+    background-color: #D40242;
+    border-radius: 5px;
+}
+
 .registerContent {
     background-color: rgba(24, 24, 24, 0.975);
     color: white;

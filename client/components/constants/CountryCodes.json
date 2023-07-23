@@ -1,0 +1,764 @@
+{
+    "countries": [
+        {
+            "label": "Afghanistan",
+            "code": "AF"
+        },
+        {
+            "label": "Shqipëria",
+            "code": "AL"
+        },
+        {
+            "label": "الجزائر",
+            "code": "DZ"
+        },
+        {
+            "label": "Andorra",
+            "code": "AD"
+        },
+        {
+            "label": "Angola",
+            "code": "AO"
+        },
+        {
+            "label": "Antigua and Barbuda",
+            "code": "AG"
+        },
+        {
+            "label": "Argentina",
+            "code": "AR"
+        },
+        {
+            "label": "Հայաստան",
+            "code": "AM"
+        },
+        {
+            "label": "Australia",
+            "code": "AU"
+        },
+        {
+            "label": "Österreich",
+            "code": "AT"
+        },
+        {
+            "label": "Azərbaycan",
+            "code": "AZ"
+        },
+        {
+            "label": "বাংলাদেশ",
+            "code": "BD"
+        },
+        {
+            "label": "Barbados",
+            "code": "BB"
+        },
+        {
+            "label": "Беларусь",
+            "code": "BY"
+        },
+        {
+            "label": "Belgique",
+            "code": "BE"
+        },
+        {
+            "label": "Belize",
+            "code": "BZ"
+        },
+        {
+            "label": "Bénin",
+            "code": "BJ"
+        },
+        {
+            "label": "འབྲུག་ཡུལ།",
+            "code": "BT"
+        },
+        {
+            "label": "Bolivia",
+            "code": "BO"
+        },
+        {
+            "label": "Bosna i Hercegovina",
+            "code": "BA"
+        },
+        {
+            "label": "Botswana",
+            "code": "BW"
+        },
+        {
+            "label": "Brasil",
+            "code": "BR"
+        },
+        {
+            "label": "ব্রুনেই",
+            "code": "BN"
+        },
+        {
+            "label": "България",
+            "code": "BG"
+        },
+        {
+            "label": "Burkina Faso",
+            "code": "BF"
+        },
+        {
+            "label": "Burundi",
+            "code": "BI"
+        },
+        {
+            "label": "កម្ពុជា",
+            "code": "KH"
+        },
+        {
+            "label": "Cameroun",
+            "code": "CM"
+        },
+        {
+            "label": "Canada",
+            "code": "CA"
+        },
+        {
+            "label": "Cabo Verde",
+            "code": "CV"
+        },
+        {
+            "label": "République centrafricaine",
+            "code": "CF"
+        },
+        {
+            "label": "Tchad",
+            "code": "TD"
+        },
+        {
+            "label": "Chile",
+            "code": "CL"
+        },
+        {
+            "label": "中国",
+            "code": "CN"
+        },
+        {
+            "label": "Colombia",
+            "code": "CO"
+        },
+        {
+            "label": "Comores",
+            "code": "KM"
+        },
+        {
+            "label": "République du Congo",
+            "code": "CG"
+        },
+        {
+            "label": "Costa Rica",
+            "code": "CR"
+        },
+        {
+            "label": "Hrvatska",
+            "code": "HR"
+        },
+        {
+            "label": "Cuba",
+            "code": "CU"
+        },
+        {
+            "label": "Κύπρος",
+            "code": "CY"
+        },
+        {
+            "label": "Česká republika",
+            "code": "CZ"
+        },
+        {
+            "label": "Danmark",
+            "code": "DK"
+        },
+        {
+            "label": "Djibouti",
+            "code": "DJ"
+        },
+        {
+            "label": "Dominica",
+            "code": "DM"
+        },
+        {
+            "label": "República Dominicana",
+            "code": "DO"
+        },
+        {
+            "label": "Timor-Leste",
+            "code": "TL"
+        },
+        {
+            "label": "Ecuador",
+            "code": "EC"
+        },
+        {
+            "label": "مصر‎",
+            "code": "EG"
+        },
+        {
+            "label": "El Salvador",
+            "code": "SV"
+        },
+        {
+            "label": "Guinea Ecuatorial",
+            "code": "GQ"
+        },
+        {
+            "label": "Eritrea",
+            "code": "ER"
+        },
+        {
+            "label": "Eesti",
+            "code": "EE"
+        },
+        {
+            "label": "Ethiopia",
+            "code": "ET"
+        },
+        {
+            "label": "Fiji",
+            "code": "FJ"
+        },
+        {
+            "label": "Suomi",
+            "code": "FI"
+        },
+        {
+            "label": "France",
+            "code": "FR"
+        },
+        {
+            "label": "Gabon",
+            "code": "GA"
+        },
+        {
+            "label": "Gambia",
+            "code": "GM"
+        },
+        {
+            "label": "საქართველო",
+            "code": "GE"
+        },
+        {
+            "label": "Deutschland",
+            "code": "DE"
+        },
+        {
+            "label": "Ghana",
+            "code": "GH"
+        },
+        {
+            "label": "Ελλάδα",
+            "code": "GR"
+        },
+        {
+            "label": "Grenada",
+            "code": "GD"
+        },
+        {
+            "label": "Guatemala",
+            "code": "GT"
+        },
+        {
+            "label": "Guinée",
+            "code": "GN"
+        },
+        {
+            "label": "Guiné-Bissau",
+            "code": "GW"
+        },
+        {
+            "label": "Guyana",
+            "code": "GY"
+        },
+        {
+            "label": "Haiti",
+            "code": "HT"
+        },
+        {
+            "label": "Honduras",
+            "code": "HN"
+        },
+        {
+            "label": "Magyarország",
+            "code": "HU"
+        },
+        {
+            "label": "Ísland",
+            "code": "IS"
+        },
+        {
+            "label": "India",
+            "code": "IN"
+        },
+        {
+            "label": "Indonesia",
+            "code": "ID"
+        },
+        {
+            "label": "ایران",
+            "code": "IR"
+        },
+        {
+            "label": "العراق",
+            "code": "IQ"
+        },
+        {
+            "label": "Éire",
+            "code": "IE"
+        },
+        {
+            "label": "ישראל",
+            "code": "IL"
+        },
+        {
+            "label": "Italia",
+            "code": "IT"
+        },
+        {
+            "label": "Jamaica",
+            "code": "JM"
+        },
+        {
+            "label": "日本",
+            "code": "JP"
+        },
+        {
+            "label": "الأردن",
+            "code": "JO"
+        },
+        {
+            "label": "Қазақстан",
+            "code": "KZ"
+        },
+        {
+            "label": "Kenya",
+            "code": "KE"
+        },
+        {
+            "label": "Kiribati",
+            "code": "KI"
+        },
+        {
+            "label": "대한민국",
+            "code": "KR"
+        },
+        {
+            "label": "الكويت",
+            "code": "KW"
+        },
+        {
+            "label": "Кыргызстан",
+            "code": "KG"
+        },
+        {
+            "label": "ລາວ",
+            "code": "LA"
+        },
+        {
+            "label": "Latvija",
+            "code": "LV"
+        },
+        {
+            "label": "لبنان",
+            "code": "LB"
+        },
+        {
+            "label": "Lesotho",
+            "code": "LS"
+        },
+        {
+            "label": "Liberia",
+            "code": "LR"
+        },
+        {
+            "label": "ليبيا",
+            "code": "LY"
+        },
+        {
+            "label": "Liechtenstein",
+            "code": "LI"
+        },
+        {
+            "label": "Lietuva",
+            "code": "LT"
+        },
+        {
+            "label": "Luxembourg",
+            "code": "LU"
+        },
+        {
+            "label": "Македонија",
+            "code": "MK"
+        },
+        {
+            "label": "Madagascar",
+            "code": "MG"
+        },
+        {
+            "label": "Malawi",
+            "code": "MW"
+        },
+        {
+            "label": "Malaysia",
+            "code": "MY"
+        },
+        {
+            "label": "Maldives",
+            "code": "MV"
+        },
+        {
+            "label": "Mali",
+            "code": "ML"
+        },
+        {
+            "label": "Malta",
+            "code": "MT"
+        },
+        {
+            "label": "Marshall Islands",
+            "code": "MH"
+        },
+        {
+            "label": "موريتانيا",
+            "code": "MR"
+        },
+        {
+            "label": "Mauritius",
+            "code": "MU"
+        },
+        {
+            "label": "México",
+            "code": "MX"
+        },
+        {
+            "label": "Micronesia",
+            "code": "FM"
+        },
+        {
+            "label": "Moldova",
+            "code": "MD"
+        },
+        {
+            "label": "Monaco",
+            "code": "MC"
+        },
+        {
+            "label": "Монгол Улс",
+            "code": "MN"
+        },
+        {
+            "label": "Црна Гора",
+            "code": "ME"
+        },
+        {
+            "label": "Maroc",
+            "code": "MA"
+        },
+        {
+            "label": "Moçambique",
+            "code": "MZ"
+        },
+        {
+            "label": "Myanmar",
+            "code": "MM"
+        },
+        {
+            "label": "Namibia",
+            "code": "NA"
+        },
+        {
+            "label": "Nauru",
+            "code": "NR"
+        },
+        {
+            "label": "नेपाल",
+            "code": "NP"
+        },
+        {
+            "label": "Nederland",
+            "code": "NL"
+        },
+        {
+            "label": "New Zealand",
+            "code": "NZ"
+        },
+        {
+            "label": "Nicaragua",
+            "code": "NI"
+        },
+        {
+            "label": "Niger",
+            "code": "NE"
+        },
+        {
+            "label": "Nigeria",
+            "code": "NG"
+        },
+        {
+            "label": "Norge",
+            "code": "NO"
+        },
+        {
+            "label": "عُمان",
+            "code": "OM"
+        },
+        {
+            "label": "Pakistan",
+            "code": "PK"
+        },
+        {
+            "label": "Palau",
+            "code": "PW"
+        },
+        {
+            "label": "فلسطين",
+            "code": "PS"
+        },
+        {
+            "label": "Panamá",
+            "code": "PA"
+        },
+        {
+            "label": "Papua New Guinea",
+            "code": "PG"
+        },
+        {
+            "label": "Paraguay",
+            "code": "PY"
+        },
+        {
+            "label": "Perú",
+            "code": "PE"
+        },
+        {
+            "label": "Pilipinas",
+            "code": "PH"
+        },
+        {
+            "label": "Polska",
+            "code": "PL"
+        },
+        {
+            "label": "Portugal",
+            "code": "PT"
+        },
+        {
+            "label": "Qatar",
+            "code": "QA"
+        },
+        {
+            "label": "România",
+            "code": "RO"
+        },
+        {
+            "label": "Россия",
+            "code": "RU"
+        },
+        {
+            "label": "Rwanda",
+            "code": "RW"
+        },
+        {
+            "label": "Saint Kitts and Nevis",
+            "code": "KN"
+        },
+        {
+            "label": "Saint Lucia",
+            "code": "LC"
+        },
+        {
+            "label": "Saint Vincent and the Grenadines",
+            "code": "VC"
+        },
+        {
+            "label": "Samoa",
+            "code": "WS"
+        },
+        {
+            "label": "San Marino",
+            "code": "SM"
+        },
+        {
+            "label": "São Tomé e Príncipe",
+            "code": "ST"
+        },
+        {
+            "label": "المملكة العربية السعودية",
+            "code": "SA"
+        },
+        {
+            "label": "Sénégal",
+            "code": "SN"
+        },
+        {
+            "label": "Србија",
+            "code": "RS"
+        },
+        {
+            "label": "Seychelles",
+            "code": "SC"
+        },
+        {
+            "label": "Sierra Leone",
+            "code": "SL"
+        },
+        {
+            "label": "Singapore",
+            "code": "SG"
+        },
+        {
+            "label": "Slovensko",
+            "code": "SK"
+        },
+        {
+            "label": "Slovenija",
+            "code": "SI"
+        },
+        {
+            "label": "Solomon Islands",
+            "code": "SB"
+        },
+        {
+            "label": "الصومال",
+            "code": "SO"
+        },
+        {
+            "label": "South Africa",
+            "code": "ZA"
+        },
+        {
+            "label": "South Sudan",
+            "code": "SS"
+        },
+        {
+            "label": "España",
+            "code": "ES"
+        },
+        {
+            "label": "Sri Lanka",
+            "code": "LK"
+        },
+        {
+            "label": "السودان",
+            "code": "SD"
+        },
+        {
+            "label": "Surilabel",
+            "code": "SR"
+        },
+        {
+            "label": "Sverige",
+            "code": "SE"
+        },
+        {
+            "label": "Schweiz",
+            "code": "CH"
+        },
+        {
+            "label": "سوريا",
+            "code": "SY"
+        },
+        {
+            "label": "台灣",
+            "code": "TW"
+        },
+        {
+            "label": "Тоҷикистон",
+            "code": "TJ"
+        },
+        {
+            "label": "Tanzania",
+            "code": "TZ"
+        },
+        {
+            "label": "ประเทศไทย",
+            "code": "TH"
+        },
+        {
+            "label": "Togo",
+            "code": "TG"
+        },
+        {
+            "label": "Tonga",
+            "code": "TO"
+        },
+        {
+            "label": "Trinidad and Tobago",
+            "code": "TT"
+        },
+        {
+            "label": "تونس",
+            "code": "TN"
+        },
+        {
+            "label": "Türkiye",
+            "code": "TR"
+        },
+        {
+            "label": "Туркменистан",
+            "code": "TM"
+        },
+        {
+            "label": "Tuvalu",
+            "code": "TV"
+        },
+        {
+            "label": "Uganda",
+            "code": "UG"
+        },
+        {
+            "label": "Україна",
+            "code": "UA"
+        },
+        {
+            "label": "الإمارات العربية المتحدة",
+            "code": "AE"
+        },
+        {
+            "label": "United Kingdom",
+            "code": "GB"
+        },
+        {
+            "label": "United States",
+            "code": "US"
+        },
+        {
+            "label": "Uruguay",
+            "code": "UY"
+        },
+        {
+            "label": "O‘zbekiston",
+            "code": "UZ"
+        },
+        {
+            "label": "Vanuatu",
+            "code": "VU"
+        },
+        {
+            "label": "Città del Vaticano",
+            "code": "VA"
+        },
+        {
+            "label": "Venezuela",
+            "code": "VE"
+        },
+        {
+            "label": "Việt Nam",
+            "code": "VN"
+        },
+        {
+            "label": "اليمن",
+            "code": "YE"
+        },
+        {
+            "label": "Zambia",
+            "code": "ZM"
+        },
+        {
+            "label": "Zimbabwe",
+            "code": "ZW"
+        }
+    ]
+}

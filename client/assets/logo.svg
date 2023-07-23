@@ -9,9 +9,9 @@
    inkscape:export-filename="logo.png"
    id="svg5"
    version="1.1"
-   viewBox="0 0 1000 600"
-   height="600mm"
-   width="1000mm"
+   viewBox="0 0 740.83331 600"
+   height="2267.7166"
+   width="2800"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -29,21 +29,21 @@
      inkscape:document-units="mm"
      showgrid="false"
      inkscape:zoom="0.33589188"
-     inkscape:cx="1948.5437"
-     inkscape:cy="1366.5112"
+     inkscape:cx="927.38175"
+     inkscape:cy="1839.8778"
      inkscape:window-width="2560"
-     inkscape:window-height="1516"
+     inkscape:window-height="1522"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="1"
-     inkscape:current-layer="g16117" />
+     inkscape:current-layer="layer1" />
   <defs
      id="defs2">
     <rect
-       x="-2711.8034"
-       y="2830.1493"
+       x="-2711.8035"
+       y="2830.1494"
        width="3773.9407"
-       height="2126.9047"
+       height="2126.9048"
        id="rect571" />
     <linearGradient
        inkscape:collect="always"
@@ -186,7 +186,7 @@
      id="layer1">
     <g
        id="g16117"
-       transform="translate(7.2979908)">
+       transform="translate(-122.28534)">
       <g
          id="g542"
          transform="translate(0,-2.1556729)">
@@ -213,11 +213,11 @@
            style="white-space:pre;shape-inside:url(#rect517);display:inline;fill:#ffffff;fill-opacity:1"><tspan
              x="193.78711"
              y="444.86328"
-             id="tspan1263"><tspan
+             id="tspan381"><tspan
                style="font-weight:bold;font-size:240px;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans Bold';letter-spacing:0px;word-spacing:0px"
-               id="tspan1259">KINE</tspan><tspan
+               id="tspan377">KINE</tspan><tspan
                style="font-weight:bold;font-size:131.436px;-inkscape-font-specification:'sans-serif Bold';fill-opacity:0.998846"
-               id="tspan1261">.cz</tspan></tspan></text>
+               id="tspan379">.cz</tspan></tspan></text>
       </g>
       <path
          d="m 402.14013,917.55987 h 37.78538 v 89.34233 L 488.016,917.55987 h 37.78538 l -44.99895,77.8338 45.68596,134.16493 h -39.5029 l -31.94583,-94.4909 -15.11415,26.9541 v 67.5368 h -37.78538 z"

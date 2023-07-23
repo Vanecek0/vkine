@@ -85,14 +85,14 @@ const Person = () => {
                   <meta property="og:type" content="website"></meta>
                   <meta property="og:url" content={`https://www.vkine.cz/`}></meta>
                   <meta property="og:site_name" content={`${item.name} – Vkine.cz`}></meta>
-                  <meta property="og:image" content="https://www.vkine.cz/meta_image.png"></meta>
-                  <meta property="og:image:secure_url" content="https://www.vkine.cz/meta_image.png"></meta>
+                  <meta property="og:image" content="https://www.vkine.cz/vkine_meta.png"></meta>
+                  <meta property="og:image:secure_url" content="https://www.vkine.cz/vkine_meta.png"></meta>
                   <meta property="og:image:width" content="1588"></meta>
                   <meta property="og:image:height" content="1588"></meta>
                   <meta property="og:image:alt" content={`${item.name} – Vkine.cz`}></meta>
                   <meta property="og:image:type" content="image/png"></meta>
                   <meta name="twitter:card" content="summary_large_image"></meta>
-                  <meta name="twitter:image" content="https://www.vkine.cz/meta_image.png"></meta>
+                  <meta name="twitter:image" content="https://www.vkine.cz/vkine_meta.png"></meta>
                   <meta name="twitter:title" content={`${item.name} – Vkine.cz`}></meta>
                   <meta name="twitter:description" content={t('head.description', d_translations.head.description)}></meta>
                 </Head>

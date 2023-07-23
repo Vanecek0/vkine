@@ -9,10 +9,13 @@ import LanguageDropdown from './LanguageDropdown';
 import Head from 'next/head';
 import Script from 'next/script';
 import CookieConsent, { Cookies } from "react-cookie-consent";
+import { useRouter } from 'next/router';
 
 const Header = () => {
   const headerRef = useRef(null);
   const [isSearchActive, setIsSearchActive] = useState(false);
+  const router = useRouter();
+  const language = router.locale;
 
   const searchHandler = (e) => {
     setIsSearchActive(current => !current)
@@ -83,7 +86,7 @@ const Header = () => {
           </div>
         </div>
       </div>
-      <MultiSearch isActive={isSearchActive} setIsActive={setIsSearchActive}></MultiSearch>
+      <MultiSearch isActive={isSearchActive} setIsActive={setIsSearchActive} language={language}></MultiSearch>
       <CookieConsent
         location="bottom"
         buttonText="Souhlasím"

@@ -140,6 +140,15 @@
         "newHereDescription": "Sign up for free, it's that easy. Click the button below...",
         "registerBtn": "Register"
     },
+    "signupPage": {
+        "headline": "Login to your Account",
+        "socialNetworks": "Or login using social networks",
+        "signupBtn": "Sign Up",
+        "forgottenPsw": "Forgotten password",
+        "newHere": "First time here?",
+        "newHereDescription": "Sign up for free, it's that easy. Click the button below...",
+        "registerBtn": "Register"
+    },
     "detail": {
         "runtime": "Runtime",
         "cast": "Cast",

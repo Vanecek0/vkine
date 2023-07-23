@@ -12,6 +12,8 @@ import ProgressiveLoader from '../../components/progressive-loader/ProgressiveLo
 import config from '../api/config';
 import noBackground from '../../assets/default_background1.png';
 import { PrismaClient } from '@prisma/client';
+import Link from 'next/link';
+import ErrorMessagesHandler from '../../components/universal_components/error-messages-handler/ErrorMessagesHandler';
 
 const Login = ({ data }) => {
   const { t } = useTranslation('translations')
@@ -19,7 +21,7 @@ const Login = ({ data }) => {
   const handleClickShowPassword = () => setShowPassword((show) => !show);
   const router = useRouter();
   const [loginBackground, setLoginBackground] = useState('');
-  const session = useSession();
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
@@ -33,11 +35,11 @@ const Login = ({ data }) => {
       password: userInfo.password,
       redirect: false
     });
-
     if (res.error) {
-      throw ("Nastala chyba: " + res.error)
+      setErrorMessage(res.error)
+      throw (res.error)
     } else {
-      router.push('/u');
+      router.push(`/u`);
     }
   }
 
@@ -67,6 +69,7 @@ const Login = ({ data }) => {
         <div className={`d-flex justify-content-center align-items-center ${loginStyle.loginContent}`}>
           <div>
             <h1>{t('loginPage.headline', d_translations.loginPage.headline)}</h1>
+            <ErrorMessagesHandler message={errorMessage} wrapperClass={loginStyle.loginErrorWrapper} errorMessageClass={loginStyle.loginErrorMessage} />
             <form onSubmit={handleSubmit} className='d-flex flex-column'>
               <ThemeProvider theme={darkTheme}>
                 <FormControl>
@@ -102,16 +105,11 @@ const Login = ({ data }) => {
               <button className='btn btn-link' onClick={() => signIn('google')}><Google fontSize={30} /></button>
               <button className='btn btn-link' onClick={() => signIn('twitter')}><Twitter fontSize={30} /></button>
             </div>
+            <hr />
+            <p>Nemáte účet? <Link className='text-light fw-bold' href={'/signup'}>Zaregistrujte se</Link></p>
           </div>
         </div>
 
-        {/*<div className={`container d-flex justify-content-center align-items-center rounded-end ${loginStyle.registerContent}`}>
-          <div>
-            <h1>{t('loginPage.newHere', d_translations.loginPage.newHere)}</h1>
-            <p>{t('loginPage.newHereDescription', d_translations.loginPage.newHereDescription)}</p>
-            <button className='btn btn-primary'>{t('loginPage.registerBtn', d_translations.loginPage.registerBtn)}</button>
-          </div>
-                    </div>*/}
       </div>
       <ProgressiveLoader
         isBackground={true}
@@ -127,22 +125,31 @@ const Login = ({ data }) => {
 export const getServerSideProps = async (context) => {
   const prisma = new PrismaClient();
   const session = await getSession(context);
+  var userData = null;
+
   if (session) {
-    const userData = await prisma.user.findFirst({
-      where: {
-        email: session.user.email
-      },
-      select: {
-        username: true,
-      }
-    })
+    try {
+      userData = await prisma.user.findFirst({
+        where: {
+          email: session.user.email
+        },
+        select: {
+          username: true,
+        }
+      })
+    } catch (error) {
+      throw new Error(error)
+    } finally {
+      await prisma.$disconnect();
+    }
+
     if (!userData) {
       return {
         redirect: {
-          destination: `/register`,
+          destination: `/signup`,
           permanent: false,
         },
-        props: {}
+        props: { data: {} }
       }
     } else {
       return {
@@ -150,20 +157,13 @@ export const getServerSideProps = async (context) => {
           destination: `/u/${userData.username}`,
           permanent: false,
         },
-        props: {}
+        props: { data: userData }
       }
     }
-    /*return {
-      redirect: {
-        destination: `/u/${userData.username}`,
-        permanent: false,
-      },
-      props: {}
-    }*/
   }
   else {
     return {
-      props: {}
+      props: { data: {} }
     }
   }
 }

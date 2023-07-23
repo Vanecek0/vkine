@@ -140,6 +140,15 @@
         "newHereDescription": "Zaregistrujte sa zadarmo, je to jednoduché. Kliknite na tlačidlo nižšie...",
         "registerBtn": "Zaregistrujte sa"
     },
+    "signupPage": {
+        "headline": "Prihláste sa do svojho účtu",
+        "socialNetworks": "Alebo sa prihláste pomocou sociálnych sietí",
+        "signupBtn": "Zaregistrovat se",
+        "forgottenPsw": "Zabudnuté heslo",
+        "newHere": "Ste tu prvýkrát?",
+        "newHereDescription": "Zaregistrujte sa zadarmo, je to jednoduché. Kliknite na tlačidlo nižšie...",
+        "registerBtn": "Zaregistrujte sa"
+    },
     "detail": {
         "runtime": "Dĺžka",
         "cast": "Obsadenie",

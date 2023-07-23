@@ -4,7 +4,7 @@ import Header from "../components/header/Header";
 import { appWithTranslation } from "next-i18next"
 import Footer from "../components/footer/Footer";
 import { SSRProvider } from "react-bootstrap";
-import { SessionProvider } from "next-auth/react"
+import { SessionProvider, getSession } from "next-auth/react"
 import Script from "next/script";
 
 const App = ({ Component, pageProps }) => {
@@ -17,7 +17,6 @@ const App = ({ Component, pageProps }) => {
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
-        
           gtag('config', 'G-BTGDVNLPHG');
           `}
         </Script>
@@ -31,6 +30,14 @@ const App = ({ Component, pageProps }) => {
       </SSRProvider>
     </SessionProvider>
   )
+}
+
+export async function getServerSideProps(ctx) {
+  return {
+    props: {
+      session: await getSession(ctx)
+    }
+  }
 }
 
 export default appWithTranslation(App, nextI18NextConfig)

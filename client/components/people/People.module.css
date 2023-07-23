@@ -1,5 +1,7 @@
 .cast__item {
     padding: 5px;
+    display: flex;
+    text-align: center;
 }
 
 .cast__item__img {
@@ -39,6 +41,9 @@
 .cast__item a {
     color: white;
     text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .cast__item__name {

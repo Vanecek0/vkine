@@ -58,47 +58,49 @@ export default function HeroSlide(props) {
     return (
         <>
             <div className={heroStyle.heroSlide}>
-                {
-                    mvtvItems && (
-                        <>
-                            <div className={heroStyle.heroSlideContent}>
-                                <Swiper
-                                    modules={[Autoplay]}
-                                    grabCursor={true}
-                                    spaceBetween={0}
-                                    slidesPerView={1}
-                                    className={heroStyle.heroSlideSwiper}
-                                    wrapperClass={heroStyle.heroSlideSwiperWrapper}
-                                    initialSlide={randomInitialSlide}
-                                    loop={false}
-                                    speed={1000}
-                                    autoplay={{
-                                        delay: 10000,
-                                        pauseOnMouseEnter: true,
-                                    }}
-                                    fadeEffect={{ crossFade: true }}
-                                    effect={'fade'}
-                                    watchSlidesProgress
-                                >
-                                    {
-                                        mvtvItems != null && mvtvItems.map((item, i) => (
-                                            <SwiperSlide key={i} className={heroStyle.heroSwiperSlide}>
-                                                {({ isActive }) => (
-                                                    <HeroSlideItem setTrailerItems={setTrailerItems} setIsTrailerModalActive={setTrailerModalActive} mvtvType={props.mvtvType} genres={genres} language={props.language} item={item} className={`${isActive ? heroStyle.active : ''}`} />
-                                                )}
-                                            </SwiperSlide>
-                                        ))
-                                    }
-                                </Swiper>
-                            </div>
-                            {trailerItems && trailerItems.length ? (
-                                <>
-                                    <MediaView items={trailerItems} type='videos' isActive={trailerModalActive} setIsActive={setTrailerModalActive} startIndex={0} />
-                                </>
-                            ) : ''}
-                        </>
-                    )
-                }
+                <div className={heroStyle.heroSlideBody}>
+                    {
+                        mvtvItems && (
+                            <>
+                                <div className={heroStyle.heroSlideContent}>
+                                    <Swiper
+                                        modules={[Autoplay]}
+                                        grabCursor={true}
+                                        spaceBetween={0}
+                                        slidesPerView={1}
+                                        className={heroStyle.heroSlideSwiper}
+                                        wrapperClass={heroStyle.heroSlideSwiperWrapper}
+                                        initialSlide={randomInitialSlide}
+                                        loop={false}
+                                        speed={1000}
+                                        autoplay={{
+                                            delay: 10000,
+                                            pauseOnMouseEnter: true,
+                                        }}
+                                        fadeEffect={{ crossFade: true }}
+                                        effect={'fade'}
+                                        watchSlidesProgress
+                                    >
+                                        {
+                                            mvtvItems != null && mvtvItems.map((item, i) => (
+                                                <SwiperSlide key={i} className={heroStyle.heroSwiperSlide}>
+                                                    {({ isActive }) => (
+                                                        <HeroSlideItem setTrailerItems={setTrailerItems} setIsTrailerModalActive={setTrailerModalActive} mvtvType={props.mvtvType} genres={genres} language={props.language} item={item} className={`${isActive ? heroStyle.active : ''}`} />
+                                                    )}
+                                                </SwiperSlide>
+                                            ))
+                                        }
+                                    </Swiper>
+                                </div>
+                                {trailerItems && trailerItems.length ? (
+                                    <>
+                                        <MediaView items={trailerItems} type='videos' isActive={trailerModalActive} setIsActive={setTrailerModalActive} startIndex={0} />
+                                    </>
+                                ) : ''}
+                            </>
+                        )
+                    }
+                </div>
             </div>
         </>
     );
@@ -139,7 +141,7 @@ const HeroSlideItem = (props) => {
                         blur={5}
                     />
                     <div className={`${heroStyle.heroSlide__item__content} container-fluid pt-4`}>
-                        <div className={heroStyle.heroSlide__content__wrapper}>
+                        <div className={`${heroStyle.heroSlide__content__wrapper} container`}>
                             <div className={heroStyle.heroSlide__item__content__info}>
                                 <div onClick={() => history.push(link)}>
                                     <h2 className={heroStyle.title}>{item.title == null ? item.name : item.title}</h2>

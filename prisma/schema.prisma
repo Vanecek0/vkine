@@ -14,11 +14,28 @@ datasource db {
 }
 
 model User {
-  id       Int    @id @default(autoincrement())
-  username String
-  email    String
-  password String
-  name     String @default("")
-  address  String @default("")
-  gender   Int    @default(0)
+  id        Int       @id @default(autoincrement())
+  username  String    @unique @default("")
+  email     String    @unique @default("")
+  password  String    @default("")
+  isActive  Boolean   @default(true)
+  provider  String    @default("credentials")
+  createdAt DateTime  @default(now())
+  userData  UserData?
+}
+
+model UserData {
+  id               Int      @id @unique
+  user             User     @relation(fields: [id], references: [id])
+  nickname         String   @default("")
+  firstname        String   @default("")
+  lastname         String   @default("")
+  bio              String   @default("")
+  birthday         DateTime @default(now())
+  phoneNumber      String   @default("")
+  country          String   @default("")
+  gender           Int      @default(0)
+  profileImage     String   @default("")
+  profileWallpaper String   @default("")
+  updatedAt        DateTime @default(now())
 }
