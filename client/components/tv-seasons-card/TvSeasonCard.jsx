@@ -1,30 +1,28 @@
 import React from 'react'
 import config from '../../pages/api/config';
 import noImage from '../../assets/image.svg';
-import dateFormat, { masks } from "dateformat";
-import { LazyLoadImage } from 'react-lazy-load-image-component';
-import 'react-lazy-load-image-component/src/effects/blur.css';
+import dateFormat from "dateformat";
 import tvSeasonCardStyle from './tvSeasonCard.module.css'
 import { useTranslation } from 'next-i18next';
 import d_translations from '../../public/locales/cs/translations.json'
+import ProgressiveLoader from '../progressive-loader/ProgressiveLoader';
 
 const TvSeasonCard = (props) => {
     const item = props.item;
-    var bg = config.noImage(noImage);
     const { t } = useTranslation('translations');
 
-    if (item.poster_path != null) {
-        bg = config.mainImage(item.poster_path)
-    }
     return (
         <>
             <div className={`${tvSeasonCardStyle.tvseason} rounded-top mt-4`}>
-                <div className={tvSeasonCardStyle.tvseasonCard}>
-                    <LazyLoadImage
-                        wrapperClassName={tvSeasonCardStyle.tvseasonCardImage}
-                        effect="blur"
-                        src={bg}
-                    />
+                <div className={`${tvSeasonCardStyle.tvseasonCard}`}>
+                    <span className={tvSeasonCardStyle.tvseasonCardImage}>
+                        <ProgressiveLoader
+                            isBackground={false}
+                            lowRes={item.poster_path || item.backdrop_path != null ? config.w92(item.poster_path || item.backdrop_path) : null}
+                            highRes={item.poster_path || item.backdrop_path != null ? config.w400(item.poster_path || item.backdrop_path) : config.noImage(noImage).src}
+                            blur={2} />
+                    </span>
+
                 </div>
                 <div className={`${tvSeasonCardStyle.tvseasonContent} ms-4 me-4 mt-4 mb-4`}>
                     <h3 className={`${tvSeasonCardStyle.title} text-light`}>{item.title || item.name}</h3>

@@ -1,10 +1,9 @@
 import React, { useEffect, useState, useRef } from 'react';
 import tmdbApi, { mvtvType, movieType, tvType } from '../../pages/api/tmdbApi';
 import config from '../../pages/api/config';
-import SwiperCore, { Autoplay } from 'swiper';
+import { Autoplay } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { useRouter } from 'next/navigation';
-import 'bootstrap/dist/css/bootstrap.css'
 import Rating from '../rating/Rating';
 import heroStyle from '../hero-slide/HeroSlide.module.css'
 import noImage from '../../assets/image.png'

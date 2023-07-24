@@ -1,7 +1,6 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import multiSearchStyle from './MultiSearch.module.css'
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { Search, X, XLg } from 'react-bootstrap-icons';
+import { X, XLg } from 'react-bootstrap-icons';
 import tmdbApi from '../../pages/api/tmdbApi';
 import MovieCard from '../movie-card/MovieCard';
 import { IconButton, TextField } from '@mui/material';

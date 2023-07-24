@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
 import PropTypes from 'prop-types';
 import { useAutocomplete } from '@mui/material';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import { CheckLg, XLg } from 'react-bootstrap-icons';
 import { styled } from '@mui/material/styles';
 import tagInputStyle from "./TagInput.module.css"

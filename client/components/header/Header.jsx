@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './Header.module.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
+//import 'bootstrap/dist/css/bootstrap.min.css';
 import HeaderStyle from "./Header.module.css"
 import MultiSearch from '../multi-search/MultiSearch';
 import { Search } from 'react-bootstrap-icons';

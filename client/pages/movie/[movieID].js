@@ -4,7 +4,6 @@ import React, { useEffect, useState } from 'react'
 import tmdbApi, { mvtvType } from '../../pages/api/tmdbApi';
 import config from '../../pages/api/config';
 import movieDetailStyle from './MovieDetail.module.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import { ArrowLeft, Facebook, Film, Instagram, Link45deg, Twitter } from 'react-bootstrap-icons';
 import CastList from '../../components/cast-list/CastList';
 import { NumericFormat } from 'react-number-format';

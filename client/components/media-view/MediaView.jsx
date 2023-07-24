@@ -2,9 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import mediaViewStyle from './mediaView.module.css'
 import noImage from '../../assets/image.png';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/swiper.min.css'
 import { ChevronLeft, ChevronRight, Download, XLg } from 'react-bootstrap-icons';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import config from '../../pages/api/config';
 import ProgressiveLoader from '../progressive-loader/ProgressiveLoader';
 

@@ -5,9 +5,7 @@ import SwiperCore, { Navigation, Mousewheel } from 'swiper';
 import movieListStyle from './MovieList.module.css';
 import tmdbApi, { mvtvType } from '../../pages/api/tmdbApi';
 import MovieCard from '../movie-card/MovieCard';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import { ChevronLeft, ChevronRight } from 'react-bootstrap-icons';
-import 'swiper/swiper-bundle.min.css'
 import 'swiper/swiper.min.css'
 import Link from 'next/link';
 import { useTranslation } from 'next-i18next';

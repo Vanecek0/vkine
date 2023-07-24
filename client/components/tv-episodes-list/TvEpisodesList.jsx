@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import tmdbApi from '../../pages/api/tmdbApi'
 import TimeFormat from '../time-format/TimeFormat';
-import dateFormat, { masks } from "dateformat";
-import 'bootstrap/dist/css/bootstrap.min.css';
+import dateFormat from "dateformat";
 import { StarFill } from 'react-bootstrap-icons';
 import tvEpisodesListStyle from './TvEpisodesList.module.css'
 

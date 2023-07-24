@@ -8,7 +8,6 @@ import d_translations from '../../public/locales/cs/translations.json'
 import CategoriesMvTv from '../../components/categories-sections/CategoriesMvTv';
 import TextArticle from '../../components/article/TextArticle';
 import Link from 'next/link';
-import { Github, Instagram } from 'react-bootstrap-icons';
 import Socials from '../../components/socials/Socials';
 import donateBackground from '../../assets/articles/fast_and_furious.jpg'
 

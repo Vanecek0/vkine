@@ -5,7 +5,6 @@ import { useRouter } from 'next/router';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import personStyle from './Person.module.css'
 import dateFormat from "dateformat";
-import 'bootstrap/dist/css/bootstrap.min.css';
 import { Facebook, Instagram, Link45deg, Twitter } from 'react-bootstrap-icons';
 import CastMedia from '../../components/cast-media/CastMedia';
 import CastTimeline from '../../components/cast-timeline/CastTimeline';

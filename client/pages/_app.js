@@ -1,6 +1,7 @@
 import nextI18NextConfig from "../next-i18next.config"
 import "../styles/globals.css"
 import Header from "../components/header/Header";
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { appWithTranslation } from "next-i18next"
 import Footer from "../components/footer/Footer";
 import { SSRProvider } from "react-bootstrap";

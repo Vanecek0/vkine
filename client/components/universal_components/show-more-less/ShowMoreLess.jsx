@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import { ChevronDown, ChevronUp } from 'react-bootstrap-icons';
 import { useTranslation } from 'next-i18next';
 import d_translations from '../../../public/locales/cs/translations.json'

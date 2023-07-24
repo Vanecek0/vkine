@@ -1,11 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react'
 import tmdbApi from '../../pages/api/tmdbApi'
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { CameraVideoOffFill, ChevronLeft, ChevronRight, Image } from 'react-bootstrap-icons';
+import { ChevronLeft, ChevronRight, Image } from 'react-bootstrap-icons';
 import noImage from '../../assets/image.png';
 import config from '../../pages/api/config';
 import mediaListStyle from "./mediaList.module.css";
-import MediaView, { ViewModal } from '../media-view/MediaView';
+import MediaView from '../media-view/MediaView';
 import ProgressiveLoader from '../progressive-loader/ProgressiveLoader';
 import { useTranslation } from 'next-i18next';
 import d_translations from '../../public/locales/cs/translations.json'

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import { ArrowLeft } from 'react-bootstrap-icons';
 import config from '../api/config';
 import tmdbApi from '../api/tmdbApi';
@@ -19,7 +18,7 @@ import Head from 'next/head';
 
 const Collection = () => {
     const router = useRouter();
-    const { query, isReady } = router;
+    const { isReady } = router;
     const { collectionID } = router.query;
     const [item, setItem] = useState();
     const [backdrops, setBackdrops] = useState();

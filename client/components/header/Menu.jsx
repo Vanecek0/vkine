@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { useTranslation } from 'next-i18next';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import { List } from 'react-bootstrap-icons';
 import logo from '../../assets/logo.svg';
 import menuStyle from './Menu.module.css'
