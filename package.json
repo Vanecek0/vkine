@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "next dev ./client -p 3000",
     "build": "next build ./client",
-    "start": "next start ./client -p 3000"
+    "start": "next start ./client -p $PORT"
   },
   "author": "",
   "license": "ISC",
