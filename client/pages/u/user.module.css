@@ -1,28 +1,151 @@
-.profileContainer {
-
-    height: 100vh;
-    padding: 100pt 30pt;
+.profileWrapper {
+    padding: 100pt 0 30pt 0;
+    position: relative;
 }
 
-.profileContainer .profilePhoto {
+.profileWrapper .profileWallpaper {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: -1;
+}
+
+.profileWrapper .profileWallpaper::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 500px;
+    background-image: linear-gradient(to top, #090909, transparent);
+}
+
+.profileWrapper .profileWallpaper::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.55);
+    transition: .5s ease;
+}
+
+.profileContainer {
+    display: flex;
+    align-items: center;
+}
+
+.profileContainer .profileDefaultLogo {
     width: 150px;
     height: 150px;
     background-color: blue;
+    z-index: 0;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.profileContainer .profilePhoto a {
-    display: block;
-    width: 100%;
-    height: 100%;
+.profileContainer .profileImage {
+    width: 150px;
+    height: 150px;
+    background-color: #090909;
+    background-position: center;
+    z-index: 1;
 }
 
-.profileContainer .profilePhoto a span {
+.profileContainer .profileDefaultLogo a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    color: white;
+}
+
+.profileContainer .profileDefaultLogo a span {
     display: inline-flex;
     flex-wrap: nowrap;
     align-items: center;
     justify-content: center;
     font-size: 4em;
+}
+
+.profileContainer .profileInfo {
+    padding-left: 30pt;
+    color: white;
+}
+
+.profileContainer .profileInfo h2 span {
+    color: rgb(200,200,200)
+}
+
+.userContent {
+    color: white;
+}
+
+.userContent .userTextStatisticsWrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20pt;
+}
+
+.userContent .userTextStatistics {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 15pt;
+    user-select: none;
+}
+
+.userContent .userTextStatisticsChild {
+    margin: 0 15pt 0 15pt;
+}
+
+.userContent .userTextStatistics .userTextStatisticsChild h3{
+    font-size: 1.3em;
+    margin: 0;
+}
+
+.userContent .userTextStatistics .userTextStatisticsChild p{
+    font-size: 2em;
+    color: #5b89ca;
+    margin: 0;
+    font-weight: 900;
+    flex: 1;
+}
+
+.userContent .userGraphStatistics .userGraphStatisticsChild h3 {
+    font-size: 1.3em;
+}
+
+.userContent .userGraphStatistics .userGraphStatisticsGroup {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 5pt;
+}
+
+.userContent .userGraphStatistics .userGraphStatisticsTabs {
+    width: 50%;
+}
+
+@media only screen and (max-width: 960px) {
+    .userContent .userTextStatistics .userTextStatisticsChild {
+        white-space: nowrap;
+    }
+    .userContent .userTextStatistics .userTextStatisticsChild h3 {
+        font-size: 1.1em;
+    }
+    .userContent .userTextStatistics .userTextStatisticsChild p {
+        font-size: 1.1em;
+    }
 }

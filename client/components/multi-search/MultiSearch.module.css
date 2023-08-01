@@ -32,7 +32,6 @@
     transform: translateY(-45%);
     position: absolute;
     opacity: 1;
-    z-index: 99;
 }
 
 .multiSearchContent form {
@@ -46,6 +45,7 @@
     top: 25px;
     left: 0;
     right: 0;
+    z-index: 99;
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
     position: relative;
