@@ -47,7 +47,7 @@ export default function Profile({ data, actualUser }) {
                 <div className={`container ${userStyle.profileContainer}`}>
                     <div className={`${userStyle.profilePhotoWrapper}`}>
 
-                        {userData.profileImage != null ?
+                        {userData.profileImage != "" ?
                             (<Link href={`/u/${userData.nickname}`}><ProgressiveLoader
                                 isBackground={true}
                                 lowRes={null}

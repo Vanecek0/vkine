@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { mvtvType } from '../../pages/api/tmdbApi';
 import config from '../../pages/api/config';
 import Link from 'next/link';
-import { Info } from 'react-bootstrap-icons';
+import { BookmarkFill, HeartFill, Info } from 'react-bootstrap-icons';
 import noImage from '../../assets/image.png';
 import Rating from '../rating/Rating';
 import ProgressiveLoader from '../progressive-loader/ProgressiveLoader';
@@ -13,6 +13,7 @@ const MovieCard = (props) => {
     const item = props.item;
     const with_title = props.with_title == null ? true : props.with_title
     const with_rating = props.with_rating == null ? true : props.with_rating
+    const with_listBar = props.with_listBar == null ? false : props.with_listBar
     const nameDashed = (item.title || item.name) != null ? (item.title || item.name).toLowerCase().normalize("NFD")
         .replace(/[\u0300-\u036f]+/g, '')
         .replace(/\s+/g, '-')
@@ -34,7 +35,6 @@ const MovieCard = (props) => {
                         highRes={item.poster_path || item.backdrop_path != null ? config.w400(item.poster_path || item.backdrop_path) : config.noImage(noImage).src}
                         blur={2} />
                 </div>
-
                 <button className={`${movieCardStyle.btn} btn btn-primary`}>
                     <Info size={40}></Info>
                 </button>
@@ -43,6 +43,10 @@ const MovieCard = (props) => {
                         <Rating rating={item.vote_average} vote_count={item.vote_count} />
                     </div>
                 ) : null}
+                <div className={movieCardStyle.actionButtons}>
+                    <Link href={link}><HeartFill size={18} className={movieCardStyle.favouritesIcon}/></Link>
+                    <Link href={link}><BookmarkFill size={18} className={movieCardStyle.watchListIcon}/></Link>
+                </div>
             </div>
             {with_title ? (<h3 className={`${movieCardStyle.title} title text-light`}>{item.title || item.name}</h3>) : null}
         </Link>

@@ -28,6 +28,76 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 100px;
+    height: 150px;
     background-image: linear-gradient(to top, #090909, transparent)
+}
+
+.listWrapper {
+    margin-top: -150px;
+    position: relative;
+}
+
+.listContainer {
+    color: white;
+}
+
+.listInfo .author {
+    font-size: 1.3em;
+    display: flex;
+    align-items: center;
+}
+
+.listInfo .author .authorNickname {
+    margin: 0 0 0 10pt;
+}
+
+.listInfo .author .authorNickname a {
+    color: white;
+    text-decoration: none;
+}
+
+.listInfo .description {
+    font-size: 1.3em;
+    max-width: 80%;
+}
+
+.listInfo .profileImage {
+    width: 65px;
+    height: 65px;
+    background-color: #090909;
+    background-size: cover;
+    background-position: center;
+    z-index: 1;
+}
+
+.listInfo .profileDefaultLogo {
+    width: 65px;
+    height: 65px;
+    background-color: blue;
+    z-index: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.listInfo .profileDefaultLogo a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    color: white;
+}
+
+.listInfo .profileDefaultLogo a span {
+    display: inline-flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8em;
+}
+
+.listContent {
+
 }

@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react'
 import tmdbApi, { mvtvType } from '../../pages/api/tmdbApi';
 import config from '../../pages/api/config';
 import movieDetailStyle from './MovieDetail.module.css';
-import { ArrowLeft, Facebook, Film, Instagram, Link45deg, Twitter } from 'react-bootstrap-icons';
+import { ArrowLeft, BookmarkFill, Facebook, Film, HeartFill, Instagram, Link45deg, Twitter } from 'react-bootstrap-icons';
 import CastList from '../../components/cast-list/CastList';
 import { NumericFormat } from 'react-number-format';
 import TimeFormat from '../../components/time-format/TimeFormat';
@@ -24,6 +24,7 @@ import PageNotFound from '../page-not-found/PageNotFound';
 import Head from 'next/head';
 import d_translations from '../../public/locales/cs/translations.json'
 import MediaView from '../../components/media-view/MediaView';
+import Link from 'next/link';
 
 export default function Detail() {
   const router = useRouter()
@@ -49,13 +50,13 @@ export default function Detail() {
       try {
         const response = await tmdbApi.detail(mvtvType.movie, movieID, { params })
         titleDashed = (response.title || response.name).toLowerCase().normalize("NFD")
-        .replace(/[\u0300-\u036f]+/g, '')
-        .replace(/\s+/g, '-')
-        .replace(/–/g, '-')
-        .replace(/[\/\\"':;,\.\-\!\?\(\)\[\]\{\}\+\*\/=<>\|%~^&#@$€£¥]+/g, '-')
-        .replace(/\.{2,}/g, '-')
-        .replace(/-{2,}/g, '-')
-        .replace(/-+$/g, '');
+          .replace(/[\u0300-\u036f]+/g, '')
+          .replace(/\s+/g, '-')
+          .replace(/–/g, '-')
+          .replace(/[\/\\"':;,\.\-\!\?\(\)\[\]\{\}\+\*\/=<>\|%~^&#@$€£¥]+/g, '-')
+          .replace(/\.{2,}/g, '-')
+          .replace(/-{2,}/g, '-')
+          .replace(/-+$/g, '');
         (movieID != (response.id + '-' + titleDashed)) ? router.push({ pathname: '../' + mvtypePath + '/' + response.id + '-' + titleDashed }) : null;
         setItem(response);
         setLoading(false)
@@ -160,13 +161,18 @@ export default function Detail() {
                         ))
                       }
                     </div>
-
-                    <p className='mt-3 d-inline-flex align-items-center'>
-                      <span className={`${movieDetailStyle.rating} d-block me-2`}>
-                        <Rating rating={item.vote_average} vote_count={item.vote_count} />
-                      </span>
-                      <span className='pe-3'> {t('common.ratingText', d_translations.common.ratingText)} </span>
-                    </p>
+                    <div className='d-inline-flex align-items-center gap-2'>
+                      <div className='mt-3 mb-3 d-inline-flex align-items-center'>
+                        <span className={`${movieDetailStyle.rating} d-block me-2`}>
+                          <Rating rating={item.vote_average} vote_count={item.vote_count} />
+                        </span>
+                        <span className='pe-3'> {t('common.ratingText', d_translations.common.ratingText)} </span>
+                      </div>
+                      <div className={`gap-2 d-flex ${movieDetailStyle.actionButtons}`}>
+                        <Link href={'#'} className={'btn btn-dark rounded-circle d-flex align-items-center justify-content-center'}><HeartFill size={18} className={movieDetailStyle.favouritesIcon} /></Link>
+                        <Link href={'#'} className={'btn btn-dark rounded-circle d-flex align-items-center justify-content-center'}><BookmarkFill size={18} className={movieDetailStyle.watchListIcon} /></Link>
+                      </div>
+                    </div>
                     {item.runtime > 0 ? <p>{t('detail.runtime', d_translations.detail.runtime)} : <TimeFormat value={item.runtime} /></p> : ''}
                     <div className={`${movieDetailStyle.overview} mt-3 mb-3`}>
                       <LanguageFallback

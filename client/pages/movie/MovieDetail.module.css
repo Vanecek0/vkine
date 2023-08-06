@@ -267,6 +267,19 @@
     padding: 0 10pt 0 10pt;
 }
 
+.actionButtons a {
+    width: 50px;
+    height: 50px;
+}
+
+.actionButtons a:hover .favouritesIcon {
+    color: red;
+}
+
+.actionButtons a:hover .watchListIcon {
+    color: yellow;
+}
+
 
 @media only screen and (max-width: 960px) {
     .movieContent {

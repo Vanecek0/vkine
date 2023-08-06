@@ -57,6 +57,7 @@
     height: 150px;
     background-color: #090909;
     background-position: center;
+    background-size: cover;
     z-index: 1;
 }
 

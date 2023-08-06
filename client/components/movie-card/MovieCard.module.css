@@ -19,7 +19,7 @@
     left: 0;
     bottom: 0;
     right: 0;
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: rgba(0, 0, 0, 0.45);
     opacity: 0;
     transition: opacity .3s ease;
     border-radius: 10px;
@@ -27,7 +27,7 @@
 }
 
 .movieCard:hover::before {
-    opacity: .8;
+    opacity: 1;
 }
 
 .movieCard .btn {
@@ -74,6 +74,36 @@
     right: 1px;
     width: 50px;
     font-weight: bold;
+}
+
+.movieCard .actionButtons {
+    display: flex;
+    position: absolute;
+    padding: 5pt;
+    z-index: 1;
+    top: 0;
+    opacity: .5;
+    justify-content: end;
+    width: 100%;
+    font-weight: bold;
+}
+
+.movieCard .actionButtons a {
+    text-decoration: none;
+    color: white;
+    margin: 0 2pt 0 2pt;
+}
+
+.movieCard:hover > .actionButtons {
+    opacity: 1;
+}
+
+.movieCard .actionButtons a .favouritesIcon:hover {
+    color: red;
+}
+
+.movieCard .actionButtons a .watchListIcon:hover {
+    color: yellow;
 }
 
 .movieLink {
