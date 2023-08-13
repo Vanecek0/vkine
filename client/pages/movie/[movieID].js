@@ -24,12 +24,14 @@ import PageNotFound from '../page-not-found/PageNotFound';
 import Head from 'next/head';
 import d_translations from '../../public/locales/cs/translations.json'
 import MediaView from '../../components/media-view/MediaView';
-import Link from 'next/link';
+import { PrismaClient } from '@prisma/client';
+import { getSession, useSession } from 'next-auth/react';
 
-export default function Detail() {
+export default function Detail({ favourites }) {
   const router = useRouter()
   const { query, isReady } = router;
   const { movieID } = router.query
+  const [isFavourite, setIsFavourite] = useState(Object.keys(favourites).length !== 0)
 
   const [item, setItem] = useState();
   const path = router.pathname.split('/').filter(e => e);
@@ -37,6 +39,8 @@ export default function Detail() {
   const language = router.locale;
   const { t } = useTranslation('translations')
   const [loading, setLoading] = useState(true);
+  const session = useSession();
+  const user = session.status != 'loading' && session.data ? session.data.user : null;
   var titleDashed = '';
   const [trailerModalActive, setTrailerModalActive] = useState(false);
   const [trailerItems, setTrailerItems] = useState({});
@@ -78,11 +82,32 @@ export default function Detail() {
     }
   }, [isReady, movieID, mvtypePath, language])
 
-
-
   const onTrailerHandler = () => {
     setTrailerModalActive(true);
   }
+
+  const handleAddFavourite = async (mvtvType, userId, mvtvId) => {
+    const response = await fetch(`/api/user_fav_mvtv/${mvtvType}/${userId}/${mvtvId}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ isFavorite: true }),
+    });
+    setIsFavourite(true)
+  };
+
+  const handleRemoveFavourite = async (mvtvType, userId, mvtvId) => {
+    const response = await fetch(`/api/user_fav_mvtv/${mvtvType}/${userId}/${mvtvId}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ isFavorite: false }),
+    });
+    setIsFavourite(false)
+  };
+
 
   if (!isReady) {
     return null;
@@ -169,8 +194,30 @@ export default function Detail() {
                         <span className='pe-3'> {t('common.ratingText', d_translations.common.ratingText)} </span>
                       </div>
                       <div className={`gap-2 d-flex ${movieDetailStyle.actionButtons}`}>
-                        <Link href={'#'} className={'btn btn-dark rounded-circle d-flex align-items-center justify-content-center'}><HeartFill size={18} className={movieDetailStyle.favouritesIcon} /></Link>
-                        <Link href={'#'} className={'btn btn-dark rounded-circle d-flex align-items-center justify-content-center'}><BookmarkFill size={18} className={movieDetailStyle.watchListIcon} /></Link>
+                        <div className="vk_tooltip_parent">
+                          {isFavourite && user ? (
+                            <>
+                              <div onClick={() => handleRemoveFavourite(mvtvType.movie, user != null && user.id, item.id)} className={'btn btn-dark rounded-circle d-flex align-items-center justify-content-center'}><HeartFill size={18} className={movieDetailStyle.favouritesIconAdded} /></div>
+                              <div className="vk_tooltip"><span>Odebrat z oblíbených</span></div>
+                            </>
+                          ) : (
+                            user ? (
+                              <>
+                                <div onClick={() => handleAddFavourite(mvtvType.movie, user != null && user.id, item.id)} className={'btn btn-dark rounded-circle d-flex align-items-center justify-content-center'}><HeartFill size={18} className={movieDetailStyle.favouritesIcon} /></div>
+                                <div className="vk_tooltip"><span>Přidat do oblíbených</span></div>
+                              </>
+                            ) : (
+                              <>
+                                <div className={'btn btn-dark rounded-circle d-flex align-items-center justify-content-center disabled'}><HeartFill size={18} className={movieDetailStyle.favouritesIconDisabled} /></div>
+                                <div className="vk_tooltip"><span>Pro přidání do oblíbených se prosím přihlaste</span></div>
+                              </>
+                            )
+                          )}
+                        </div>
+                        <div className='vk_tooltip_parent'>
+                          <div className={'btn btn-dark rounded-circle d-flex align-items-center justify-content-center'}><BookmarkFill size={18} className={movieDetailStyle.watchListIcon} /></div>
+                          <div className="vk_tooltip"><span>{isFavourite ? "Odebrat z oblíbených" : "Přidat do oblíbených"}</span></div>
+                        </div>
                       </div>
                     </div>
                     {item.runtime > 0 ? <p>{t('detail.runtime', d_translations.detail.runtime)} : <TimeFormat value={item.runtime} /></p> : ''}
@@ -235,4 +282,54 @@ export default function Detail() {
       }
     </div>
   )
+}
+
+
+export const getServerSideProps = async (context) => {
+  const prisma = new PrismaClient();
+  console.log(await getSession(context))
+  const session = await getSession(context);
+  const { movieID } = context.params
+  var favouritesData = null;
+  if (session) {
+    try {
+      const { user } = session;
+      favouritesData = await prisma.userFavourites.findMany({
+        where: {
+          itemId: parseInt(movieID),
+          userId: user.id
+        },
+        include: {
+          user: true
+        }
+      })
+      /*watchlistData = await prisma.userWatchlist.findMany({
+        where: {
+          itemId: parseInt(movieID),
+          userId: user.id
+        },
+        include: {
+          user: true
+        }
+      })*/
+    } catch (error) {
+      throw new Error(error)
+    } finally {
+      await prisma.$disconnect();
+    }
+    return {
+      props: {
+        favourites: JSON.parse(JSON.stringify(favouritesData)),
+        watchlist: JSON.parse(JSON.stringify(favouritesData))
+      }
+    }
+  } else {
+    return {
+      props: {
+        favourites: false,
+        watchlist: false
+      }
+    }
+  }
+
 }

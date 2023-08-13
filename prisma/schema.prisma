@@ -14,16 +14,18 @@ datasource db {
 }
 
 model User {
-  id        Int       @id @default(autoincrement())
-  username  String    @unique @default("")
-  email     String    @unique @default("")
-  password  String    @default("")
-  isActive  Boolean   @default(true)
-  provider  String    @default("credentials")
-  createdAt DateTime  @default(now())
-  userData  UserData?
-  List      List?     @relation(fields: [listId], references: [id])
-  listId    Int?
+  id             Int              @id @default(autoincrement())
+  username       String           @unique @default("")
+  email          String           @unique @default("")
+  password       String           @default("")
+  isActive       Boolean          @default(true)
+  provider       String           @default("credentials")
+  createdAt      DateTime         @default(now())
+  userData       UserData?
+  List           List?            @relation(fields: [listId], references: [id])
+  listId         Int?
+  UserFavourites UserFavourites[]
+  UserWatchlist  UserWatchlist?
 }
 
 model UserData {
@@ -66,4 +68,22 @@ model List {
   createdAt     DateTime @default(now())
   updatedAt     DateTime @default(now())
   User          User[]
+}
+
+model UserFavourites {
+  id       Int      @id @default(autoincrement())
+  userId   Int
+  user     User     @relation(fields: [userId], references: [id])
+  itemId   Int
+  itemType String   @default("movie")
+  addedAt  DateTime @default(now())
+}
+
+model UserWatchlist {
+  userId    Int      @unique
+  user      User     @relation(fields: [userId], references: [id])
+  movies    String   @default("")
+  tvs       String   @default("")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
 }

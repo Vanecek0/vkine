@@ -74,11 +74,11 @@ export default function Profile({ data, actualUser }) {
                         </div>
                     </div>
 
-                    {/**
-                     *<ProtectedSession user={data}>
+                    
+                     <ProtectedSession user={data}>
                         <button onClick={() => signOut()}>Odhlásit se</button>
                     </ProtectedSession>
-                     **/}
+                    
                 </div>
             </div>
             <div className={`container ${userStyle.userContent}`}>

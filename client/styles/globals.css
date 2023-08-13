@@ -382,6 +382,48 @@ body {
   background-color: #000;
 }
 
+.vk_tooltip {
+  visibility: hidden;
+  position: absolute;
+  margin-top: 10px;
+  height: auto !important;
+  left: 0;
+  right: 0;
+  justify-content: center;
+  display: flex;
+  z-index: 99;
+  opacity: 0;
+  transition: opacity 0.1s ease-in-out, visibility 0.1s linear, transform 0.1s ease-in-out;
+  /* Or display: none, depending on how you want it to behave */
+}
+
+.vk_tooltip::before {
+  content: "";
+  position: absolute;
+  top: -8px; /* Position triangle above the tooltip */
+  left: 50%;
+  transform: translateX(-50%);
+  border-style: solid;
+  border-width: 0 8px 8px 8px;
+  border-color: transparent transparent #212529 transparent;
+}
+
+.vk_tooltip span{
+  background-color: #212529;
+  white-space: nowrap;
+  border-radius: 5px;
+  padding: 3pt 8pt 3pt 8pt;
+}
+
+.vk_tooltip_parent {
+  position: relative;
+}
+
+.vk_tooltip_parent:hover > .vk_tooltip {
+  visibility: visible;
+  opacity: 1;
+}
+
 @media only screen and (max-width: 480px) {
   .timelineContent .castTimelineItem .MuiButtonBase-root {
     grid-template-columns: 10pt 1fr 0.5fr 0pt;

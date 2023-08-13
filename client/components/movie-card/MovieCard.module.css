@@ -88,7 +88,7 @@
     font-weight: bold;
 }
 
-.movieCard .actionButtons a {
+.movieCard .actionButtons div {
     text-decoration: none;
     color: white;
     margin: 0 2pt 0 2pt;
@@ -98,13 +98,19 @@
     opacity: 1;
 }
 
-.movieCard .actionButtons a .favouritesIcon:hover {
+.movieCard .actionButtons div .favouritesIcon:hover {
     color: red;
 }
 
-.movieCard .actionButtons a .watchListIcon:hover {
+.movieCard .actionButtons div .watchListIcon:hover {
     color: yellow;
 }
+
+.movieCard .actionButtons div:hover .favouritesIcon,
+.movieCard .actionButtons div .favouritesIconAdded {
+    color: red;
+}
+
 
 .movieLink {
     color: white;
