@@ -6,26 +6,11 @@ export default async function handler(req, res) {
     if (req.method === 'GET') {
         const { user_fav_mvtv } = req.query;
         const [mvtvType, userId, mvtvId] = user_fav_mvtv || []
-        let userDB = null;
-
-        try {
-            userDB = await prisma.user.findFirst({
-                where: {
-                    id: parseInt(userId)
-                }
-            })
-
-            (userDB.length == 0) && res.status(200).json({ error: 'User not found', message: 'The requested user does not exist.' });
-
-        } catch (error) {
-            isNaN(parseInt(userId)) && res.status(200).json({ error: 'Invalid data passed', message: 'Please enter valid data' });
-            res.status(200).json({ error: 'User not found', message: 'The requested user does not exist.' });
-        }
 
         try {
             const mvtv = await prisma.userFavourites.findMany({
                 where: {
-                    userId: parseInt(userDB.id),
+                    userId: parseInt(userId),
                     itemId: parseInt(mvtvId),
                     itemType: mvtvType
                 }
@@ -33,7 +18,7 @@ export default async function handler(req, res) {
             res.status(201).json(mvtv);
 
         } catch (error) {
-            res.status(200).json({ data: {} });
+            res.status(200).json({ data: null });
         }
 
     }

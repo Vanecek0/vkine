@@ -8,6 +8,7 @@
     transition: 0.4s ease;
 }
 
+
 .header.shrink {
     height: 5rem;
     background-color: rgba(0, 0, 0, 0.925);
@@ -54,7 +55,7 @@
         backdrop-filter: blur(10px);
         z-index: -1;
     }
-    
+
 
     .header__wrap {
         display: flex;

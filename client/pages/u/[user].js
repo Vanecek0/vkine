@@ -13,7 +13,7 @@ import AreaVChart from '../../components/charts/AreaChart';
 import RadarGroupChart from '../../components/charts/RadarGroupChart';
 import ChartsTabs, { ChartTab } from '../../components/charts/ChartsTabs';
 
-export default function Profile({ data, actualUser }) {
+export default function Profile({ data }) {
     const user = data;
     const userData = user.userData;
     const router = useRouter()
@@ -74,11 +74,11 @@ export default function Profile({ data, actualUser }) {
                         </div>
                     </div>
 
-                    
-                     <ProtectedSession user={data}>
+                    {/**
+                     *<ProtectedSession user={data}>
                         <button onClick={() => signOut()}>Odhlásit se</button>
                     </ProtectedSession>
-                    
+                     **/}
                 </div>
             </div>
             <div className={`container ${userStyle.userContent}`}>
@@ -135,23 +135,6 @@ export default function Profile({ data, actualUser }) {
                 <MovieList type={movieType.upcoming} language={language} mvtvType={mvtvType.movie}></MovieList>
             </div>
         </>
-    )
-}
-
-function ProtectedSession(props) {
-    const session = useSession();
-    return (
-        <div className={props.wrapperClassName}>
-            {session != null && session.status === "authenticated" ? (
-                <>
-                    {session.data.user.email === props.user.email ? (
-                        <div className={props.className}>
-                            {props.children}
-                        </div>
-                    ) : null}
-                </>
-            ) : ''}
-        </div>
     )
 }
 

@@ -10,16 +10,28 @@ import Head from 'next/head';
 import Script from 'next/script';
 import CookieConsent, { Cookies } from "react-cookie-consent";
 import { useRouter } from 'next/router';
+import { PrismaClient } from '@prisma/client';
+import { useSession } from 'next-auth/react';
+import Link from 'next/link';
+import ProgressiveLoader from '../progressive-loader/ProgressiveLoader';
+import ProfileIconDropdown from './ProfileIconDropdown';
 
-const Header = () => {
+export default function Header() {
   const headerRef = useRef(null);
   const [isSearchActive, setIsSearchActive] = useState(false);
+  const [isProfileContextMenuActive, setIsProfileContextMenuActive] = useState(false);
   const router = useRouter();
+  const session = useSession();
+  const user = session.data != null && session.data.user;
   const language = router.locale;
 
   const searchHandler = (e) => {
     setIsSearchActive(current => !current)
     document.getElementById("search-input").focus();
+  }
+
+  const profileContextMenu = (e) => {
+    setIsProfileContextMenuActive(current => !current)
   }
 
   useEffect(() => {
@@ -77,11 +89,14 @@ const Header = () => {
         <div className={`${HeaderStyle.header__wrap} header__wrap container`}>
           <div className={`${HeaderStyle.header__nav} header__nav`}>
             <Menu />
-            <div className={`${HeaderStyle.header__other} d-inline-flex justify-content-end align-items-baseline`}>
-              <button className={`${HeaderStyle.searchButton} ${HeaderStyle.rounded}`} onClick={searchHandler}>
-                <Search fontSize={20} fontWeight={80} className='text-white'></Search>
-              </button>
-              <LanguageDropdown />
+            <div className={`d-inline-flex justify-content-end align-items-center gap-2`}>
+              <ProfileIconDropdown session={session} />
+              <div className='d-inline-flex align-items-baseline'>
+                <button className={`${HeaderStyle.searchButton} ${HeaderStyle.rounded}`} onClick={searchHandler}>
+                  <Search fontSize={19} fontWeight={80} className='text-white'></Search>
+                </button>
+                <LanguageDropdown />
+              </div>
             </div>
           </div>
         </div>
@@ -96,11 +111,9 @@ const Header = () => {
         buttonStyle={{ color: "#fff", background: "#0d6efd", fontSize: "15px" }}
         expires={30}
       >
-          <b>Tato webová stránka používá cookies</b>
-          <p>Dalším procházením tohoto webu vyjadřujete souhlas s jejich používáním.</p>
+        <b>Tato webová stránka používá cookies</b>
+        <p>Dalším procházením tohoto webu vyjadřujete souhlas s jejich používáním.</p>
       </CookieConsent>
     </>
   );
 }
-
-export default Header;

@@ -25,12 +25,12 @@ const MovieCard = (props) => {
     : '';
   const link = '/' + mvtvType[props.mvtvType] + '/' + item.id + '-' + nameDashed;
 
-
   useEffect(() => {
     props.isFavourite
       .then(response => response.json())
       .then(data => {
-        setIsFavourite(Object.keys(data).length !== 0);
+        setIsFavourite(data.length != 0 && !("error" in data));
+        console.log(data)
       })
       .catch(error => {
         console.error('Error:', error);
