@@ -149,18 +149,18 @@ const HeroSlideItem = (props) => {
                                     <div className={heroStyle.overview}>
                                         {
 
-                                            item.overview.length <= 0 || item.overview == null ?
+                                            item.overview.length <= -2 || item.overview == null ?
                                                 <LanguageFallback
                                                     language={props.language}
                                                     resKey={'overview'}
                                                     fetchData={tmdbApi.detail}
                                                     mainParams={[props.mvtvType, item.id]}
-                                                    maxTextLength={225}
+                                                    maxTextLength={223}
                                                     isString={true}
                                                     showMoreLessButton={false}
                                                     otherParams={{ language: props.language }}
                                                 />
-                                                : (<ShowMoreLess text={item.overview} maxLength={225} showButton={false} />)
+                                                : (<ShowMoreLess text={item.overview} maxLength={223} showButton={false} />)
                                         }
                                     </div>
                                 </div>

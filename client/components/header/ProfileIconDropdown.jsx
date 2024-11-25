@@ -98,7 +98,7 @@ const ProfileIconDropdown = () => {
             <div className='d-flex'>
                 <div ref={signupOfferRef}>
                     <Link className={`btn btn-dark btn-link text-white fw-bold text-decoration-none`} href={'/login'}>Sign In</Link>
-                    <ThemeProvider theme={darkTheme}>
+                    {/*<ThemeProvider theme={darkTheme}>
                         <Popover
                             id={id}
                             open={signupOfferOpen}
@@ -111,7 +111,7 @@ const ProfileIconDropdown = () => {
                         >
                             <span>Test</span>
                         </Popover>
-                    </ThemeProvider>
+                    </ThemeProvider>*/}
                 </div>
             </div>
         )

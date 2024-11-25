@@ -25,7 +25,7 @@ const MovieCard = (props) => {
     : '';
   const link = '/' + mvtvType[props.mvtvType] + '/' + item.id + '-' + nameDashed;
 
-  useEffect(() => {
+  /*useEffect(() => {
     props.isFavourite
       .then(response => response.json())
       .then(data => {
@@ -35,7 +35,7 @@ const MovieCard = (props) => {
       .catch(error => {
         console.error('Error:', error);
       });
-  }, [props.isFavourite]);
+  }, [props.isFavourite]);*/
 
 
   const handleAddFavourite = async (mvtvType, userId, mvtvId) => {
