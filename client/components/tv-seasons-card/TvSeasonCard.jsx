@@ -3,7 +3,6 @@ import noImage from '../../assets/image.svg';
 import dateFormat from "dateformat";
 import tvSeasonCardStyle from './tvSeasonCard.module.css'
 import { useTranslation } from 'next-i18next';
-import d_translations from '../../public/locales/cs/translations.json'
 import ProgressiveLoader from '../progressive-loader/ProgressiveLoader';
 
 const TvSeasonCard = (props) => {
@@ -25,7 +24,7 @@ const TvSeasonCard = (props) => {
                 </div>
                 <div className={`${tvSeasonCardStyle.tvseasonContent} ms-4 me-4 mt-4 mb-4`}>
                     <h3 className={`${tvSeasonCardStyle.title} text-light`}>{item.title || item.name}</h3>
-                    <p className="text-muted">{dateFormat(new Date(item.air_date), 'yyyy-mm-dd')} | {item.episode_count} {t('common.episodes', d_translations.common.episodes)}</p>
+                    <p className="text-secondary">{dateFormat(new Date(item.air_date), 'yyyy-mm-dd')} | {item.episode_count} {t('common.episodes')}</p>
                     <p>{item.overview}</p>
                 </div>
             </div>

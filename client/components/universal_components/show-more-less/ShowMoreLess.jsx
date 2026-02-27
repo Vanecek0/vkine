@@ -1,13 +1,12 @@
 import { useState } from 'react';
 import { ChevronDown, ChevronUp } from 'react-bootstrap-icons';
 import { useTranslation } from 'next-i18next';
-import d_translations from '../../../public/locales/cs/translations.json'
 
 const ShowMoreLess = ({ text, maxLength, truncatedEnding = '...', moreLabel, lessLabel, showButton = true }) => {
   const [expanded, setExpanded] = useState(false);
   const { t } = useTranslation('translations')
-  moreLabel = moreLabel == null ? t('common.showMore', d_translations.common.showMore) : moreLabel;
-  lessLabel = lessLabel == null ? t('common.showLess', d_translations.common.showLess) : lessLabel;
+  moreLabel = moreLabel == null ? t('common.showMore') : moreLabel;
+  lessLabel = lessLabel == null ? t('common.showLess') : lessLabel;
 
   return (
     <div>

@@ -8,6 +8,7 @@ import MovieList from '../../components/movie-list/MovieList';
 import tmdbApi, { mvtvType } from '../api/tmdbApi';
 import { LockFill } from 'react-bootstrap-icons';
 import ShowMoreLess from '../../components/universal_components/show-more-less/ShowMoreLess';
+import { withI18n } from '../../helper/with18n';
 
 const List = (listData) => {
     if (!listData?.data?.length) {
@@ -121,4 +122,5 @@ const List = (listData) => {
     )
 }
 
+export const getServerSideProps = withI18n();
 export default List

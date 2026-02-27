@@ -11,9 +11,9 @@ import Rating from '../../components/rating/Rating';
 import LanguageFallback from '../../components/universal_components/language-fallback/LanguageFallback';
 import TimeFormat from '../../components/time-format/TimeFormat';
 import MovieList from '../../components/movie-list/MovieList';
-import d_translations from '../../public/locales/cs/translations.json'
 import PageNotFound from '../page-not-found/PageNotFound';
 import Head from 'next/head';
+import { withI18n } from '../../helper/with18n';
 
 const Collection = () => {
     const router = useRouter();
@@ -63,9 +63,9 @@ const Collection = () => {
                         <Head>
                             <title>{item.title || item.name} – Vkine.cz</title>
                             <meta property="og:title" content={`${item.title || item.name} – Vkine.cz`}></meta>
-                            <meta name='description' content={t('head.description', d_translations.head.description)}></meta>
-                            <meta property="og:description" content={t('head.description', d_translations.head.description)}></meta>
-                            <meta name='keywords' content={t('head.keywords', d_translations.head.keywords)}></meta>
+                            <meta name='description' content={t('head.description')}></meta>
+                            <meta property="og:description" content={t('head.description')}></meta>
+                            <meta name='keywords' content={t('head.keywords')}></meta>
                             <link rel="canonical" href={`https://www.vkine.cz/`}></link>
                             <meta property="og:locale" content="cs_CZ"></meta>
                             <meta property="og:locale:alternate" content="sk_SK"></meta>
@@ -82,7 +82,7 @@ const Collection = () => {
                             <meta name="twitter:card" content="summary_large_image"></meta>
                             <meta name="twitter:image" content="https://www.vkine.cz/vkine_meta.png"></meta>
                             <meta name="twitter:title" content={`${item.title || item.name} – Vkine.cz`}></meta>
-                            <meta name="twitter:description" content={t('head.description', d_translations.head.description)}></meta>
+                            <meta name="twitter:description" content={t('head.description')}></meta>
                         </Head>
                         <ProgressiveLoader
                             isBackground={true}
@@ -119,9 +119,9 @@ const Collection = () => {
                                     <span className={`${collectionDetailStyle.rating} d-block me-2`}>
                                         <Rating rating={item.vote_average} vote_count={item.vote_count} />
                                     </span>
-                                    <span className='pe-3'> {t('common.ratingText', d_translations.common.ratingText)} </span>
+                                    <span className='pe-3'> {t('common.ratingText')} </span>
                                 </p>
-                                {item.runtime > 0 ? <p>{t('detail.runtime', d_translations.detail.runtime)} : <TimeFormat value={item.runtime} /></p> : ''}
+                                {item.runtime > 0 ? <p>{t('detail.runtime')} : <TimeFormat value={item.runtime} /></p> : ''}
                                 <div className={`${collectionDetailStyle.overview} mt-3 mb-3`}>
                                     <LanguageFallback
                                         language={language}
@@ -133,7 +133,7 @@ const Collection = () => {
                                         otherParams={{ language: 'en' }}
                                     />
                                 </div>
-                                <p><b>{t('collection.partsTitle', d_translations.collection.partsTitle)}:</b> {item.parts.length}</p>
+                                <p><b>{t('collection.partsTitle')}:</b> {item.parts.length}</p>
                                 <MovieList items={item.parts} mvtvType={'movie'}></MovieList>
                             </div>
                         </div>
@@ -144,4 +144,5 @@ const Collection = () => {
     )
 }
 
+export const getServerSideProps = withI18n();
 export default Collection

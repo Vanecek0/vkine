@@ -14,7 +14,6 @@ import ImageList from '../../components/media-list/ImageList';
 import TvSeasonsList from '../../components/tv-seasons-list/TvSeasonsList';
 import noImage from '../../assets/image.svg'
 import { useTranslation } from 'next-i18next';
-import d_translations from '../../public/locales/cs/translations.json'
 import Rating from '../../components/rating/Rating';
 import ProgressiveLoader from '../../components/progressive-loader/ProgressiveLoader';
 import LanguageFallback from '../../components/universal_components/language-fallback/LanguageFallback';
@@ -23,6 +22,7 @@ import PageNotFound from '../page-not-found/PageNotFound';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
 import MediaView from '../../components/media-view/MediaView';
+import { withI18n } from '../../helper/with18n';
 
 const Detail = () => {
   const router = useRouter();
@@ -165,9 +165,9 @@ const Detail = () => {
                       <span className={`${tvDetailStyle.rating} d-block me-2`}>
                         <Rating rating={item.vote_average} vote_count={item.vote_count} />
                       </span>
-                      <span className='pe-3'> {t('common.ratingText', d_translations.common.ratingText)} </span>
+                      <span className='pe-3'> {t('common.ratingText')} </span>
                     </p>
-                    {item.runtime > 0 ? <p>{t('detail.runtime', d_translations.detail.runtime)} : <TimeFormat value={item.runtime} /></p> : ''}
+                    {item.runtime > 0 ? <p>{t('detail.runtime')} : <TimeFormat value={item.runtime} /></p> : ''}
                     <div className={`${tvDetailStyle.overview} mt-3 mb-3`}>
                       <LanguageFallback
                         language={language}
@@ -179,38 +179,38 @@ const Detail = () => {
                         otherParams={{ language: 'en' }}
                       />
                     </div>
-                    <p className='text-muted'><em>{item.tagline}</em></p>
+                    <p className='text-secondary'><em>{item.tagline}</em></p>
                     <div className={tvDetailStyle.cast}>
-                      <CastList title={t('detail.cast', d_translations.detail.cast)} mvtvType={mvtypePath} id={tvID}></CastList>
+                      <CastList title={t('detail.cast')} mvtvType={mvtypePath} id={tvID}></CastList>
                     </div>
                   </div>
                 </div>
                 <div className={`${tvDetailStyle.tvDetails} mb-3 container`}>
                   <div className='mvtv-title mb-3'>
-                    <h2 className="text-white mt-3">{t('common.seasons', d_translations.common.seasons)}</h2>
+                    <h2 className="text-white mt-3">{t('common.seasons')}</h2>
                     <div className='divider'></div>
                   </div>
                   <TvSeasonsList tv_id={item.id} seasons={item.seasons.reverse()} language='en_US' />
                   <div className='mvtv-title mb-3'>
-                    <h2 className="text-white mt-3">{t('detail.overview', d_translations.detail.overview)}</h2>
+                    <h2 className="text-white mt-3">{t('detail.overview')}</h2>
                     <div className='divider'></div>
                   </div>
                   <div className={tvDetailStyle.overview}>
-                    {(item.original_title || item.original_name) != null && <p><b>{t('detail.originalTitle', d_translations.detail.originalTitle)}:</b> {item.original_title || item.original_name}</p>}
-                    {item.original_language != null && <p><b>{t('detail.originalLanguage', d_translations.detail.originalLanguage)}:</b> {item.original_language}</p>}
-                    {item.release_date != null && <p><b>{t('detail.released', d_translations.detail.released)}:</b> {((item.release_date != null && item.release_date != '') ? dateFormat(new Date(item.release_date), "d. m. yyyy") : '-')}</p>}
-                    {item.budget > 0 && <p><b>{t('detail.budget', d_translations.detail.budget)}:</b> {item.budget > 0 ? <NumericFormat value={item.budget} displayType={'text'} thousandSeparator={true} prefix={'$'} /> : '-'}</p>}
-                    {item.revenue > 0 && <p><b>{t('detail.revenue', d_translations.detail.revenue)}:</b> {item.revenue > 0 ? <NumericFormat value={item.revenue} displayType={'text'} thousandSeparator={true} prefix={'$'} /> : '-'}</p>}
+                    {(item.original_title || item.original_name) != null && <p><b>{t('detail.originalTitle')}:</b> {item.original_title || item.original_name}</p>}
+                    {item.original_language != null && <p><b>{t('detail.originalLanguage')}:</b> {item.original_language}</p>}
+                    {item.release_date != null && <p><b>{t('detail.released')}:</b> {((item.release_date != null && item.release_date != '') ? dateFormat(new Date(item.release_date), "d. m. yyyy") : '-')}</p>}
+                    {item.budget > 0 && <p><b>{t('detail.budget')}:</b> {item.budget > 0 ? <NumericFormat value={item.budget} displayType={'text'} thousandSeparator={true} prefix={'$'} /> : '-'}</p>}
+                    {item.revenue > 0 && <p><b>{t('detail.revenue')}:</b> {item.revenue > 0 ? <NumericFormat value={item.revenue} displayType={'text'} thousandSeparator={true} prefix={'$'} /> : '-'}</p>}
                   </div>
                   <div className='mvtv-title mb-3 mt-3'>
-                    <h2 className="text-white mt-3">{t('detail.media', d_translations.detail.media)}</h2>
+                    <h2 className="text-white mt-3">{t('detail.media')}</h2>
                     <div className='divider'></div>
                   </div>
                   <Tabs>
-                    <Tab title={`${t('detail.videos', d_translations.detail.videos)}`}>
+                    <Tab title={`${t('detail.videos')}`}>
                       <VideoList original_language={item.original_language} id={item.id} mvtvType={mvtypePath == 'movie' ? mvtvType.movie : mvtvType.tv}></VideoList>
                     </Tab>
-                    <Tab title={`${t('detail.wallpapers', d_translations.detail.wallpapers)}`}>
+                    <Tab title={`${t('detail.wallpapers')}`}>
                       <ImageList id={item.id} mvtvType={mvtypePath == 'movie' ? mvtvType.movie : mvtvType.tv}></ImageList>
                     </Tab>
                   </Tabs>
@@ -220,7 +220,7 @@ const Detail = () => {
                     )
                     : null}
                   <div className='mvtv-title mb-3 mt-3'>
-                    <h2 className="text-white mt-3">{t('common.similar', d_translations.common.similar)}</h2>
+                    <h2 className="text-white mt-3">{t('common.similar')}</h2>
                     <div className='divider'></div>
                   </div>
                   <MovieList id={item.id} type='recommended' language={language} mvtvType={mvtypePath == 'movie' ? mvtvType.movie : mvtvType.tv}></MovieList>
@@ -235,4 +235,5 @@ const Detail = () => {
   )
 }
 
+export const getServerSideProps = withI18n();
 export default Detail;

@@ -184,6 +184,10 @@
         "documents": "Dokumenty",
         "terms-of-use": "Zásady používania",
         "privacy-policy": "Zásady ochrany osobných údajov"
+    },
+    "errors": {
+        "notFound": "Stránka nenalezena",
+        "internalError": "Chyba serveru"
     }
     
 }

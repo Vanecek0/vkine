@@ -5,7 +5,6 @@ import { useRouter } from 'next/router';
 import { List } from 'react-bootstrap-icons';
 import logo from '../../assets/logo.svg';
 import menuStyle from './Menu.module.css'
-import d_translations from '../../public/locales/cs/translations.json'
 
 const Menu = () => {
     const { t } = useTranslation('translations');
@@ -13,19 +12,10 @@ const Menu = () => {
     const [isOpen, setIsOpen] = useState(false);
 
     const headerNav = [
-        {
-            display: t('common.home', d_translations.common.home),
-            path: '/'
-        },
-        {
-            display: t('common.movies', d_translations.common.movies),
-            path: '/movie'
-        },
-        {
-            display: t('common.tvs', d_translations.common.tvs),
-            path: '/tv'
-        },
-    ];
+    { display: t('common.home'), path: '/' },
+    { display: t('common.movies'), path: '/movie' },
+    { display: t('common.tvs'), path: '/tv' },
+];
 
     const handleMenuOpen = () => {
         setIsOpen(!isOpen);
@@ -71,4 +61,4 @@ const Menu = () => {
     )
 }
 
-export default Menu
+export default Menu;

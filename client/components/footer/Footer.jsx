@@ -39,11 +39,11 @@ const Footer = () => {
             <Link href={'/documents/privacy-policy'}>Zásady ochrany osobních údajů</Link>
           </div>
         </nav>
-        <hr className='text-muted'></hr>
+        <hr className='text-secondary'></hr>
         <div className={footerStyle.socialIcons}>
           <Socials darkMode={true} iconsSize={35}></Socials>
         </div>
-        <div className={`${footerStyle.copyright} text-muted`}>
+        <div className={`${footerStyle.copyright} text-secondary`}>
           <span>© 2022-{new Date().getFullYear()} by vkine.cz</span>
         </div>
       </div>

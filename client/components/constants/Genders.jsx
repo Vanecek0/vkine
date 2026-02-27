@@ -1,5 +1,4 @@
 import { useTranslation } from "next-i18next";
-import d_translations from '../../public/locales/cs/translations.json'
 
 const GENDER = {
     UNKNOWN: 'Unknown',
@@ -25,7 +24,7 @@ const GendersConst = ({genderNum = 0}) => {
         gender = GENDER.UNKNOWN;
     }
 
-    return t(`genders.${gender.toLowerCase()}`, d_translations.genders[gender.toLowerCase()]);
+    return t(`genders.${gender.toLowerCase()}`);
     
 }
 

@@ -1,24 +1,23 @@
 import { useTranslation } from "next-i18next";
-import d_translations from '../../public/locales/cs/translations.json'
 
 const Sorting = () => {
     const { t } = useTranslation('translations');
 
     return [
-        {value: "popularity.asc", label: t('sorting.popularity.asc', d_translations.sorting["popularity.asc"])},
-        {value: "popularity.desc", label: t('sorting.popularity.desc', d_translations.sorting["popularity.desc"])},
-        {value: "release_date.asc", label: t('sorting.release_date.asc', d_translations.sorting["release_date.asc"])},
-        {value: "release_date.desc", label: t('sorting.release_date.desc', d_translations.sorting["release_date.desc"])},
-        {value: "revenue.asc", label: t('sorting.revenue.asc', d_translations.sorting["revenue.asc"])},
-        {value: "revenue.desc", label: t('sorting.revenue.desc', d_translations.sorting["revenue.desc"])},
-        {value: "primary_release_date.asc", label: t('sorting.primary_release_date.asc', d_translations.sorting["primary_release_date.asc"])},
-        {value: "primary_release_date.desc", label: t('sorting.primary_release_date.desc', d_translations.sorting["primary_release_date.desc"])},
-        {value: "original_title.asc", label: t('sorting.original_title.asc', d_translations.sorting["original_title.asc"])},
-        {value: "original_title.desc", label: t('sorting.original_title.desc', d_translations.sorting["original_title.desc"])},
-        {value: "vote_average.asc", label: t('sorting.vote_average.asc', d_translations.sorting["vote_average.asc"])},
-        {value: "vote_average.desc", label: t('sorting.vote_average.desc', d_translations.sorting["vote_average.desc"])},
-        {value: "vote_count.asc", label: t('sorting.vote_count.asc', d_translations.sorting["vote_count.asc"])},
-        {value: "vote_count.desc", label: t('sorting.vote_count.desc', d_translations.sorting["vote_count.desc"])}
+        {value: "popularity.asc", label: t('sorting.popularity.asc')},
+        {value: "popularity.desc", label: t('sorting.popularity.desc')},
+        {value: "release_date.asc", label: t('sorting.release_date.asc')},
+        {value: "release_date.desc", label: t('sorting.release_date.desc')},
+        {value: "revenue.asc", label: t('sorting.revenue.asc')},
+        {value: "revenue.desc", label: t('sorting.revenue.desc')},
+        {value: "primary_release_date.asc", label: t('sorting.primary_release_date.asc')},
+        {value: "primary_release_date.desc", label: t('sorting.primary_release_date.desc')},
+        {value: "original_title.asc", label: t('sorting.original_title.asc')},
+        {value: "original_title.desc", label: t('sorting.original_title.desc')},
+        {value: "vote_average.asc", label: t('sorting.vote_average.asc')},
+        {value: "vote_average.desc", label: t('sorting.vote_average.desc')},
+        {value: "vote_count.asc", label: t('sorting.vote_count.asc')},
+        {value: "vote_count.desc", label: t('sorting.vote_count.desc')}
     ];
     
 }

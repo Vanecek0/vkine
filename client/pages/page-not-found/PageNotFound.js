@@ -1,3 +1,5 @@
+import { withI18n } from "../../helper/with18n"
+
 const PageNotFound = () => {
   return (
     <div className='PageNotFound'>
@@ -7,4 +9,5 @@ const PageNotFound = () => {
   )
 }
 
-export default PageNotFound
+export const getStaticProps = withI18n();
+export default PageNotFound;

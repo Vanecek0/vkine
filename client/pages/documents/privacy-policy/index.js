@@ -1,4 +1,5 @@
 import TextArticle from '../../../components/article/TextArticle'
+import { withI18n } from '../../../helper/with18n'
 
 const privacyPolicy = () => {
   return (
@@ -89,4 +90,5 @@ const privacyPolicy = () => {
   )
 }
 
+export const getStaticProps = withI18n();
 export default privacyPolicy

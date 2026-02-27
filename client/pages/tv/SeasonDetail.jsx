@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react'
 import tmdbApi from '../../pages/api/tmdbApi';
+import { withI18n } from '../../helper/with18n';
 
 const SeasonDetail = () => {
     const router = useRouter();
@@ -31,4 +32,5 @@ const SeasonDetail = () => {
     )
 }
 
+export const getStaticProps = withI18n();
 export default SeasonDetail

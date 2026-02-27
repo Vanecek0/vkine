@@ -11,11 +11,11 @@ import CastTimeline from '../../components/cast-timeline/CastTimeline';
 import noImage from '../../assets/noimage_person.png'
 import ProgressiveLoader from '../../components/progressive-loader/ProgressiveLoader';
 import { useTranslation } from 'next-i18next';
-import d_translations from '../../public/locales/cs/translations.json'
 import GendersConst from '../../components/constants/Genders';
 import LanguageFallback from '../../components/universal_components/language-fallback/LanguageFallback';
 import PageNotFound from '../page-not-found/PageNotFound';
 import Head from 'next/head';
+import { withI18n } from '../../helper/with18n';
 
 const Person = () => {
   const router = useRouter()
@@ -74,9 +74,9 @@ const Person = () => {
                 <Head>
                   <title>{item.name} – Vkine.cz</title>
                   <meta property="og:title" content={`${item.name} – Vkine.cz`}></meta>
-                  <meta name='description' content={t('head.description', d_translations.head.description)}></meta>
-                  <meta property="og:description" content={t('head.description', d_translations.head.description)}></meta>
-                  <meta name='keywords' content={t('head.keywords', d_translations.head.keywords)}></meta>
+                  <meta name='description' content={t('head.description')}></meta>
+                  <meta property="og:description" content={t('head.description')}></meta>
+                  <meta name='keywords' content={t('head.keywords')}></meta>
                   <link rel="canonical" href={`https://www.vkine.cz/`}></link>
                   <meta property="og:locale" content="cs_CZ"></meta>
                   <meta property="og:locale:alternate" content="sk_SK"></meta>
@@ -93,7 +93,7 @@ const Person = () => {
                   <meta name="twitter:card" content="summary_large_image"></meta>
                   <meta name="twitter:image" content="https://www.vkine.cz/vkine_meta.png"></meta>
                   <meta name="twitter:title" content={`${item.name} – Vkine.cz`}></meta>
-                  <meta name="twitter:description" content={t('head.description', d_translations.head.description)}></meta>
+                  <meta name="twitter:description" content={t('head.description')}></meta>
                 </Head>
                 <div>
                   <div className={personStyle.banner} />
@@ -116,13 +116,13 @@ const Person = () => {
                           {social.instagram_id != null && <a target="_blank" rel="noopener noreferrer" href={"https://www.instagram.com/" + social.instagram_id}><Instagram /></a>}
                           {item.homepage != null && <a target="_blank" rel="noopener noreferrer" href={item.homepage}><Link45deg /></a>}
                         </div>
-                        <h3>{t('people.informationTitle', d_translations.people.informationTitle)}</h3>
-                        {item.known_for_department != null ? <p><b>{t('people.knownFromText', d_translations.people.knownFromText)}:</b><br></br>{t(`departments.${item.known_for_department}`, d_translations.departments[item.known_for_department])}</p> : null}
-                        {item.gender != null ? <p><b>{t('people.genderText', d_translations.people.genderText)}:</b><br></br> <GendersConst genderNum={item.gender} /></p> : null}
-                        {item.birthday != null ? <p><b>{t('people.birthText', d_translations.people.birthText)}:</b><br></br> {dateFormat(new Date(item.birthday), "d. m. yyyy")}</p> : null}
-                        {item.deathday != null ? <p><b>{t('people.deathText', d_translations.people.deathText)}:</b><br></br> {dateFormat(new Date(item.deathday), "d. m. yyyy")} ({calculate_age(new Date(item.birthday), new Date(item.deathday))} let) </p> : null}
-                        {item.place_of_birth != null ? <p><b>{t('people.birthPlaceText', d_translations.people.birthPlaceText)}:</b><br></br> {item.place_of_birth}</p> : null}
-                        {item.also_known_as.length > 0 ? <p><b>{t('people.alsoKnownAsText', d_translations.people.alsoKnownAsText)}:</b><br></br> {item.also_known_as.map((name, i) => <span key={i}><span key={i}>{name}</span><br></br></span>)}</p> : null}
+                        <h3>{t('people.informationTitle')}</h3>
+                        {item.known_for_department != null ? <p><b>{t('people.knownFromText')}:</b><br></br>{t(`departments.${item.known_for_department}`)}</p> : null}
+                        {item.gender != null ? <p><b>{t('people.genderText')}:</b><br></br> <GendersConst genderNum={item.gender} /></p> : null}
+                        {item.birthday != null ? <p><b>{t('people.birthText')}:</b><br></br> {dateFormat(new Date(item.birthday), "d. m. yyyy")}</p> : null}
+                        {item.deathday != null ? <p><b>{t('people.deathText')}:</b><br></br> {dateFormat(new Date(item.deathday), "d. m. yyyy")} ({calculate_age(new Date(item.birthday), new Date(item.deathday))} let) </p> : null}
+                        {item.place_of_birth != null ? <p><b>{t('people.birthPlaceText')}:</b><br></br> {item.place_of_birth}</p> : null}
+                        {item.also_known_as.length > 0 ? <p><b>{t('people.alsoKnownAsText')}:</b><br></br> {item.also_known_as.map((name, i) => <span key={i}><span key={i}>{name}</span><br></br></span>)}</p> : null}
                       </div>
                     </div>
                     <div className={personStyle.person_content__info}>
@@ -132,7 +132,7 @@ const Person = () => {
                       <div className={`${personStyle.biography} mt-3 mb-1`}>
                       </div>
                       <div className={`${personStyle.biographyContent} mt-4 mb-4`}>
-                        <h4 className="text-white">{t('people.biographyLabel', d_translations.people.biographyLabel)}</h4>
+                        <h4 className="text-white">{t('people.biographyLabel')}</h4>
                         <LanguageFallback
                           language={language}
                           resKey={'biography'}
@@ -144,15 +144,15 @@ const Person = () => {
                         />
                       </div>
                       <div className={`${personStyle.knownFor} mt-4 mb-5`}>
-                        <h4 className='text-white'>{t('people.knownFromLabel', d_translations.people.knownFromLabel)}</h4>
+                        <h4 className='text-white'>{t('people.knownFromLabel')}</h4>
                         <CastMedia personId={personID} language={language} />
                       </div>
 
                       <div className={`${personStyle.actor} mt-5 mb-4`}>
-                        <CastTimeline personId={personID} title={t('people.actorTitle', d_translations.people.actorTitle)} type='cast'></CastTimeline>
+                        <CastTimeline personId={personID} title={t('people.actorTitle')} type='cast'></CastTimeline>
                       </div>
                       <div className={`${personStyle.crew} mt-5 mb-4`}>
-                        <CastTimeline personId={personID} title={t('people.crewTitle', d_translations.people.crewTitle)} type='crew'></CastTimeline>
+                        <CastTimeline personId={personID} title={t('people.crewTitle')} type='crew'></CastTimeline>
                       </div>
                     </div>
                   </div>
@@ -165,4 +165,5 @@ const Person = () => {
     </div>
   )
 }
+export const getServerSideProps = withI18n();
 export default Person

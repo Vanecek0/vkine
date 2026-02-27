@@ -4,9 +4,10 @@
   "homepage": "https://www.vkine.cz/",
   "description": "Databáze filmů a seriálů pro každého. Procházejte tisíce titulů, hledejte své oblíbené filmy nebo seriály a objevujte nové. Informace o filmech a seriálech, jejich obsazení, plakáty a trailers k dispozici jedním kliknutím.",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "dev": "next dev ./client -p 3000",
-    "build": "next build ./client",
+    "dev": "next dev ./client -p 3000 --webpack",
+    "build": "next build ./client --webpack",
     "start": "next start ./client -p 3000"
   },
   "author": "Pavel Vaněček",

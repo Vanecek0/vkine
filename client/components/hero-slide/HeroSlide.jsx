@@ -15,7 +15,6 @@ import LanguageFallback from '../universal_components/language-fallback/Language
 import ShowMoreLess from '../universal_components/show-more-less/ShowMoreLess';
 import languagesByRegion from '../constants/LanguagesByRegions.json'
 import MediaView from '../media-view/MediaView';
-import d_translations from '../../public/locales/cs/translations.json'
 
 export default function HeroSlide(props) {
     const [mvtvItems, setmvtvItems] = useState();
@@ -166,10 +165,10 @@ const HeroSlideItem = (props) => {
                                 </div>
                                 <div className={heroStyle.btns}>
                                     <button className='btn btn-lg btn-primary' onClick={() => history.push(link)}>
-                                        {t('common.findMore', d_translations.common.findMore)}
+                                        {t('common.findMore')}
                                     </button>
                                     <button className='btn btn-outline-light btn-lg' onClick={onTrailerItemsHandle}>
-                                        {t('hero.playTrailer', d_translations.hero.playTrailer)}
+                                        {t('hero.playTrailer')}
                                     </button>
                                 </div>
                             </div>

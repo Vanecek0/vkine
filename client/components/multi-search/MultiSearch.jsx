@@ -7,7 +7,6 @@ import { IconButton, TextField } from '@mui/material';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import People from '../people/People';
 import { useTranslation } from 'next-i18next';
-import d_translations from '../../public/locales/cs/translations.json'
 import { useRouter } from 'next/router';
 
 const MultiSearch = (props) => {
@@ -91,7 +90,7 @@ const MultiSearch = (props) => {
                     onChange={(e) => setInputSearch(e.target.value)}
                     id="search-input"
                     className={multiSearchStyle.searchInput}
-                    label={t("search.searchLabel", d_translations.search.searchLabel)}
+                    label={t("search.searchLabel")}
                     variant="standard"
                     InputLabelProps={{ style: { fontSize: 20 } }}
                     InputProps={
@@ -123,7 +122,7 @@ const MultiSearch = (props) => {
               {searchItems.some(e => e.profile_path) ? (
                 <div className={multiSearchStyle.people}>
                   <div className={`${multiSearchStyle.mvtvTitle} mt-5 mb-4`}>
-                    <h2 className="text-white">{t('search.people', d_translations.search.people)}</h2>
+                    <h2 className="text-white">{t('search.people')}</h2>
                     <div className="divider"></div>
                   </div>
                   <div className={multiSearchStyle.peopleGrid}>

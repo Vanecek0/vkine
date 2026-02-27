@@ -29,9 +29,9 @@ const TvEpisodesList = (props) => {
                     <p>{item.episode_number}. {item.name}</p>
                     <div className={`${tvEpisodesListStyle.ratingPill} text-light badge badge-secondary ms-2`}><StarFill size={12} />{item.vote_average}</div>
                   </div>
-                  <p><span className={`${tvEpisodesListStyle.episodeDateRuntime} text-muted`}>{(item.air_date != null ? dateFormat(new Date(item.air_date), "yyyy-mm-dd") : '0h 00min')} {item.runtime > 0 ? <><span>| </span> <TimeFormat value={item.runtime} /></> : ''}</span></p>
+                  <p><span className={`${tvEpisodesListStyle.episodeDateRuntime} text-secondary`}>{(item.air_date != null ? dateFormat(new Date(item.air_date), "yyyy-mm-dd") : '0h 00min')} {item.runtime > 0 ? <><span>| </span> <TimeFormat value={item.runtime} /></> : ''}</span></p>
                 </div>
-                <p className={`${tvEpisodesListStyle.episodeOverview} text-muted`}>{item.overview}</p>
+                <p className={`${tvEpisodesListStyle.episodeOverview} text-secondary`}>{item.overview}</p>
                 <hr />
               </div>
             ))

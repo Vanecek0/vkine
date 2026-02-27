@@ -10,8 +10,6 @@ import Link from 'next/link';
 import useVisible from '../../components/universal_components/viewport-rendering/useVisible';
 import ShowMoreLess from '../../components/universal_components/show-more-less/ShowMoreLess';
 import { useTranslation } from 'next-i18next';
-import d_translations from '../../public/locales/cs/translations.json'
-
 
 export const CollectionBanner = ({ collection_name, collection_id, language }) => {
     const [collection, setCollection] = useState();
@@ -66,14 +64,14 @@ export const CollectionBanner = ({ collection_name, collection_id, language }) =
                             }
                         </div>
                         <div className={`${collectionStyle.collection_parts} mt-3`}>
-                            <p>{t('collection.containsText', d_translations.collection.containsText)}</p>
+                            <p>{t('collection.containsText')}</p>
                             <div className={collectionStyle.collection_content}>
                                 {collection.parts.slice(0, 15).map((item, i) => (
                                     <MovieCard key={i} item={item} mvtvType={mvtvType.movie}></MovieCard>
                                 ))}
                             </div>
                         </div>
-                        <Link href={link} className={"btn btn-lg btn-primary"}>{t('collection.showCollection', d_translations.collection.showCollection)}</Link>
+                        <Link href={link} className={"btn btn-lg btn-primary"}>{t('collection.showCollection')}</Link>
                     </div>
                 </>
             ) : null}

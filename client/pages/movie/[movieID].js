@@ -22,8 +22,8 @@ import LanguageFallback from '../../components/universal_components/language-fal
 import { CollectionBanner } from '../../components/collections/Collection';
 import PageNotFound from '../page-not-found/PageNotFound';
 import Head from 'next/head';
-import d_translations from '../../public/locales/cs/translations.json'
 import MediaView from '../../components/media-view/MediaView';
+import { withI18n } from '../../helper/with18n';
 
 export default function Detail({ favourites }) {
   const router = useRouter()
@@ -96,8 +96,8 @@ export default function Detail({ favourites }) {
                   <title>{item.title || item.name} – Vkine.cz</title>
                   <meta property="og:title" content={`${item.title || item.name} – Vkine.cz`}></meta>
                   <meta name='description' content={t('head.description')}></meta>
-                  <meta property="og:description" content={t('head.description', d_translations.head.description)}></meta>
-                  <meta name='keywords' content={t('head.keywords', d_translations.head.keywords)}></meta>
+                  <meta property="og:description" content={t('head.description')}></meta>
+                  <meta name='keywords' content={t('head.keywords')}></meta>
                   <link rel="canonical" href={`https://www.vkine.cz/${mvtypePath + '/' + movieID + '-' + titleDashed}`}></link>
                   <meta property="og:locale" content="cs_CZ"></meta>
                   <meta property="og:locale:alternate" content="sk_SK"></meta>
@@ -114,7 +114,7 @@ export default function Detail({ favourites }) {
                   <meta name="twitter:card" content="summary_large_image"></meta>
                   <meta name="twitter:image" content={(item.backdrop_path) != null ? config.w300(item.backdrop_path ? item.backdrop_path : item.poster_path) : ''}></meta>
                   <meta name="twitter:title" content={`${item.title || item.name} – Vkine.cz`}></meta>
-                  <meta name="twitter:description" content={t('head.description', d_translations.head.description)}></meta>
+                  <meta name="twitter:description" content={t('head.description')}></meta>
                 </Head>
                 <ProgressiveLoader
                   isBackground={true}
@@ -163,7 +163,7 @@ export default function Detail({ favourites }) {
                         <span className={`${movieDetailStyle.rating} d-block me-2`}>
                           <Rating rating={item.vote_average} vote_count={item.vote_count} />
                         </span>
-                        <span className='pe-3'> {t('common.ratingText', d_translations.common.ratingText)} </span>
+                        <span className='pe-3'> {t('common.ratingText')} </span>
                       </div>
                       <div className={`gap-2 d-flex ${movieDetailStyle.actionButtons}`}>
                         <div className="vk_tooltip_parent">
@@ -178,7 +178,7 @@ export default function Detail({ favourites }) {
                         </div>
                       </div>
                     </div>
-                    {item.runtime > 0 ? <p>{t('detail.runtime', d_translations.detail.runtime)} : <TimeFormat value={item.runtime} /></p> : ''}
+                    {item.runtime > 0 ? <p>{t('detail.runtime')} : <TimeFormat value={item.runtime} /></p> : ''}
                     <div className={`${movieDetailStyle.overview} mt-3 mb-3`}>
                       <LanguageFallback
                         language={language}
@@ -190,34 +190,34 @@ export default function Detail({ favourites }) {
                         otherParams={{ language: 'en' }}
                       />
                     </div>
-                    <p className='text-muted'><em>{item.tagline}</em></p>
+                    <p className='text-secondary'><em>{item.tagline}</em></p>
                     <div className={movieDetailStyle.cast}>
-                      <CastList title={t('detail.cast', d_translations.detail.cast)} mvtvType={mvtypePath} id={movieID}></CastList>
+                      <CastList title={t('detail.cast')} mvtvType={mvtypePath} id={movieID}></CastList>
                     </div>
                   </div>
                 </div>
                 <div className={`${movieDetailStyle.movieDetails} mb-3 container`}>
                   {(mvtypePath == 'tv' ? <TvSeasonsList tv_id={item.id} seasons={item.seasons.reverse()} language='en_US' /> : '')}
                   <div className={'mvtv-title mb-3'}>
-                    <h2 className="text-white mt-3">{t('detail.overview', d_translations.detail.overview)}</h2>
+                    <h2 className="text-white mt-3">{t('detail.overview')}</h2>
                     <div className='divider'></div>
                   </div>
                   <div className={movieDetailStyle.overview}>
-                    {(item.original_title || item.original_name) != null && <p><b>{t('detail.originalTitle', d_translations.detail.originalTitle)}:</b> {item.original_title || item.original_name}</p>}
-                    {item.original_language != null && <p><b>{t('detail.originalLanguage', d_translations.detail.originalLanguage)}:</b> {item.original_language}</p>}
-                    {item.release_date != null && <p><b>{t('detail.released', d_translations.detail.released)}:</b> {((item.release_date != null && item.release_date != '') ? dateFormat(new Date(item.release_date), "d. m. yyyy") : '-')}</p>}
-                    {item.budget > 0 && <p><b>{t('detail.budget', d_translations.detail.budget)}:</b> {item.budget > 0 ? <NumericFormat value={item.budget} displayType={'text'} thousandSeparator={true} prefix={'$'} /> : '-'}</p>}
-                    {item.revenue > 0 && <p><b>{t('detail.revenue', d_translations.detail.revenue)}:</b> {item.revenue > 0 ? <NumericFormat value={item.revenue} displayType={'text'} thousandSeparator={true} prefix={'$'} /> : '-'}</p>}
+                    {(item.original_title || item.original_name) != null && <p><b>{t('detail.originalTitle')}:</b> {item.original_title || item.original_name}</p>}
+                    {item.original_language != null && <p><b>{t('detail.originalLanguage')}:</b> {item.original_language}</p>}
+                    {item.release_date != null && <p><b>{t('detail.released')}:</b> {((item.release_date != null && item.release_date != '') ? dateFormat(new Date(item.release_date), "d. m. yyyy") : '-')}</p>}
+                    {item.budget > 0 && <p><b>{t('detail.budget')}:</b> {item.budget > 0 ? <NumericFormat value={item.budget} displayType={'text'} thousandSeparator={true} prefix={'$'} /> : '-'}</p>}
+                    {item.revenue > 0 && <p><b>{t('detail.revenue')}:</b> {item.revenue > 0 ? <NumericFormat value={item.revenue} displayType={'text'} thousandSeparator={true} prefix={'$'} /> : '-'}</p>}
                   </div>
                   <div className={'mvtv-title mb-3 mt-3'}>
-                    <h2 className="text-white mt-3">{t('detail.media', d_translations.detail.media)}</h2>
+                    <h2 className="text-white mt-3">{t('detail.media')}</h2>
                     <div className='divider'></div>
                   </div>
                   <Tabs>
-                    <Tab title={`${t('detail.videos', d_translations.detail.videos)}`}>
+                    <Tab title={`${t('detail.videos')}`}>
                       <VideoList original_language={item.original_language} id={item.id} mvtvType={mvtypePath == 'movie' ? mvtvType.movie : mvtvType.tv}></VideoList>
                     </Tab>
-                    <Tab title={`${t('detail.wallpapers', d_translations.detail.wallpapers)}`}>
+                    <Tab title={`${t('detail.wallpapers')}`}>
                       <ImageList id={item.id} mvtvType={mvtypePath == 'movie' ? mvtvType.movie : mvtvType.tv}></ImageList>
                     </Tab>
                   </Tabs>
@@ -227,7 +227,7 @@ export default function Detail({ favourites }) {
                     )
                     : null}
                   <div className={'mvtv-title mb-3 mt-3'}>
-                    <h2 className="text-white mt-3">{t('common.similar', d_translations.common.similar)}</h2>
+                    <h2 className="text-white mt-3">{t('common.similar')}</h2>
                     <div className='divider'></div>
                   </div>
                   <MovieList id={item.id} type='recommended' language={language} mvtvType={mvtypePath == 'movie' ? mvtvType.movie : mvtvType.tv}></MovieList>
@@ -241,3 +241,5 @@ export default function Detail({ favourites }) {
     </div>
   )
 }
+
+export const getServerSideProps = withI18n();

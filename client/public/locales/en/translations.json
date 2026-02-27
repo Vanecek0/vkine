@@ -184,6 +184,10 @@
         "documents": "Documents",
         "terms-of-use": "Terms of use",
         "privacy-policy": "Privacy policy"
+    },
+    "errors": {
+        "notFound": "Page not found",
+        "internalError": "Internal server error"
     }
     
 }

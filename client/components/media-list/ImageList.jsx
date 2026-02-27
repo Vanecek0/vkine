@@ -8,7 +8,6 @@ import mediaListStyle from "./mediaList.module.css";
 import MediaView from '../media-view/MediaView';
 import ProgressiveLoader from '../progressive-loader/ProgressiveLoader';
 import { useTranslation } from 'next-i18next';
-import d_translations from '../../public/locales/cs/translations.json'
 
 const ImageList = (props) => {
     const [items, setItems] = useState([]);
@@ -73,7 +72,7 @@ const ImageList = (props) => {
                     <div className={mediaListStyle.noResults}>
                         <div>
                             <Image size={40}></Image>
-                            <p className='pt-2 m-0'>{t('common.dataNotAvailable', d_translations.common.dataNotAvailable)}</p>
+                            <p className='pt-2 m-0'>{t('common.dataNotAvailable')}</p>
                         </div>
                     </div>
                 )

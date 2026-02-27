@@ -1,7 +1,6 @@
 import { IconButton, TextField } from '@mui/material';
 import { useRouter } from 'next/router';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import d_translations from '../../public/locales/cs/translations.json'
 import { useState } from 'react'
 import SearchGrid from '../../components/search-grid/SearchGrid'
 import searchStyle from './search.module.css'
@@ -9,6 +8,7 @@ import { useTranslation } from 'next-i18next';
 import { Search, X } from 'react-bootstrap-icons';
 import Head from 'next/head';
 import HeroSlide from '../../components/hero-slide/HeroSlide';
+import { withI18n } from '../../helper/with18n';
 
 const multiSearch = () => {
     const router = useRouter();
@@ -38,9 +38,9 @@ const multiSearch = () => {
             <Head>
                 <title>{`${query} – Vkine.cz`}</title>
                 <meta property="og:title" content={`${query} – Vkine.cz`}></meta>
-                <meta name='description' content={t('head.description', d_translations.head.description)}></meta>
-                <meta property="og:description" content={t('head.description', d_translations.head.description)}></meta>
-                <meta name='keywords' content={t('head.keywords', d_translations.head.keywords)}></meta>
+                <meta name='description' content={t('head.description')}></meta>
+                <meta property="og:description" content={t('head.description')}></meta>
+                <meta name='keywords' content={t('head.keywords')}></meta>
                 <link rel="canonical" href={`https://www.vkine.cz/`}></link>
                 <meta property="og:locale" content="cs_CZ"></meta>
                 <meta property="og:locale:alternate" content="sk_SK"></meta>
@@ -57,7 +57,7 @@ const multiSearch = () => {
                 <meta name="twitter:card" content="summary_large_image"></meta>
                 <meta name="twitter:image" content="https://www.vkine.cz/vkine_meta.png"></meta>
                 <meta name="twitter:title" content={`${query} – Vkine.cz`}></meta>
-                <meta name="twitter:description" content={t('head.description', d_translations.head.description)}></meta>
+                <meta name="twitter:description" content={t('head.description')}></meta>
             </Head>
             <HeroSlide mvtvType={'movie'} language={language}></HeroSlide>
             <div className={`${searchStyle.searchWrapper} container-xxl d-flex`}>
@@ -69,7 +69,7 @@ const multiSearch = () => {
                             value={inputSearch}
                             onChange={(e) => setInputSearch(e.target.value)}
                             className={searchStyle.searchInput}
-                            label={t("search.searchLabel", d_translations.search.searchLabel)}
+                            label={t("search.searchLabel")}
                             variant="standard"
                             InputLabelProps={{ style: { fontSize: 15 } }}
                             InputProps={
@@ -92,4 +92,5 @@ const multiSearch = () => {
     )
 }
 
+export const getStaticProps = withI18n();
 export default multiSearch

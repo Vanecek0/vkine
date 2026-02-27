@@ -186,6 +186,7 @@
         "privacy-policy": "Zásady ochrany osobních údajů"
     },
     "errors": {
-        "login_invalid_user": "Invalidní uživatel prostě"
+        "notFound": "Stránka nenalezena",
+        "internalError": "Chyba serveru"
     }
 }

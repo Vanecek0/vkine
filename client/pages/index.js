@@ -1,16 +1,13 @@
-import nextI18NextConfig from "../next-i18next.config"
 import Home from './home';
-import { withTranslation } from "next-i18next"
-import { SSRProvider } from "react-bootstrap";
+import { withI18n } from '../helper/with18n';
 
 const HomePage = ({ children, pageProps }) => {
   return (
     <>
-      <SSRProvider>
         <Home {...pageProps}>{children}</Home>
-      </SSRProvider>
     </>
   )
 }
 
-export default withTranslation()(HomePage, nextI18NextConfig);
+export const getStaticProps = withI18n()
+export default HomePage;
