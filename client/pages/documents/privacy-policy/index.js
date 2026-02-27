@@ -1,4 +1,3 @@
-import React from 'react'
 import TextArticle from '../../../components/article/TextArticle'
 
 const privacyPolicy = () => {

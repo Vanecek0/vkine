@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import config from '../../pages/api/config';
 import tmdbApi from '../../pages/api/tmdbApi';
 import { useRouter } from 'next/router';
@@ -19,7 +19,7 @@ import Head from 'next/head';
 
 const Person = () => {
   const router = useRouter()
-  const { query, isReady } = router;
+  const { isReady } = router;
   const { personID } = router.query;
   const [item, setItem] = useState();
   const [social, setSocial] = useState({});

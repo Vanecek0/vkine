@@ -2,7 +2,7 @@ import { IconButton, TextField } from '@mui/material';
 import { useRouter } from 'next/router';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import d_translations from '../../public/locales/cs/translations.json'
-import React, { useState } from 'react'
+import { useState } from 'react'
 import SearchGrid from '../../components/search-grid/SearchGrid'
 import searchStyle from './search.module.css'
 import { useTranslation } from 'next-i18next';

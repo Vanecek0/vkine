@@ -1,5 +1,4 @@
-import React from 'react'
-import { Radar, RadarChart, PolarGrid, Legend, PolarAngleAxis, PolarRadiusAxis, ResponsiveContainer, Tooltip } from 'recharts';
+import { Radar, RadarChart, PolarGrid, PolarAngleAxis, ResponsiveContainer, Tooltip } from 'recharts';
 import chartStyle from './charts.module.css'
 
 function getRandomNumber(maxval) {

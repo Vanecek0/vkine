@@ -1,5 +1,3 @@
-import React from 'react'
-
 const TimeFormat = (props) => {
   const timeformat = () => {
     const minutes = props.value % 60;

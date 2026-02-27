@@ -1,6 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import './Header.module.css';
-//import 'bootstrap/dist/css/bootstrap.min.css';
 import HeaderStyle from "./Header.module.css"
 import MultiSearch from '../multi-search/MultiSearch';
 import { Search } from 'react-bootstrap-icons';
@@ -8,30 +7,18 @@ import Menu from './Menu';
 import LanguageDropdown from './LanguageDropdown';
 import Head from 'next/head';
 import Script from 'next/script';
-import CookieConsent, { Cookies } from "react-cookie-consent";
+import CookieConsent from "react-cookie-consent";
 import { useRouter } from 'next/router';
-import { PrismaClient } from '@prisma/client';
-import { useSession } from 'next-auth/react';
-import Link from 'next/link';
-import ProgressiveLoader from '../progressive-loader/ProgressiveLoader';
-import ProfileIconDropdown from './ProfileIconDropdown';
 
 export default function Header() {
   const headerRef = useRef(null);
   const [isSearchActive, setIsSearchActive] = useState(false);
-  const [isProfileContextMenuActive, setIsProfileContextMenuActive] = useState(false);
   const router = useRouter();
-  const session = useSession();
-  const user = session.data != null && session.data.user;
   const language = router.locale;
 
   const searchHandler = (e) => {
     setIsSearchActive(current => !current)
     document.getElementById("search-input").focus();
-  }
-
-  const profileContextMenu = (e) => {
-    setIsProfileContextMenuActive(current => !current)
   }
 
   useEffect(() => {
@@ -90,7 +77,6 @@ export default function Header() {
           <div className={`${HeaderStyle.header__nav} header__nav`}>
             <Menu />
             <div className={`d-inline-flex justify-content-end align-items-center gap-2`}>
-              <ProfileIconDropdown session={session} />
               <div className='d-inline-flex align-items-baseline'>
                 <button className={`${HeaderStyle.searchButton} ${HeaderStyle.rounded}`} onClick={searchHandler}>
                   <Search fontSize={19} fontWeight={80} className='text-white'></Search>

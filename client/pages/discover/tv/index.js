@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import HeroSlide from '../../../components/hero-slide/HeroSlide'
 import DiscoverGrid from '../../../components/discover-grid/DiscoverGrid';
 import FilterPanel from '../../../components/filter-panel/FilterPanel';
@@ -13,7 +13,7 @@ const Discover = (props) => {
   const router = useRouter();
   const { locale } = router;
   const language = locale;
-  const { t, ready } = useTranslation('translations')
+  const { t } = useTranslation('translations')
 
   return (
     <>

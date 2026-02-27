@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Navigation, Mousewheel } from 'swiper';
@@ -11,7 +11,6 @@ import Link from 'next/link';
 import { useTranslation } from 'next-i18next';
 import languagesByRegion from '../constants/LanguagesByRegions.json'
 import d_translations from '../../public/locales/cs/translations.json'
-import { useSession } from 'next-auth/react';
 
 SwiperCore.use([Navigation, Mousewheel]);
 
@@ -20,11 +19,7 @@ const MovieList = (props) => {
     const navigationPrevRef = useRef(null);
     const navigationNextRef = useRef(null);
     const movieListRef = useRef();
-    const session = useSession();
-    console.log(session)
-    const user = session.status != 'loading' && session.data ? session.data.user : null;
     const [loading, setLoading] = useState(true);
-    //const [isFavourite, setIsFavourite] = useState(Object.keys(favourites).length !== 0)
     const { t } = useTranslation('translations');
 
     const getFavourite = async (mvtvType, userId, mvtvId) => {
@@ -98,7 +93,7 @@ const MovieList = (props) => {
                                 {
                                     items.map((item, i) => (
                                         <SwiperSlide className={movieListStyle.swiperSlide} key={i}>
-                                            <MovieCard isFavourite={getFavourite(props.mvtvType, user != null ? user.id : null, item.id).then(response => response)} item={item} mvtvType={props.mvtvType}></MovieCard>
+                                            <MovieCard item={item} mvtvType={props.mvtvType}></MovieCard>
                                         </SwiperSlide>
                                     ))
                                 }

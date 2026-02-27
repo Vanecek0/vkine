@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import React, { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import tmdbApi, { mvtvType } from '../../pages/api/tmdbApi';
 import MovieCard from '../movie-card/MovieCard';
 import searchGridStyle from './SearchGrid.module.css'

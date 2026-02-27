@@ -6,7 +6,7 @@ export const setItemWithExpiration = (key, value, expirationMinutes) => {
   const now = new Date();
   const item = {
     value,
-    expiration: now.getTime() + expirationMinutes * 60 * 1000, // Convert minutes to milliseconds
+    expiration: now.getTime() + expirationMinutes * 60 * 1000,
   };
   localStorage.setItem(key, JSON.stringify(item));
 };

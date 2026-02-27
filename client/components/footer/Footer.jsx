@@ -1,4 +1,3 @@
-import React, { useEffect } from 'react';
 import footerStyle from './Footer.module.css';
 import Link from 'next/link';
 import logo from '../../assets/logo.svg';

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import HeroSlide from '../../../components/hero-slide/HeroSlide'
 import DiscoverGrid from '../../../components/discover-grid/DiscoverGrid';
 import FilterPanel from '../../../components/filter-panel/FilterPanel';
@@ -8,12 +8,12 @@ import Head from 'next/head';
 import { useTranslation } from 'next-i18next';
 import d_translations from '../../../public/locales/cs/translations.json'
 
-const Discover = (props) => {
+const Discover = () => {
   const [filterParams, setFilterParams] = useState();
   const router = useRouter();
   const { locale } = router;
   const language = locale;
-  const { t, ready } = useTranslation('translations')
+  const { t } = useTranslation('translations')
 
   return (
     <>

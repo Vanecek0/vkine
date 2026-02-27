@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { ChevronDown, ChevronUp } from 'react-bootstrap-icons';
 import { useTranslation } from 'next-i18next';
 import d_translations from '../../../public/locales/cs/translations.json'

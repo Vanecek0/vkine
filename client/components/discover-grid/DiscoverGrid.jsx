@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import tmdbApi from '../../pages/api/tmdbApi'
 import useVisible from '../../components/universal_components/viewport-rendering/useVisible'
 import MovieCard from '../../components/movie-card/MovieCard'

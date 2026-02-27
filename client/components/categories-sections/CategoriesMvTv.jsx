@@ -1,4 +1,3 @@
-import React from 'react'
 import { useTranslation } from 'next-i18next';
 import d_translations from '../../public/locales/cs/translations.json'
 import MovieList from '../movie-list/MovieList';

@@ -121,8 +121,6 @@
     width: 350px;
     position: relative;
     transition: 0.5s ease;
-    /*transform: scale(0.25);
-    transition: 0.5s ease !important;*/
 }
 
 .heroSlide__item__content__poster {

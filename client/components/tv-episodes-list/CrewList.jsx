@@ -1,6 +1,5 @@
 import React from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react';
-import SwiperCore, { Navigation } from 'swiper';
 import config from '../../pages/api/config';
 import noImagePerson from '../../assets/noimage_person.png';
 import { ChevronLeft, ChevronRight } from 'react-bootstrap-icons';

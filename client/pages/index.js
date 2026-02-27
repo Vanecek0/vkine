@@ -1,4 +1,3 @@
-import { getSession } from "next-auth/react";
 import nextI18NextConfig from "../next-i18next.config"
 import Home from './home';
 import { withTranslation } from "next-i18next"
@@ -12,14 +11,6 @@ const HomePage = ({ children, pageProps }) => {
       </SSRProvider>
     </>
   )
-}
-
-export async function getServerSideProps(ctx) {
-  return {
-    props: {
-      session: await getSession(ctx)
-    }
-  }
 }
 
 export default withTranslation()(HomePage, nextI18NextConfig);

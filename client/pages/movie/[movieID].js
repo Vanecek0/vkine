@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router'
 
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import tmdbApi, { mvtvType } from '../../pages/api/tmdbApi';
 import config from '../../pages/api/config';
 import movieDetailStyle from './MovieDetail.module.css';
@@ -8,7 +8,7 @@ import { ArrowLeft, BookmarkFill, Facebook, Film, HeartFill, Instagram, Link45de
 import CastList from '../../components/cast-list/CastList';
 import { NumericFormat } from 'react-number-format';
 import TimeFormat from '../../components/time-format/TimeFormat';
-import dateFormat, { masks } from "dateformat";
+import dateFormat from "dateformat";
 import Tabs, { Tab } from '../../components/Tabs/Tabs';
 import VideoList from '../../components/media-list/VideoList';
 import MovieList from '../../components/movie-list/MovieList';
@@ -24,14 +24,11 @@ import PageNotFound from '../page-not-found/PageNotFound';
 import Head from 'next/head';
 import d_translations from '../../public/locales/cs/translations.json'
 import MediaView from '../../components/media-view/MediaView';
-import { PrismaClient } from '@prisma/client';
-import { getSession, useSession } from 'next-auth/react';
 
 export default function Detail({ favourites }) {
   const router = useRouter()
-  const { query, isReady } = router;
+  const { isReady } = router;
   const { movieID } = router.query
-  const [isFavourite, setIsFavourite] = useState(Object.keys(favourites).length !== 0)
 
   const [item, setItem] = useState();
   const path = router.pathname.split('/').filter(e => e);
@@ -39,8 +36,6 @@ export default function Detail({ favourites }) {
   const language = router.locale;
   const { t } = useTranslation('translations')
   const [loading, setLoading] = useState(true);
-  const session = useSession();
-  const user = session.status != 'loading' && session.data ? session.data.user : null;
   var titleDashed = '';
   const [trailerModalActive, setTrailerModalActive] = useState(false);
   const [trailerItems, setTrailerItems] = useState({});
@@ -64,7 +59,7 @@ export default function Detail({ favourites }) {
         (movieID != (response.id + '-' + titleDashed)) ? router.push({ pathname: '../' + mvtypePath + '/' + response.id + '-' + titleDashed }) : null;
         setItem(response);
         setLoading(false)
-      } catch (e) { setItem({ status_code: 34 }); setLoading(false); console.log(e) }
+      } catch (e) { setItem({ status_code: 34 }); setLoading(false); console.error(e) }
     }
     const getSocial = async () => {
       const response = await tmdbApi.getDetailSocial(mvtvType.movie, movieID, { params: {} })
@@ -85,29 +80,6 @@ export default function Detail({ favourites }) {
   const onTrailerHandler = () => {
     setTrailerModalActive(true);
   }
-
-  const handleAddFavourite = async (mvtvType, userId, mvtvId) => {
-    const response = await fetch(`/api/user_fav_mvtv/${mvtvType}/${userId}/${mvtvId}`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ isFavorite: true }),
-    });
-    setIsFavourite(true)
-  };
-
-  const handleRemoveFavourite = async (mvtvType, userId, mvtvId) => {
-    const response = await fetch(`/api/user_fav_mvtv/${mvtvType}/${userId}/${mvtvId}`, {
-      method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ isFavorite: false }),
-    });
-    setIsFavourite(false)
-  };
-
 
   if (!isReady) {
     return null;
@@ -195,28 +167,14 @@ export default function Detail({ favourites }) {
                       </div>
                       <div className={`gap-2 d-flex ${movieDetailStyle.actionButtons}`}>
                         <div className="vk_tooltip_parent">
-                          {isFavourite && user ? (
-                            <>
-                              <div onClick={() => handleRemoveFavourite(mvtvType.movie, user != null && user.id, item.id)} className={'btn btn-dark rounded-circle d-flex align-items-center justify-content-center'}><HeartFill size={18} className={movieDetailStyle.favouritesIconAdded} /></div>
-                              <div className="vk_tooltip"><span>Odebrat z oblíbených</span></div>
-                            </>
-                          ) : (
-                            user ? (
-                              <>
-                                <div onClick={() => handleAddFavourite(mvtvType.movie, user != null && user.id, item.id)} className={'btn btn-dark rounded-circle d-flex align-items-center justify-content-center'}><HeartFill size={18} className={movieDetailStyle.favouritesIcon} /></div>
-                                <div className="vk_tooltip"><span>Přidat do oblíbených</span></div>
-                              </>
-                            ) : (
                               <>
                                 <div className={'btn btn-dark rounded-circle d-flex align-items-center justify-content-center disabled'}><HeartFill size={18} className={movieDetailStyle.favouritesIconDisabled} /></div>
                                 <div className="vk_tooltip"><span>Pro přidání do oblíbených se prosím přihlaste</span></div>
                               </>
-                            )
-                          )}
                         </div>
                         <div className='vk_tooltip_parent'>
                           <div className={'btn btn-dark rounded-circle d-flex align-items-center justify-content-center'}><BookmarkFill size={18} className={movieDetailStyle.watchListIcon} /></div>
-                          <div className="vk_tooltip"><span>{isFavourite ? "Odebrat z oblíbených" : "Přidat do oblíbených"}</span></div>
+                          <div className="vk_tooltip"><span>Přidat do oblíbených</span></div>
                         </div>
                       </div>
                     </div>
@@ -282,54 +240,4 @@ export default function Detail({ favourites }) {
       }
     </div>
   )
-}
-
-
-export const getServerSideProps = async (context) => {
-  const prisma = new PrismaClient();
-  console.log(await getSession(context))
-  const session = await getSession(context);
-  const { movieID } = context.params
-  var favouritesData = null;
-  if (session) {
-    try {
-      const { user } = session;
-      favouritesData = await prisma.userFavourites.findMany({
-        where: {
-          itemId: parseInt(movieID),
-          userId: user.id
-        },
-        include: {
-          user: true
-        }
-      })
-      /*watchlistData = await prisma.userWatchlist.findMany({
-        where: {
-          itemId: parseInt(movieID),
-          userId: user.id
-        },
-        include: {
-          user: true
-        }
-      })*/
-    } catch (error) {
-      throw new Error(error)
-    } finally {
-      await prisma.$disconnect();
-    }
-    return {
-      props: {
-        favourites: JSON.parse(JSON.stringify(favouritesData)),
-        watchlist: JSON.parse(JSON.stringify(favouritesData))
-      }
-    }
-  } else {
-    return {
-      props: {
-        favourites: false,
-        watchlist: false
-      }
-    }
-  }
-
 }

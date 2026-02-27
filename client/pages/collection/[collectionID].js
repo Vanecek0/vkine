@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
 import { ArrowLeft } from 'react-bootstrap-icons';
@@ -11,7 +11,6 @@ import Rating from '../../components/rating/Rating';
 import LanguageFallback from '../../components/universal_components/language-fallback/LanguageFallback';
 import TimeFormat from '../../components/time-format/TimeFormat';
 import MovieList from '../../components/movie-list/MovieList';
-//import { Helmet } from 'react-helmet-async';
 import d_translations from '../../public/locales/cs/translations.json'
 import PageNotFound from '../page-not-found/PageNotFound';
 import Head from 'next/head';
@@ -21,14 +20,12 @@ const Collection = () => {
     const { isReady } = router;
     const { collectionID } = router.query;
     const [item, setItem] = useState();
-    const [backdrops, setBackdrops] = useState();
     var bg = config.noImage(noImage);
     const language = router.locale;
     const { t } = useTranslation('translations');
 
     useEffect(() => {
         const getCollectionDetail = async () => {
-            console.log(language)
             const params = { language: language }
             try {
                 const response = await tmdbApi.getMovieCollection(collectionID, { params })
@@ -47,7 +44,6 @@ const Collection = () => {
         const getCollectionBackdrops = async () => {
             const params = { language: language }
             const response = await tmdbApi.getMovieCollectionImages(collectionID, { params })
-            setBackdrops(response.backdrops);
         }
         if (isReady) {
             getCollectionDetail();

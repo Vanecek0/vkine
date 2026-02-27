@@ -1,4 +1,3 @@
-import React from 'react'
 import fs from 'fs'
 import { useRouter } from 'next/router';
 import TextArticle from '../../components/article/TextArticle';

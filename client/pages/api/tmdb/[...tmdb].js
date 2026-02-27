@@ -15,22 +15,17 @@ export default async function handler(req, res) {
     });
 
     const url_complete = `${api_base_url}${path}?${params}`;
-    console.log(url_complete)
     if (cache.get(url_complete)) {
       res.setHeader('Cache-Control', 'public, max-age=120');
       res.status(200).json(cache.get(url_complete));
-      console.log("is in cache")
     } else {
       const apiRes = await needle('get', url_complete);
       const data = apiRes.body;
-      res.setHeader('Cache-Control', 'public, max-age=120'); // Přidání Cache-Control hlavičky
+      res.setHeader('Cache-Control', 'public, max-age=120');
       res.status(200).json(data);
       cache.put(url_complete, data, 120000)
-      console.log("not in cache")
     }
   } catch (error) {
     res.status(500).json({ error: error });
   }
 }
-
-

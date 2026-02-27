@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState, useId } from 'react'
+import { useEffect, useRef, useState, useId } from 'react'
 import filterPanelStyle from "./FilterPanel.module.css"
 import { GenresList } from '../../components/constants/genres/Genres'
 import Select from 'react-select'
@@ -251,12 +251,10 @@ const FilterGenres = (props) => {
 }
 
 const FilterSorting = (props) => {
-  const [selectedSorting, setSelectedSorting] = useState();
   const sorting = Sorting();
   const {t}  = useTranslation();
 
   const handleChange = (selectedSorting) => {
-    setSelectedSorting(selectedSorting);
     props.setSelectedSorting(selectedSorting);
   };
   return(

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useTranslation } from "next-i18next";
 import ShowMoreLess from "../show-more-less/ShowMoreLess";
 import d_translations from '../../../public/locales/cs/translations.json'

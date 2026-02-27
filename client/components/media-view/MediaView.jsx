@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import mediaViewStyle from './mediaView.module.css'
 import noImage from '../../assets/image.png';
 import { Swiper, SwiperSlide } from 'swiper/react';

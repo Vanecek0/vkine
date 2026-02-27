@@ -1,4 +1,3 @@
-import React from 'react'
 import config from '../../pages/api/config';
 import noImage from '../../assets/image.svg';
 import dateFormat from "dateformat";

@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import { useTranslation } from 'next-i18next';
 import TvEpisodesList from '../tv-episodes-list/TvEpisodesList';
 import TvSeasonCard from '../tv-seasons-card/TvSeasonCard'

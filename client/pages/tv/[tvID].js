@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import tmdbApi, { mvtvType } from '../../pages/api/tmdbApi';
 import config from '../../pages/api/config';
 import tvDetailStyle from './TvDetail.module.css';
@@ -6,7 +6,7 @@ import { ArrowLeft, Facebook, Film, Instagram, Link45deg, Twitter } from 'react-
 import CastList from '../../components/cast-list/CastList';
 import { NumericFormat } from 'react-number-format';
 import TimeFormat from '../../components/time-format/TimeFormat';
-import dateFormat, { masks } from "dateformat";
+import dateFormat from "dateformat";
 import Tabs, { Tab } from '../../components/Tabs/Tabs';
 import VideoList from '../../components/media-list/VideoList';
 import MovieList from '../../components/movie-list/MovieList';
@@ -24,7 +24,7 @@ import { useRouter } from 'next/router';
 import Head from 'next/head';
 import MediaView from '../../components/media-view/MediaView';
 
-const Detail = (props) => {
+const Detail = () => {
   const router = useRouter();
   const { query, isReady } = router;
   const { tvID } = query;
@@ -69,7 +69,6 @@ const Detail = (props) => {
 
     const getVideos = async () => {
       const videos = await tmdbApi.getVideos(mvtvType.tv, tvID, { params: {} });
-      console.log(videos.results)
       setTrailerItems(videos.results);
     }
 

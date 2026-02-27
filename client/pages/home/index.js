@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import HeroSlide from '../../components/hero-slide/HeroSlide';
 import { mvtvType, movieType, tvType } from '../api/tmdbApi';
 import { useRouter } from 'next/router';
@@ -15,7 +15,7 @@ export default function Home() {
   const router = useRouter();
   const { locale } = router;
   const language = locale;
-  const { t, ready } = useTranslation('translations')
+  const { t } = useTranslation('translations')
   const [region, setRegion] = useState();
 
 

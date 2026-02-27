@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import config from '../../pages/api/config';
 import tmdbApi, { mvtvType } from '../../pages/api/tmdbApi';
 import LanguageFallback from '../../components/universal_components/language-fallback/LanguageFallback';

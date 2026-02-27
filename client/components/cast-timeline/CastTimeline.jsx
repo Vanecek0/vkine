@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import Link from 'next/link';
 import tmdbApi from '../../pages/api/tmdbApi';
 import castTimelineStyle from './CastTimeline.module.css'

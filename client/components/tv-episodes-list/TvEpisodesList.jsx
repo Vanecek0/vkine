@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import tmdbApi from '../../pages/api/tmdbApi'
 import TimeFormat from '../time-format/TimeFormat';
 import dateFormat from "dateformat";
@@ -32,22 +32,6 @@ const TvEpisodesList = (props) => {
                   <p><span className={`${tvEpisodesListStyle.episodeDateRuntime} text-muted`}>{(item.air_date != null ? dateFormat(new Date(item.air_date), "yyyy-mm-dd") : '0h 00min')} {item.runtime > 0 ? <><span>| </span> <TimeFormat value={item.runtime} /></> : ''}</span></p>
                 </div>
                 <p className={`${tvEpisodesListStyle.episodeOverview} text-muted`}>{item.overview}</p>
-                {
-                  /*
-                   <div className={`episode-details ${(expandedEpisode === i) ? 'expanded' : ''}`}>
-                  <p>{t(['common.crew'])}</p>
-                  <CrewList crew_list={item.crew}></CrewList>
-                  <p>{t(['common.guestStars'])}</p>
-                  <CrewList crew_list={item.guest_stars}></CrewList>
-                </div>
-                {expandedEpisode === i ?
-                <>
-                  <button className='btn btn-dark d-flex align-items-center justify-content-center' onClick={() => showEpisodeDetail(-1)}>{t(['common.showLess'])}</button>
-                </>
-                : <button onClick={() => showEpisodeDetail(i)} className='btn btn-dark d-flex align-items-center justify-content-center'>{t(['common.showMore'])}</button>}
-                   */
-
-                }
                 <hr />
               </div>
             ))

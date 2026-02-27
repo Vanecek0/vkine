@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import multiSearchStyle from './MultiSearch.module.css'
 import { X, XLg } from 'react-bootstrap-icons';
 import tmdbApi from '../../pages/api/tmdbApi';

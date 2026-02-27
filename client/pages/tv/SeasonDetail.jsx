@@ -1,10 +1,10 @@
 import { useRouter } from 'next/router';
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import tmdbApi from '../../pages/api/tmdbApi';
 
 const SeasonDetail = () => {
     const router = useRouter();
-    const { query, isReady } = router;
+    const { query } = router;
     const { tv_id, season_number } = query;
     const [episodes, setEpisodes] = useState([]);
 

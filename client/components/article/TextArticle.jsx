@@ -1,4 +1,3 @@
-import React from 'react'
 import ProgressiveLoader from '../progressive-loader/ProgressiveLoader'
 import articleStyle from "./article.module.css"
 import config from '../../pages/api/config'

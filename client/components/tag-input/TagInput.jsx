@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import PropTypes from 'prop-types';
 import { useAutocomplete } from '@mui/material';
 import { CheckLg, XLg } from 'react-bootstrap-icons';
@@ -7,14 +7,14 @@ import tagInputStyle from "./TagInput.module.css"
 
 
 const Root = styled('div')(
-  ({ theme }) => `
+  () => `
     color: rgba(255,255,255,0.65);
     font-size: 14px;
   `,
 );
 
 const InputWrapper = styled('div')(
-  ({ theme }) => `
+  () => `
     width: 300px;
     border: 1px solid #434343;
     background-color: #141414;

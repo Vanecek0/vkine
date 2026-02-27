@@ -1,13 +1,8 @@
-import { useEffect, useState } from "react";
 import { useTranslation } from "next-i18next";
-import { useRouter } from "next/router";
 import d_translations from '../../public/locales/cs/translations.json'
 
 const Sorting = () => {
     const { t } = useTranslation('translations');
-    const router = useRouter();
-    const language = router.locale;
-    const [sorting, setSorting] = useState([{}]);
 
     return [
         {value: "popularity.asc", label: t('sorting.popularity.asc', d_translations.sorting["popularity.asc"])},

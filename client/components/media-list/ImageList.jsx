@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import tmdbApi from '../../pages/api/tmdbApi'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { ChevronLeft, ChevronRight, Image } from 'react-bootstrap-icons';

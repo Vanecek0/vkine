@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { mvtvType as mvtv } from '../../pages/api/tmdbApi';
 import HeroSlide from '../../components/hero-slide/HeroSlide';
 import { MovieListByGenres } from '../../components/movie-list/MovieList';

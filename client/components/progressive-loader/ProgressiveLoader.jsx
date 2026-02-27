@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 function ProgressiveLoader({ lowRes, highRes, isBackground, otherClass, blur, isVisible=true, children }) {
   const [image, setImage] = useState(lowRes);

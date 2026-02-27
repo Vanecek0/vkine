@@ -1,4 +1,3 @@
-import React from 'react'
 import Link from 'next/link';
 import config from '../../pages/api/config';
 import noImagePerson from '../../assets/noimage_person.svg';

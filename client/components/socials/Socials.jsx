@@ -1,4 +1,3 @@
-import React from 'react'
 import socialsStyle from './socials.module.css'
 import { Github, Instagram } from 'react-bootstrap-icons';
 import Link from 'next/link';
