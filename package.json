@@ -7,7 +7,7 @@
   "type": "module",
   "scripts": {
     "dev": "next dev ./client -p 3000 --webpack",
-    "build": "next build ./client --webpack",
+    "build": "next build ./client",
     "start": "next start ./client -p 3000"
   },
   "author": "Pavel Vaněček",
